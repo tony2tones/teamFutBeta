@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { EventsService } from './events.service';
+import { Response } from '@angular/http'
 
 @Component({
   selector: 'createevent',
@@ -22,6 +24,26 @@ export class CreateeventComponent  {
       ]
     }
   ]
-  constructor() { }
+  constructor(private eventsService: EventsService) { }
 
+  addEvent(){
+    this.eventsService.updateEvents(this.events).subscribe(
+      (response: Response) => {
+        const events = response.json();
+        console.log(events);
+      },
+      error => console.log(error)
+    )
+  }
+
+  getEvents() {
+    this.eventsService.getEvents()
+    .subscribe(
+      (response:Response) => {
+        const events = response.json();
+        console.log(events);
+      },
+      error => console.log(error)
+    )
+  }
 }

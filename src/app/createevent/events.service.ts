@@ -9,10 +9,10 @@ export class EventsService {
   constructor(private http: Http) { }
 
   getEvents() {
-    return this.http.get('https://teamfutbeta.firebaseio.com/')
+    return this.http.get('https://teamfutbeta.firebaseio.com/event.json')
   }
 
   updateEvents(event:any[]) {
-    return this.http.put('https://teamfutbeta.firebaseio.com/', event)
+    return this.http.post('https://teamfutbeta.firebaseio.com/event.json', event)
   }
 }
