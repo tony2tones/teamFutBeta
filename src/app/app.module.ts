@@ -3,16 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CreateeventComponent } from './createevent/createevent.component';
+
+import { EventsService } from './createevent/events.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreateeventComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [EventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
