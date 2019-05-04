@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { Response } from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getEvents() {
-    return this.http.get('https://teamfutbeta.firebaseio.com/event.json')
+    return this.http.get('https://teamfutbeta-88c44.firebaseio.com/event.json')
+    .map(
+      (response) => {
+        const event = response;
+        return event;
+      }
+    );
   }
 
   updateEvents(event:any[]) {
-    return this.http.post('https://teamfutbeta.firebaseio.com/event.json', event)
+    return this.http.post('https://teamfutbeta-88c44.firebaseio.com/event.json', event)
   }
 }

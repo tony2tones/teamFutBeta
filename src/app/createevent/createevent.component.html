@@ -4,5 +4,7 @@
 
 <button (click)="addEvent()"> add event</button>
 <button (click)="getEvents()"> GET events</button>
-
-<div> {{ events[0] }} </div>
+<ul *ngFor="let event of events">
+  <li>{{ event?.title }}</li>
+  <li>{{ event?.time }}</li>
+</ul>
