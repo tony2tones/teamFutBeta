@@ -1,4 +1,16 @@
-<p>
-  createevent works!
-</p>
-
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-sm-offset-2">
+    <form (ngSubmit)="createEvent(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="title">Name of gaming event</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          ngModel
+          class="form-control"
+        />
+      </div>
+    </form>
+  </div>
+</div>

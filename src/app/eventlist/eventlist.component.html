@@ -1,14 +1,14 @@
+<div class="container">
+  <h1>Event Details</h1>
+  <ul *ngFor="let event of events">
+    <li>{{ event?.title }}</li>
+    <li>{{ event?.date }}</li>
+    <li>{{ event?.time }}</li>
+    <li>{{ event?.location }}</li>
+    <h3>Confirmed</h3>
+    <li *ngFor="let confirmed of event.confirmed">{{ confirmed.name }}</li>
 
-<button (click)="addEvent()">add event</button>
-<button (click)="getEvents()">GET events</button>
-<ul *ngFor="let event of events">
-  <li>{{ event?.title }}</li>
-  <li>{{ event?.date }}</li>
-  <li>{{ event?.time }}</li>
-  <li>{{ event?.location }}</li>
-  <h3>Confirmed</h3>
-  <li *ngFor="let confirmed of event.confirmed">{{ confirmed.name }}</li>
-
-  <h3>Maybe</h3>
-  <li *ngFor="let maybe of event.maybe">{{ maybe.name }}</li>
-</ul>
+    <h3>Maybe</h3>
+    <li *ngFor="let maybe of event.maybe">{{ maybe.name }}</li>
+  </ul>
+</div>
