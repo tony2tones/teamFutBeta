@@ -13,7 +13,7 @@ export class EventsService {
   getEvents() {
     return this.http.get('https://teamfutbeta-88c44.firebaseio.com/event.json')
     .map(
-      (response) => {
+      (response: Response) => {
         const event = response;
         return event;
       }
@@ -21,6 +21,6 @@ export class EventsService {
   }
 
   updateEvents(event:any[]) {
-    return this.http.post('https://teamfutbeta-88c44.firebaseio.com/event.json', event)
+    return this.http.put('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
   }
 }

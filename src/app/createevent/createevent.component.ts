@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ["./createevent.component.css"]
 })
 export class CreateeventComponent {
-  events = [
+  events:any[];
     // {
     //   title: "This Sunday",
     //   date: "05-04-2019",
@@ -18,7 +18,7 @@ export class CreateeventComponent {
     //   confirmed: [{ name: "Tony" }, { name: "Doggy" }, { name: "Kyle" }],
     //   maybe: [{ name: "Lyle" }]
     // }
-  ];
+  
   constructor(private eventsService: EventsService) {}
 
   addEvent() {
@@ -36,8 +36,7 @@ export class CreateeventComponent {
       .subscribe(
         (event:any) => {
           this.events = event;
-          console.log("this is an event :", event)
-          console.log("this is an eventsss :", this.events)
+          console.log('getting events if there is any ', event);
         },
         error => console.log(error)
       );
