@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { EventsService } from "./events.service";
+import { EventsService } from "../services/events.service";
 import { Response } from "@angular/http";
 import { Observable } from 'rxjs';
 
@@ -30,15 +30,5 @@ export class CreateeventComponent {
       );
   }
 
-  getEvents() {
-    this.eventsService
-      .getEvents()
-      .subscribe(
-        (event:any) => {
-          this.events = event;
-          console.log('getting events if there is any ', event);
-        },
-        error => console.log(error)
-      );
-  }
+ 
 }

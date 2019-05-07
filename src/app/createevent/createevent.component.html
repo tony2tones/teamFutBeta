@@ -2,12 +2,3 @@
   createevent works!
 </p>
 
-<button (click)="addEvent()"> add event</button>
-<button (click)="getEvents()"> GET events</button>
-<ul *ngFor="let event of events">
-  <li>{{ event?.title }}</li>
-  <li>{{ event?.time }}</li>
-  <li *ngFor="let confirmed of event.confirmed">{{ confirmed.name }}<li> 
-  </li>
-  
-</ul>
