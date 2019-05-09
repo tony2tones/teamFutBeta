@@ -8,7 +8,7 @@ import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
   templateUrl: "./createevent.component.html",
   styleUrls: ["./createevent.component.css"]
 })
-export class CreateeventComponent {
+export class CreateeventComponent implements OnInit{
   events: any[];
   myForm: FormGroup;
   // public confirmedList: FormArray;
@@ -18,14 +18,14 @@ export class CreateeventComponent {
   
   ngOnInit() {
     this.myForm = this.fb.group({
-      name: '',
+      title: '',
       confirmList: this.fb.array([])
       // maybeList: this.fb.array([])
     });
   }
 
     get confimredForm() {
-      return this.myForm.get('confirmed') as FormArray;
+      return this.myForm.get('confirmList') as FormArray;
     }
 
     addConfirmed() {
