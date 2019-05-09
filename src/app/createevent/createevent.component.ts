@@ -30,10 +30,11 @@ export class CreateeventComponent implements OnInit{
 
     addConfirmed() {
       const confirmed = this.fb.group({
-        name:[],
-        status: []
+        name:[]
       });
       this.confimredForm.push(confirmed);
+      this.events.push(confirmed);
+      console.log('loggin this ',this.events)
     }
 
     deleteConfirmed(i) {
