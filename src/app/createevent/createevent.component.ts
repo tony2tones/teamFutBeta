@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { EventsService } from "../services/events.service";
 import { Response } from "@angular/http";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "createevent",
@@ -10,19 +10,35 @@ import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class CreateeventComponent {
   events: any[];
-  public form: FormGroup;
-  public confirmedList: FormArray;
-  public maybeList: FormArray;
+  myForm: FormGroup;
+  // public confirmedList: FormArray;
+  // public maybeList: FormArray;
 
-  constructor(private eventsService: EventsService) {}
-  https://www.youtube.com/watch?v=JeeUY6WaXiA
-  // ngOnInit() {
-  //   this.form = this.fb.group({
-  //     name: [null, Validators.compose([Validators.required])],
-  //     confirmList: this.fb.array([this.confirmedList]),
-  //     maybeList: this.fb.array([this.maybeList])
-  //   });
+  constructor(private fb: FormBuilder,private eventsService: EventsService) {}
+  
+  ngOnInit() {
+    this.myForm = this.fb.group({
+      name: '',
+      confirmList: this.fb.array([])
+      // maybeList: this.fb.array([])
+    });
+  }
 
+    get confimredForm() {
+      return this.myForm.get('confirmed') as FormArray;
+    }
+
+    addConfirmed() {
+      const confirmed = this.fb.group({
+        name:[],
+        status: []
+      });
+      this.confimredForm.push(confirmed);
+    }
+
+    deleteConfirmed(i) {
+      this.confimredForm.removeAt(i);
+    }
   //   this.confirmedList = this.form.get('confirmed') as FormArray;
   //   this.maybeList = this.form.get('maybe') as FormArray;
   // }
