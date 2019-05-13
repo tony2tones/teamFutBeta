@@ -41,18 +41,20 @@
               formControlName="name"
               class="form-control"
             />
+            
+          
             <button (click)="deleteConfirmed(i)">Delete field</button>
           </div>
           
         </div>
       </div>
 
-      <button (click)="addConfirmed()" [disabled]="myForm.controls.confirmList.controls > 2">Add Player</button>
+      <button (click)="addConfirmed()">Add Player</button>
 
       <hr />
       <ul *ngFor="let confirmed of myForm.confirmList">
         <li>
-          {{ confirmed.name }}
+          {{ confirmed }}
         </li>
       </ul>
       Value: {{ myForm.value | json }}

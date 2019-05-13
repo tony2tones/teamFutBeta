@@ -34,7 +34,6 @@ export class CreateeventComponent implements OnInit{
       });
       this.confimredForm.push(confirmed);
       this.events.push(confirmed);
-      console.log('loggin this ',this.events)
     }
 
     deleteConfirmed(i) {
