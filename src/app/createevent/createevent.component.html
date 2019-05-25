@@ -1,61 +1,48 @@
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-sm-offset-2">
-    <form (ngSubmit)="addEvent(f)" #f="ngForm" [formGroup]="myForm">
+    <form (ngSubmit)="addEvent(f)" #f="ngForm" [formGroup]="eventForm">
+      <!-- <div class="form-group">
+        <label for="title">Name of event</label>
+        <input type="text" name="title" formControlName="title" class="form-control" />
+      </div> -->
+
       <div class="form-group">
-        <label for="title">Name of gaming event</label>
+        <label for="name">Name of player</label>
         <input
           type="text"
-          id="title"
-          name="title"
-          formControlName="title"
+          id="name"
+          formControlName="name"
           class="form-control"
         />
-      </div>
-      <div class="form-group">
-        <label for="date">Date of event</label>
-        <input type="text" id="date" name="date" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="time">time</label>
-        <input type="text" id="time" name="time" class="form-control" />
-      </div>
-      <div class="form-group">
-        <label for="location">location</label>
-        <input type="text" id="location" name="location" class="form-control" />
-      </div>
 
-      <div class="form-group" formArrayName="confirmList">
-        <div
-          *ngFor="
-            let confirmed of myForm.controls.confirmList.controls;
-            let i = index
-          "
-          [formGroupName]="i"
-        >
-          <div class="form-group" *ngIf="i<3">
-            <label for="confirmed">Confirmed</label>
-            <input
-              type="text"
-              id="maybe"
-              name="maybe"
-              formControlName="name"
-              class="form-control"
-            />
-            <button (click)="deleteConfirmed(i)">Delete field</button>
-          </div>
-          
+        <div class="form-group">
+          <label for="attendingState">User attending status</label>
+          <select
+            class="form-control"
+            name="state"
+            id="state"
+            formControlName="state"
+          >
+            <option *ngFor="let state of attendingState" [ngValue]="state">
+              {{ state }}</option>
+          </select>
         </div>
       </div>
 
-      <button (click)="addConfirmed()" [disabled]="myForm.controls.confirmList.controls > 2">Add Player</button>
+      <button
+        (click)="addConfirmed()"
+      >
+        Add Player
+      </button>
 
       <hr />
-      <ul *ngFor="let confirmed of myForm.confirmList">
-        <li>
-          {{ confirmed.name }}
-        </li>
-      </ul>
-      Value: {{ myForm.value | json }}
+      Value: {{ eventForm.value | json }}
+      Value: {{ players | json }}
     </form>
+    <button
+        (click)="addEvent()"
+      >
+        Create Event
+      </button>
   </div>
 </div>
