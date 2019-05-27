@@ -33,8 +33,9 @@
         <hr />
 
         <div *ngIf="players">
+          <h2>Confirmed {{ players.length }}</h2> 
           <li *ngFor="let player of players">
-            {{ player.name }}
+            {{ player.name }} {{ player.state }}
           </li>
         </div>
       </div>
