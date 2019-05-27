@@ -26,8 +26,8 @@ export class CreateeventComponent implements OnInit {
   ngOnInit() {
     this.eventForm = this.fb.group({
       // title: ['', Validators.compose([Validators.required])],
-      name: ["", Validators.compose([Validators.required])]
-      // state: ["", Validators.compose([Validators.required])]
+      name: ["", Validators.compose([Validators.required])],
+      state: ["", Validators.compose([Validators.required])]
     });
   }
 

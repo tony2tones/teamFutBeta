@@ -15,7 +15,7 @@
           class="form-control"
         />
 
-        <!-- <div class="form-group">
+        <div class="form-group">
           <label for="attendingState">User attending status</label>
           <select
             class="form-control"
@@ -24,20 +24,22 @@
             formControlName="state"
           >
             <option *ngFor="let state of attendingState" [ngValue]="state">
-              {{ state }}</option>
+              {{ state }}</option
+            >
           </select>
-        </div> -->
-        <!-- <div *ngIf="players">
+        </div>
+        <button (click)="addConfirmed()">Add Player</button>
+
+        <hr />
+
+        <div *ngIf="players">
           <li *ngFor="let player of players">
             {{ player.name }}
           </li>
-        </div> -->
+        </div>
       </div>
 
-      <button (click)="addConfirmed()">Add Player</button>
-
-      <hr />
-       Value: {{ players | json }}
+      Value: {{ players | json }}
     </form>
     <!-- <button (click)="addEvent()">
       Create Event
