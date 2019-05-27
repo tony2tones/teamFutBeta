@@ -33,16 +33,16 @@
         <hr />
 
         <div *ngIf="players">
+          <h2>Confirmed {{ players.length }}</h2> 
           <li *ngFor="let player of players">
-            {{ player.name }}
+            {{ player.name }} {{ player.state }}
           </li>
         </div>
       </div>
 
-      Value: {{ players | json }}
     </form>
-    <!-- <button (click)="addEvent()">
+    <button [disabled]="this.players === undefined" (click)="addEvent()">
       Create Event
-    </button> -->
+    </button>
   </div>
 </div>
