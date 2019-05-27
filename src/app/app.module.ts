@@ -20,7 +20,8 @@ import { EventlistComponent } from './eventlist/eventlist.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [EventsService],
   bootstrap: [AppComponent]
