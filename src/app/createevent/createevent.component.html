@@ -40,10 +40,9 @@
         </div>
       </div>
 
-      Value: {{ players | json }}
     </form>
-    <!-- <button (click)="addEvent()">
+    <button [disabled]="this.players === undefined" (click)="addEvent()">
       Create Event
-    </button> -->
+    </button>
   </div>
 </div>
