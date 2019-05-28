@@ -1,35 +1,59 @@
-<!-- <div class="row">
-  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-sm-offset-2">
-    <ng-container> -->
-        <mat-horizontal-stepper linear #stepper>
-            <mat-step [stepControl]="detailsForm" [editable]="isEditable">
-              <form [formGroup]="detailsForm">
-                <ng-template matStepLabel>Name of event</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Footy game for this sunday" formControlName="title" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-            </mat-step>
-            <mat-step [stepControl]="eventForm" [editable]="isEditable">
-              <form [formGroup]="eventForm">
-                <ng-template matStepLabel>Add players</ng-template>
-                <mat-form-field>
-                  <input matInput placeholder="Address" formControlName="name" required>
-                </mat-form-field>
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </form>
-
-
-
-
-
-      <!-- <form [formGroup]="detailsForm" *ngIf="!detailsCompleted" (ngSubmit)="submitDetails(f)">
+<!-- <ng-container> -->
+<mat-horizontal-stepper linear #stepper>
+  <mat-step #step1 [editable]="isEditable">
+    <form [formGroup]="detailsForm">
+      <ng-template matStepLabel>Name of event</ng-template>
+      <div>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Footy game for this sunday"
+            formControlName="title"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Mowbray or Century" formControlName="location" required />
+        </mat-form-field>
+      </div>
+      <div>
+          <mat-form-field>
+            <input matInput placeholder="date" formControlName="date" required />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="time" formControlName="time" required />
+          </mat-form-field>
+        </div>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [editable]="isEditable">
+    <form [formGroup]="eventForm">
+      <ng-template matStepLabel>Add players</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="name" required />
+      </mat-form-field>
+      <div>
+        <button mat-button (click)="move(0)">Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+    <div>Step 1 is completed? {{ !!step1.completed }}</div>
+    <!-- <form [formGroup]="detailsForm" *ngIf="!detailsCompleted" (ngSubmit)="submitDetails(f)">
         <div class="form-group">
           <label for="title">Name of event</label>
           <input
@@ -114,6 +138,6 @@
           Create Event
         </button>
       </form> -->
-    <!-- </ng-container>
-  </div>
-</div> -->
+    <!-- </ng-container>-->
+  </mat-step></mat-horizontal-stepper
+>

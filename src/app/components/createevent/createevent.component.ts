@@ -1,12 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ViewChild, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
-import { Response } from "@angular/http";
-import {
-  Validators,
-  FormBuilder,
-  FormGroup,
-  FormControl
-} from "@angular/forms";
+import { Validators, FormBuilder, FormGroup } from "@angular/forms";
+import { MatStepper } from "@angular/material";
 
 import { Event } from "../../model/event.model";
 @Component({
@@ -20,6 +15,7 @@ export class CreateeventComponent implements OnInit {
   event: Event;
   detailsCompleted: Boolean = false;
   isLinear = true;
+  @ViewChild("step1") stepper: MatStepper;
 
   attendingState: Array<string> = ["Confirmed", "maybe"];
   public players: any[];
@@ -40,13 +36,25 @@ export class CreateeventComponent implements OnInit {
     });
   }
 
-  get title() { return this.detailsForm.get('title')}
-  get location() { return this.detailsForm.get('location')}
-  get date() { return this.detailsForm.get('date')}
-  get time() { return this.detailsForm.get('time')}
+  get title() {
+    return this.detailsForm.get("title");
+  }
+  get location() {
+    return this.detailsForm.get("location");
+  }
+  get date() {
+    return this.detailsForm.get("date");
+  }
+  get time() {
+    return this.detailsForm.get("time");
+  }
 
   addDetails() {
     this.detailsCompleted = true;
+  }
+
+  move(index: number) {
+    this.stepper.selectedIndex = index;
   }
 
   addConfirmed() {
@@ -69,9 +77,7 @@ export class CreateeventComponent implements OnInit {
   //   this.maybeList = this.form.get('maybe') as FormArray;
   // } https://www.youtube.com/watch?v=r-n5lpG1hxY
 
-  submitDetails() {
-    
-  }
+  submitDetails() {}
 
   addEvent() {
     return true;
