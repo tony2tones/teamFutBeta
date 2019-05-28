@@ -1,7 +1,35 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-sm-offset-2">
-    <ng-container>
-      <form [formGroup]="detailsForm" *ngIf="!detailsCompleted">
+    <ng-container> -->
+        <mat-horizontal-stepper linear #stepper>
+            <mat-step [stepControl]="detailsForm" [editable]="isEditable">
+              <form [formGroup]="detailsForm">
+                <ng-template matStepLabel>Name of event</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Footy game for this sunday" formControlName="title" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="eventForm" [editable]="isEditable">
+              <form [formGroup]="eventForm">
+                <ng-template matStepLabel>Add players</ng-template>
+                <mat-form-field>
+                  <input matInput placeholder="Address" formControlName="name" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+
+
+
+
+
+      <!-- <form [formGroup]="detailsForm" *ngIf="!detailsCompleted" (ngSubmit)="submitDetails(f)">
         <div class="form-group">
           <label for="title">Name of event</label>
           <input
@@ -82,10 +110,10 @@
             </li>
           </div>
         </div>
-        <button [disabled]="this.players === undefined" (click)="addEvent()">
+        <button [disabled]="!eventForm.valid" (click)="addEvent()">
           Create Event
         </button>
-      </form>
-    </ng-container>
+      </form> -->
+    <!-- </ng-container>
   </div>
-</div>
+</div> -->
