@@ -1,6 +1,6 @@
 <!-- <ng-container> -->
 <mat-horizontal-stepper linear #stepper>
-  <mat-step #step1 [editable]="isEditable">
+  <mat-step #step1 editable="isEditable">
     <form [formGroup]="detailsForm">
       <ng-template matStepLabel>Name of event</ng-template>
       <div>
@@ -33,14 +33,14 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [editable]="isEditable">
+  <mat-step editable="isEditable">
     <form [formGroup]="eventForm">
       <ng-template matStepLabel>Add players</ng-template>
       <mat-form-field>
         <input matInput placeholder="Address" formControlName="name" required />
       </mat-form-field>
       <div>
-        <button mat-button (click)="move(0)">Back</button>
+        <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
