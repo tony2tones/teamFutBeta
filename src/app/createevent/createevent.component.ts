@@ -18,6 +18,7 @@ export class CreateeventComponent implements OnInit {
   eventForm: FormGroup;
   detailsForm: FormGroup;
   event: Event;
+  detailsCompleted: Boolean = false;
 
   attendingState: Array<string> = ["Confirmed", "maybe"];
   public players: any[];
@@ -42,6 +43,10 @@ export class CreateeventComponent implements OnInit {
   get location() { return this.detailsForm.get('location')}
   get date() { return this.detailsForm.get('date')}
   get time() { return this.detailsForm.get('time')}
+
+  addDetails() {
+    this.detailsCompleted = true;
+  }
 
   addConfirmed() {
     let group = [];
