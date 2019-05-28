@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 //Adding material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatStepperModule, MatInputModule, MatButtonModule, MatAutocompleteModule, MatCheckboxModule} from '@angular/material';
+import {MatStepperModule, MatInputModule,MatFormFieldModule, MatButtonModule, MatAutocompleteModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,8 +24,10 @@ import { EventlistComponent } from './eventlist/eventlist.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatStepperModule, 
-    MatInputModule, 
-    MatButtonModule, 
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule,
     MatAutocompleteModule, 
     MatCheckboxModule,
     HttpClientModule,

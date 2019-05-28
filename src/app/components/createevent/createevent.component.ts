@@ -13,7 +13,6 @@ export class CreateeventComponent implements OnInit {
   eventForm: FormGroup;
   detailsForm: FormGroup;
   event: Event;
-  detailsCompleted: Boolean = false;
   isLinear = true;
   @ViewChild("step1") stepper: MatStepper;
 
@@ -49,17 +48,10 @@ export class CreateeventComponent implements OnInit {
     return this.detailsForm.get("time");
   }
 
-  addDetails() {
-    this.detailsCompleted = true;
-  }
-
-  move(index: number) {
-    this.stepper.selectedIndex = index;
-  }
-
   addConfirmed() {
     let group = [];
     let person = this.eventForm.value;
+    console.log('checking form value', person);
     group.push(person);
     let newArray = this.players;
     if (newArray === undefined) {

@@ -1,4 +1,3 @@
-<!-- <ng-container> -->
 <mat-horizontal-stepper linear #stepper>
   <mat-step #step1 editable="isEditable">
     <form [formGroup]="detailsForm">
@@ -7,7 +6,7 @@
         <mat-form-field>
           <input
             matInput
-            placeholder="Footy game for this sunday"
+            placeholder="title of event"
             formControlName="title"
             required
           />
@@ -15,19 +14,24 @@
       </div>
       <div>
         <mat-form-field>
-          <input matInput placeholder="Mowbray or Century" formControlName="location" required />
+          <input
+            matInput
+            placeholder="location: Mowbray or Century"
+            formControlName="location"
+            required
+          />
         </mat-form-field>
       </div>
       <div>
-          <mat-form-field>
-            <input matInput placeholder="date" formControlName="date" required />
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput placeholder="time" formControlName="time" required />
-          </mat-form-field>
-        </div>
+        <mat-form-field>
+          <input matInput placeholder="date" formControlName="date" required />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="time" formControlName="time" required />
+        </mat-form-field>
+      </div>
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
@@ -36,9 +40,33 @@
   <mat-step editable="isEditable">
     <form [formGroup]="eventForm">
       <ng-template matStepLabel>Add players</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="name" required />
-      </mat-form-field>
+      <div>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Player name"
+            formControlName="name"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label for="attendingState">User attending status</mat-label>
+          <mat-select
+            placeholder="choose one"
+            class="form-control"
+            name="state"
+            id="state"
+            formControlName="state"
+          >
+            <mat-option *ngFor="let state of attendingState" [value]="state">
+              {{ state }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button (click)="addConfirmed()">Add Player</button>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
@@ -138,6 +166,13 @@
           Create Event
         </button>
       </form> -->
-    <!-- </ng-container>-->
-  </mat-step></mat-horizontal-stepper
->
+  </mat-step>
+  
+  </mat-horizontal-stepper>
+  <hr />
+  <div *ngIf="players">
+    <h2>Confirmed {{ players.length }}</h2>
+    <li *ngFor="let player of players">
+      {{ player.name }} {{ player.state }}
+    </li>
+  </div>
