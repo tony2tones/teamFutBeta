@@ -1,7 +1,7 @@
 <mat-horizontal-stepper linear #stepper>
   <mat-step #step1 editable="isEditable">
     <form [formGroup]="detailsForm">
-      <ng-template matStepLabel>Name of event</ng-template>
+      <ng-template matStepLabel>Details</ng-template>
       <div>
         <mat-form-field>
           <input
@@ -85,8 +85,11 @@
   
   </mat-horizontal-stepper>
   <hr />
+  <div *ngIf="!players">
+    <h2>No players have confirmed yet</h2>
+  </div>
   <div *ngIf="players">
-    <h2>Confirmed {{ players.length }}</h2>
+    <h3>Confirmed {{ players.length }}</h3>
     <li *ngFor="let player of players">
       {{ player.name }} {{ player.state }}
     </li>
