@@ -30,7 +30,7 @@ export class CreateeventComponent implements OnInit {
       time: ["09:00", Validators.compose([Validators.required])]
     });
     this.eventForm = this.fb.group({
-      name: ["", Validators.compose([Validators.required])],
+      name: [""],
       state: ["", Validators.compose([Validators.required])]
     });
   }
@@ -47,18 +47,20 @@ export class CreateeventComponent implements OnInit {
   get time() {
     return this.detailsForm.get("time");
   }
+  get name() {
+    return this.eventForm.get("name");
+  }
 
   addConfirmed() {
     let group = [];
     let person = this.eventForm.value;
-    console.log('checking form value', person);
     group.push(person);
     let newArray = this.players;
     if (newArray === undefined) {
       this.players = group;
     } else {
       this.players = group.concat(newArray);
-      console.log("this is the group value ", this.players);
+      console.log("this is the group value ", this.eventForm.value);
     }
   }
 
