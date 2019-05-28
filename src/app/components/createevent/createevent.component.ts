@@ -1,14 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { EventsService } from "../services/events.service";
-import { Response } from "@angular/http";
-import {
-  Validators,
-  FormBuilder,
-  FormGroup,
-  FormControl
-} from "@angular/forms";
+import { Component, ViewChild, OnInit } from "@angular/core";
+import { EventsService } from "../../services/events.service";
+import { Validators, FormBuilder, FormGroup } from "@angular/forms";
+import { MatStepper } from "@angular/material";
 
-import { Event } from "../model/event.model";
+import { Event } from "../../model/event.model";
 @Component({
   selector: "createevent",
   templateUrl: "./createevent.component.html",
@@ -18,6 +13,8 @@ export class CreateeventComponent implements OnInit {
   eventForm: FormGroup;
   detailsForm: FormGroup;
   event: Event;
+  isLinear = true;
+  @ViewChild("step1") stepper: MatStepper;
 
   attendingState: Array<string> = ["Confirmed", "maybe"];
   public players: any[];
@@ -27,21 +24,32 @@ export class CreateeventComponent implements OnInit {
 
   ngOnInit() {
     this.detailsForm = this.fb.group({
-      title: ["", Validators.compose([Validators.required])],
-      location: ["", Validators.compose([Validators.required])],
-      date: ["", Validators.compose([Validators.required])],
-      time: ["", Validators.compose([Validators.required])]
+      title: ["Sunday Game", Validators.compose([Validators.required])],
+      location: ["Mowbray", Validators.compose([Validators.required])],
+      date: ["this sunday", Validators.compose([Validators.required])],
+      time: ["09:00", Validators.compose([Validators.required])]
     });
     this.eventForm = this.fb.group({
-      name: ["", Validators.compose([Validators.required])],
+      name: [""],
       state: ["", Validators.compose([Validators.required])]
     });
   }
 
-  get title() { return this.detailsForm.get('title')}
-  get location() { return this.detailsForm.get('location')}
-  get date() { return this.detailsForm.get('date')}
-  get time() { return this.detailsForm.get('time')}
+  get title() {
+    return this.detailsForm.get("title");
+  }
+  get location() {
+    return this.detailsForm.get("location");
+  }
+  get date() {
+    return this.detailsForm.get("date");
+  }
+  get time() {
+    return this.detailsForm.get("time");
+  }
+  get name() {
+    return this.eventForm.get("name");
+  }
 
   addConfirmed() {
     let group = [];
@@ -52,7 +60,7 @@ export class CreateeventComponent implements OnInit {
       this.players = group;
     } else {
       this.players = group.concat(newArray);
-      console.log("this is the group value ", this.players);
+      console.log("this is the group value ", this.eventForm.value);
     }
   }
 
@@ -63,14 +71,7 @@ export class CreateeventComponent implements OnInit {
   //   this.maybeList = this.form.get('maybe') as FormArray;
   // } https://www.youtube.com/watch?v=r-n5lpG1hxY
 
-  // createEvent(): FormGroup {
-  //   return this.fb.group({
-  //     title: [null, Validators.compose([Validators.required])],
-  //     date: [null, Validators.compose([Validators.required])],
-  //     time: [null, Validators.compose([Validators.required])],
-  //     location: [null, Validators.compose([Validators.required])]
-  //   });
-  // }
+  submitDetails() {}
 
   addEvent() {
     return true;
