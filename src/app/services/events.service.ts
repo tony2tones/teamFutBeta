@@ -23,4 +23,8 @@ export class EventsService {
   updateEvents(event:any[]) {
     return this.http.put('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
   }
+
+  createEvent(event:any[]) {
+    return this.http.post('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
+  }
 }

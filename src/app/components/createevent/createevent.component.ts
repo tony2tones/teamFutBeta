@@ -17,7 +17,9 @@ export class CreateeventComponent implements OnInit {
   @ViewChild("step1") stepper: MatStepper;
 
   attendingState: Array<string> = ["Confirmed", "maybe"];
-  public players: any[];
+  eventDetails: any[];
+  details: any[];
+  players: any[];
   player: string;
 
   constructor(private fb: FormBuilder, private eventsService: EventsService) {}
@@ -51,6 +53,16 @@ export class CreateeventComponent implements OnInit {
     return this.eventForm.get("name");
   }
 
+  addDetails() {
+    let details = this.detailsForm.value;
+    console.log("checking if we are capturing deets ", details);
+    this.details = [details];
+    console.log(
+      "checking if we are capturing deets into details",
+      this.details
+    );
+  }
+
   addConfirmed() {
     let group = [];
     let person = this.eventForm.value;
@@ -60,8 +72,13 @@ export class CreateeventComponent implements OnInit {
       this.players = group;
     } else {
       this.players = group.concat(newArray);
-      console.log("this is the group value ", this.eventForm.value);
     }
+  }
+
+  addEventDetails() {
+    let group = [];
+    this.eventDetails = group.concat(this.details, this.players);
+    console.log("this is the event payload value ", this.eventDetails);
   }
 
   // deleteConfirmed(i) {
@@ -74,19 +91,11 @@ export class CreateeventComponent implements OnInit {
   submitDetails() {}
 
   addEvent() {
-    return true;
-    //   this.players = this.eventForm.value;
-    //   console.log(
-    //     "event for value ",
-    //     this.eventForm.value,
-    //     "players collection value ",
-    //     this.players
-    // );
-    // this.eventsService
-    //   .updateEvents(this.events)
-    //   .subscribe(
-    //     (response: Response) => console.log(response),
-    //     error => console.log(error)
-    //   );
+    this.eventsService
+      .updateEvents(this.eventDetails)
+      .subscribe(
+        (response: Response) => console.log(response),
+        error => console.log(error)
+      );
   }
 }

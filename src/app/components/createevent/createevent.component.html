@@ -33,11 +33,11 @@
         </mat-form-field>
       </div>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext (click)="addDetails()">Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step editable="isEditable">
+  <mat-step #step2 editable="isEditable">
     <form [formGroup]="eventForm">
       <ng-template matStepLabel>Add players</ng-template>
       <div>
@@ -69,7 +69,7 @@
       <button mat-raised-button (click)="addConfirmed()">Add Player</button>
       <div>
         <button  mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext (click)="addEventDetails()">Next</button>
       </div>
     </form>
   </mat-step>
@@ -77,8 +77,8 @@
     <ng-template matStepLabel>Done</ng-template>
     You are now done.
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button matStepperPrevious (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="addEvent()" >Submit</button>
     </div>
     <div>Step 1 is completed? {{ !!step1.completed }}</div>
   </mat-step>
@@ -86,7 +86,7 @@
   </mat-horizontal-stepper>
   <hr />
   <div *ngIf="!players">
-    <h2>No players have confirmed yet</h2>
+    <h4 class="text-center">No players have confirmed yet</h4>
   </div>
   <div *ngIf="players">
     <h3>Confirmed {{ players.length }}</h3>
