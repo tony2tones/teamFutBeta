@@ -12,7 +12,6 @@
 <mat-list>
 <mat-list-item *ngFor="let player of players">
     <mat-icon matListIcon>mood</mat-icon>
-    <h3 matLine>{{ player.name }} </h3>
-       <p matLine>{{ player.state }}</p>
+    <h3 matLine>{{ player.name }} {{ player.state }}</h3>
   </mat-list-item>
 </mat-list>
