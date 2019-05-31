@@ -1,16 +1,16 @@
 <div class="container">
-  <h1>Event Details</h1>
-  <ul *ngIf="events">
-    <li>{{ events[0].title }}</li>
-    <li>{{ events[0].date }}</li>
-    <li>{{ events[0].time }}</li>
-    <li>{{ events[0].location }}</li>
-  </ul>
-  <h3>Players Attending {{ players?.length }}</h3>
+  <h4>Game Details</h4>
+  <div *ngIf="events">
+    Title: {{ events[0].title }}
+    When: {{ events[0].date }} at {{ events[0].time }}
+    <p>location: {{ events[0].location }} courts</p>
+  </div>
+  <br/>
+  <h4>Players Attending {{ players?.length }}</h4>
 </div>
 
 <mat-list>
-<mat-list-item *ngFor="let player of players">
+<mat-list-item *ngFor="let player of players" class="text-center">
     <mat-icon matListIcon>mood</mat-icon>
     <h3 matLine>{{ player.name }} {{ player.state }}</h3>
   </mat-list-item>
