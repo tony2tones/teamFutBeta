@@ -68,8 +68,10 @@
       </div>
       <button mat-raised-button (click)="addConfirmed()">Add Player</button>
       <div>
-        <button  mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext (click)="addEventDetails()">Next</button>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="addEventDetails()">
+          Next
+        </button>
       </div>
     </form>
   </mat-step>
@@ -77,20 +79,24 @@
     <ng-template matStepLabel>Done</ng-template>
     You are now done.
     <div>
-      <button mat-button matStepperPrevious (click)="stepper.reset()">Reset</button>
-      <button mat-button (click)="addEvent()" >Submit</button>
+      <button mat-button matStepperPrevious (click)="stepper.reset()">
+        Reset
+      </button>
+      <button mat-button (click)="addEvent()">Submit</button>
     </div>
     <div>Step 1 is completed? {{ !!step1.completed }}</div>
   </mat-step>
-  
-  </mat-horizontal-stepper>
-  <hr />
-  <div *ngIf="!players">
-    <h4 class="text-center">No players have confirmed yet</h4>
-  </div>
-  <div *ngIf="players">
-    <h3>Confirmed {{ players.length }}</h3>
-    <li *ngFor="let player of players">
-      {{ player.name }} {{ player.state }}
-    </li>
-  </div>
+</mat-horizontal-stepper>
+<hr />
+<div *ngIf="!players">
+  <h4 class="text-center">No players have confirmed yet</h4>
+</div>
+<div *ngIf="players">
+  <h3>Confirmed {{ players.length }}</h3>
+  <mat-list>
+    <mat-list-item *ngFor="let player of players">
+      <mat-icon matListIcon>mood</mat-icon>
+      <h3 matLine>{{ player.name }} {{ player.state }}</h3>
+    </mat-list-item>
+  </mat-list>
+</div>
