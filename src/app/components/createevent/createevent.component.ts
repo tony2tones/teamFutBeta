@@ -1,6 +1,8 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
+import {Router} from "@angular/router"
+
 import { MatStepper } from "@angular/material";
 
 import { Event } from "../../model/event.model";
@@ -22,7 +24,7 @@ export class CreateeventComponent implements OnInit {
   players: any[];
   player: string;
 
-  constructor(private fb: FormBuilder, private eventsService: EventsService) {}
+  constructor(private fb: FormBuilder, private eventsService: EventsService, private router: Router) {}
 
   ngOnInit() {
     this.detailsForm = this.fb.group({
@@ -35,22 +37,6 @@ export class CreateeventComponent implements OnInit {
       name: [""],
       state: ["", Validators.compose([Validators.required])]
     });
-  }
-
-  get title() {
-    return this.detailsForm.get("title");
-  }
-  get location() {
-    return this.detailsForm.get("location");
-  }
-  get date() {
-    return this.detailsForm.get("date");
-  }
-  get time() {
-    return this.detailsForm.get("time");
-  }
-  get name() {
-    return this.eventForm.get("name");
   }
 
   addDetails() {
@@ -94,7 +80,7 @@ export class CreateeventComponent implements OnInit {
     this.eventsService
       .updateEvents(this.eventDetails)
       .subscribe(
-        (response: Response) => console.log(response),
+        repsonse => this.router.navigate(['/']),
         error => console.log(error)
       );
   }
