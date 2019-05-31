@@ -1,4 +1,4 @@
 export class ConfirmedList {
-    name: string;
-    attendingState: string;
+    public name: string;
+    public attendingState: string;
 }

@@ -1,14 +1,13 @@
 <div class="container">
   <h1>Event Details</h1>
-  <ul *ngFor="let event of events">
-    <li>{{ event?.title }}</li>
-    <li>{{ event?.date }}</li>
-    <li>{{ event?.time }}</li>
-    <li>{{ event?.location }}</li>
-    <h3>Confirmed</h3>
-    <li *ngFor="let confirmed of event.confirmed">{{ confirmed.name }}</li>
-
-    <h3>Maybe</h3>
-    <li *ngFor="let maybe of event.maybe">{{ maybe.name }}</li>
+  <ul *ngIf="events">
+    <li>{{ events[0].title }}</li>
+    <li>{{ events[0].date }}</li>
+    <li>{{ events[0].time }}</li>
+    <li>{{ events[0].location }}</li>
+  </ul>
+  <h3>Players Attending {{ players.length }}</h3>
+  <ul *ngFor="let player of players">
+    <li>{{ player.name }} {{  player.state }}</li>
   </ul>
 </div>
