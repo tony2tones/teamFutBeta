@@ -7,7 +7,11 @@
     <li>{{ events[0].location }}</li>
   </ul>
   <h3>Players Attending {{ players?.length }}</h3>
-  <ul *ngFor="let player of players">
-    <li>{{ player.name }} {{  player.state }}</li>
-  </ul>
 </div>
+
+<mat-list>
+<mat-list-item *ngFor="let player of players">
+    <mat-icon matListIcon>mood</mat-icon>
+    <h3 matLine>{{ player.name }} {{ player.state }}</h3>
+  </mat-list-item>
+</mat-list>
