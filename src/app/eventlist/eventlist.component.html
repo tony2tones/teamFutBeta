@@ -6,7 +6,7 @@
     <li>{{ events[0].time }}</li>
     <li>{{ events[0].location }}</li>
   </ul>
-  <h3>Players Attending {{ players.length }}</h3>
+  <h3>Players Attending {{ players?.length }}</h3>
   <ul *ngFor="let player of players">
     <li>{{ player.name }} {{  player.state }}</li>
   </ul>
