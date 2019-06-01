@@ -13,7 +13,7 @@ import {
   MatCheckboxModule,
   MatSelectModule,
   MatListModule,
-  MatIconModule
+  MatIconModule, MatToolbarModule, MatSidenavModule
 } from "@angular/material";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -22,9 +22,11 @@ import { CreateeventComponent } from "./components/createevent/createevent.compo
 
 import { EventsService } from "./services/events.service";
 import { EventlistComponent } from "./eventlist/eventlist.component";
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
-  declarations: [AppComponent, CreateeventComponent, EventlistComponent],
+  declarations: [AppComponent, CreateeventComponent, EventlistComponent, MainNavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,7 +42,10 @@ import { EventlistComponent } from "./eventlist/eventlist.component";
     MatCheckboxModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule
   ],
   providers: [EventsService],
   bootstrap: [AppComponent]
