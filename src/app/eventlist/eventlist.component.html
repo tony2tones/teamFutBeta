@@ -1,16 +1,15 @@
 <div class="container">
   <h4>Game Details</h4>
-  <div *ngIf="!events;then eventData else details"></div>
-    <ng-template #eventData>
-      <p>Title: {{ events[0]?.title }}</p>
-      <p>When: {{ events[0]?.date }}</p>
-      Time: {{ events[0]?.time }}
-    </ng-template>
+  <div *ngIf="events">
     
+    <div><p>Title: {{ events[0]?.title }}</p>
+      <p>When: {{ events[0]?.date }}</p>
+      Time: {{ events[0]?.time }}</div>
     <ng-template #details>
-      <p>No details found</p>
-    </ng-template>
-
+        No details found    
+      </ng-template>
+  </div>
+  
   <br />
   <h4>Players Attending {{ players?.length }}</h4>
 </div>
