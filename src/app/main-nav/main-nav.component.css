@@ -19,3 +19,18 @@
 .hidden {
   display: none;
 }
+
+.spacer{
+  flex:1 1 auto;
+}
+
+mat-toolbar a {
+  display: inline-block;
+  padding: inherit;
+  color: white;
+  text-decoration: none;
+}
+
+mat-toolbar a:hover {
+  cursor: pointer;
+}

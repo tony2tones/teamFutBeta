@@ -1,24 +1,23 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav
-      #drawer
-      class="sidenav"
-      [ngClass]="{hidden: !(isHandset$ | async)}"
-      fixedInViewport="false"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)"
-    >
-    
-      <mat-toolbar>Menu</mat-toolbar>
-      <mat-nav-list (click)="drawer.toggle()">
-        <a mat-list-item routerLink="/createevent">Create an event</a>
-        <a mat-list-item routerLink="/">Event Details</a>
-        <a mat-list-item href="#">About</a>
-      </mat-nav-list>
-    </mat-sidenav>
-  
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    [ngClass]="{ hidden: !(isHandset$ | async) }"
+    fixedInViewport="false"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list (click)="drawer.toggle()">
+      <a mat-list-item routerLink="/createevent">Create an event</a>
+      <a mat-list-item routerLink="/">Event Details</a>
+      <a mat-list-item href="#">About</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" >
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -29,6 +28,10 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>teamFutBeta</span>
+        <span class="spacer"></span>
+        <a *ngIf="!(isHandset$ | async)" routerLink="/createevent">Create an event</a>
+        <a *ngIf="!(isHandset$ | async)" routerLink="/">Event Details</a>
+        <a *ngIf="!(isHandset$ | async)" href="#">About</a>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
