@@ -1,11 +1,18 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
-import { Validators, FormBuilder, FormGroup } from "@angular/forms";
-import {Router} from "@angular/router"
+import {
+  Validators,
+  FormBuilder,
+  FormGroup,
+  FormControl
+} from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { MatStepper } from "@angular/material";
 
 import { Event } from "../../model/event.model";
+import { Observable } from "rxjs";
+import { startWith, map } from "rxjs/operators";
 @Component({
   selector: "createevent",
   templateUrl: "./createevent.component.html",
@@ -14,6 +21,7 @@ import { Event } from "../../model/event.model";
 export class CreateeventComponent implements OnInit {
   eventForm: FormGroup;
   detailsForm: FormGroup;
+
   event: Event;
   isLinear = true;
   @ViewChild("step1") stepper: MatStepper;
@@ -24,9 +32,21 @@ export class CreateeventComponent implements OnInit {
   players: any[];
   player: string;
 
-  constructor(private fb: FormBuilder, private eventsService: EventsService, private router: Router) {}
+  myControl = new FormControl();
+  names: string[] = ["Tony", "Doggy", "Farrel"];
+  filteredOptions: Observable<string[]>;
+
+  constructor(
+    private fb: FormBuilder,
+    private eventsService: EventsService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(""),
+      map(value => this._filter(value))
+    );
     this.detailsForm = this.fb.group({
       title: ["Sunday Game", Validators.compose([Validators.required])],
       location: ["Mowbray", Validators.compose([Validators.required])],
@@ -34,7 +54,6 @@ export class CreateeventComponent implements OnInit {
       time: ["09:00", Validators.compose([Validators.required])]
     });
     this.eventForm = this.fb.group({
-      name: [""],
       state: ["", Validators.compose([Validators.required])]
     });
   }
@@ -67,6 +86,13 @@ export class CreateeventComponent implements OnInit {
     console.log("this is the event payload value ", this.eventDetails);
   }
 
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.names.filter(option =>
+      option.toLowerCase().includes(filterValue)
+    );
+  }
+
   // deleteConfirmed(i) {
   //   this.confimredForm.removeAt(i);
   // }
@@ -80,7 +106,7 @@ export class CreateeventComponent implements OnInit {
     this.eventsService
       .updateEvents(this.eventDetails)
       .subscribe(
-        repsonse => this.router.navigate(['/']),
+        repsonse => this.router.navigate(["/"]),
         error => console.log(error)
       );
   }
