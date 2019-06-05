@@ -13,6 +13,10 @@ import { MatStepper } from "@angular/material";
 import { Event } from "../../model/event.model";
 import { Observable } from "rxjs";
 import { startWith, map } from "rxjs/operators";
+
+export interface User {
+  name: string;
+}
 @Component({
   selector: "createevent",
   templateUrl: "./createevent.component.html",
@@ -33,8 +37,12 @@ export class CreateeventComponent implements OnInit {
   player: string;
 
   myControl = new FormControl();
-  options: string[] = ['Tony', 'Doggy', 'Farrel'];
-  filteredOptions: Observable<string[]>;
+  options: User[] = [
+    {name: 'Tony'},
+    {name: 'Doggy'},
+    {name: 'Farrel'}
+  ];
+  filteredOptions: Observable<User[]>;
 
   constructor(
     private fb: FormBuilder,
@@ -43,9 +51,11 @@ export class CreateeventComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.filteredOptions = this.myControl.valueChanges
+    .pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map(value => typeof value === 'string' ? value : value.name),
+      map(name => name ? this._filter(name) : this.options.slice())
     );
     this.detailsForm = this.fb.group({
       title: ["Sunday Game", Validators.compose([Validators.required])],
@@ -54,7 +64,6 @@ export class CreateeventComponent implements OnInit {
       time: ["09:00", Validators.compose([Validators.required])]
     });
     this.eventForm = this.fb.group({
-      name: ["", Validators.required],
       state: ["", Validators.compose([Validators.required])]
     });
   }
@@ -87,11 +96,14 @@ export class CreateeventComponent implements OnInit {
     console.log("this is the event payload value ", this.eventDetails);
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  displayFn(user?: User): string | undefined {
+    return user ? user.name : undefined;
+  }
+
+  private _filter(name: string): User[] {
+    const filterValue = name.toLowerCase();
     return this.options.filter(option =>
-      option.toLowerCase().includes(filterValue)
-    );
+      option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 
   // deleteConfirmed(i) {
