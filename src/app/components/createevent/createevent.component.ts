@@ -33,7 +33,7 @@ export class CreateeventComponent implements OnInit {
   player: string;
 
   myControl = new FormControl();
-  names: string[] = ["Tony", "Doggy", "Farrel"];
+  options: string[] = ['Tony', 'Doggy', 'Farrel'];
   filteredOptions: Observable<string[]>;
 
   constructor(
@@ -44,7 +44,7 @@ export class CreateeventComponent implements OnInit {
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(""),
+      startWith(''),
       map(value => this._filter(value))
     );
     this.detailsForm = this.fb.group({
@@ -54,6 +54,7 @@ export class CreateeventComponent implements OnInit {
       time: ["09:00", Validators.compose([Validators.required])]
     });
     this.eventForm = this.fb.group({
+      name: ["", Validators.required],
       state: ["", Validators.compose([Validators.required])]
     });
   }
@@ -88,7 +89,7 @@ export class CreateeventComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.names.filter(option =>
+    return this.options.filter(option =>
       option.toLowerCase().includes(filterValue)
     );
   }
