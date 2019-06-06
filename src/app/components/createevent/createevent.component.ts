@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
-import { ToastrService } from "ngx-toastr";
+import { ToastMessageService } from "../../services/toast-message.service";
 
 import { MatStepper } from "@angular/material";
 
@@ -29,7 +29,7 @@ export class CreateeventComponent implements OnInit {
     private fb: FormBuilder,
     private eventsService: EventsService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastMessageService
   ) {}
 
   ngOnInit() {
@@ -70,7 +70,6 @@ export class CreateeventComponent implements OnInit {
   addEventDetails() {
     let group = [];
     this.eventDetails = group.concat(this.details, this.players);
-    console.log("this is the event payload value ", this.eventDetails);
   }
 
   // deleteConfirmed(i) {
@@ -79,19 +78,15 @@ export class CreateeventComponent implements OnInit {
   //   this.confirmedList = this.form.get('confirmed') as FormArray;
   //   this.maybeList = this.form.get('maybe') as FormArray;
   // } https://www.youtube.com/watch?v=r-n5lpG1hxY
-
-  showSuccess() {
-    this.toastr.success("Footy event", "Successfully created.");
-  }
+  
 
   submitDetails() {}
 
   addEvent() {
     this.eventsService.updateEvents(this.eventDetails).subscribe(
       (repsonse) => {
-        this.showSuccess();
-        this.router.navigate(["/"]);
-        
+        this.router.navigate(["/"]),
+        this.toastr.showSuccess();
       },
       error => console.log(error)
     );
