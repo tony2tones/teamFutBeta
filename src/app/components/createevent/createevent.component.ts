@@ -1,7 +1,8 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
-import {Router} from "@angular/router"
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 import { MatStepper } from "@angular/material";
 
@@ -24,7 +25,12 @@ export class CreateeventComponent implements OnInit {
   players: any[];
   player: string;
 
-  constructor(private fb: FormBuilder, private eventsService: EventsService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private eventsService: EventsService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.detailsForm = this.fb.group({
@@ -74,14 +80,20 @@ export class CreateeventComponent implements OnInit {
   //   this.maybeList = this.form.get('maybe') as FormArray;
   // } https://www.youtube.com/watch?v=r-n5lpG1hxY
 
+  showSuccess() {
+    this.toastr.success("Footy event", "Successfully created.");
+  }
+
   submitDetails() {}
 
   addEvent() {
-    this.eventsService
-      .updateEvents(this.eventDetails)
-      .subscribe(
-        repsonse => this.router.navigate(['/']),
-        error => console.log(error)
-      );
+    this.eventsService.updateEvents(this.eventDetails).subscribe(
+      (repsonse) => {
+        this.showSuccess();
+        this.router.navigate(["/"]);
+        
+      },
+      error => console.log(error)
+    );
   }
 }
