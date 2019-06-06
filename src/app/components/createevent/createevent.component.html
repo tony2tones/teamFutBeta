@@ -41,8 +41,8 @@
     <form [formGroup]="eventForm">
       <ng-template matStepLabel>Add players</ng-template>
       <mat-form-field>
-          <input type="text" placeholder="Enter a player name" aria-label="Player" matInput [formControl]="myControl" [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete" [displayWith] ="displayFn">
+          <input  type="text" placeholder="Enter a player name" aria-label="Player"  matInput [formControl]="myControl"  [matAutocomplete]="auto"  id="nameField"/>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith] ="displayFn" (optionSelected)='getPosts($event.option.value)'>
             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
               {{option.name}}
             </mat-option>
@@ -94,7 +94,7 @@
   <mat-list>
     <mat-list-item *ngFor="let player of players">
       <mat-icon matListIcon>mood</mat-icon>
-      <h3 matLine>{{ player.name }} {{ player.state }}</h3>
+      <h3 matLine>{{ player.name.name }} {{ player.state }}</h3>
     </mat-list-item>
   </mat-list>
 </div>

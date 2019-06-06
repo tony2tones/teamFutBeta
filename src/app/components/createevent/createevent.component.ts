@@ -29,6 +29,7 @@ export class CreateeventComponent implements OnInit {
   event: Event;
   isLinear = true;
   @ViewChild("step1") stepper: MatStepper;
+  nameValue = 'some value';
 
   attendingState: Array<string> = ["Confirmed", "maybe"];
   eventDetails: any[];
@@ -37,11 +38,7 @@ export class CreateeventComponent implements OnInit {
   player: string;
 
   myControl = new FormControl();
-  options: User[] = [
-    {name: 'Tony'},
-    {name: 'Doggy'},
-    {name: 'Farrel'}
-  ];
+  options: User[] = [{ name: "Tony" }, { name: "Doggy" }, { name: "Farrel" }];
   filteredOptions: Observable<User[]>;
 
   constructor(
@@ -51,11 +48,10 @@ export class CreateeventComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => typeof value === 'string' ? value : value.name),
-      map(name => name ? this._filter(name) : this.options.slice())
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(""),
+      map(value => (typeof value === "string" ? value : value.name)),
+      map(name => (name ? this._filter(name) : this.options.slice()))
     );
     this.detailsForm = this.fb.group({
       title: ["Sunday Game", Validators.compose([Validators.required])],
@@ -63,7 +59,9 @@ export class CreateeventComponent implements OnInit {
       date: ["this sunday", Validators.compose([Validators.required])],
       time: ["09:00", Validators.compose([Validators.required])]
     });
+
     this.eventForm = this.fb.group({
+      name: ["", Validators.required],
       state: ["", Validators.compose([Validators.required])]
     });
   }
@@ -82,6 +80,7 @@ export class CreateeventComponent implements OnInit {
     let group = [];
     let person = this.eventForm.value;
     group.push(person);
+    console.log("this is in the group ", group);
     let newArray = this.players;
     if (newArray === undefined) {
       this.players = group;
@@ -102,9 +101,15 @@ export class CreateeventComponent implements OnInit {
 
   private _filter(name: string): User[] {
     const filterValue = name.toLowerCase();
-    return this.options.filter(option =>
-      option.name.toLowerCase().indexOf(filterValue) === 0);
+    return this.options.filter(
+      option => option.name.toLowerCase().indexOf(filterValue) === 0
+    );
   }
+
+  getPosts(userId){
+    console.log(userId.name);
+    };
+  
 
   // deleteConfirmed(i) {
   //   this.confimredForm.removeAt(i);
