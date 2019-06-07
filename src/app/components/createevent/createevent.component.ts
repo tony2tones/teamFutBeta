@@ -86,13 +86,13 @@ export class CreateeventComponent implements OnInit {
       repsonse => {
         this.router.navigate(["/"]),
           this.toastr.showSuccess(
-            "Has been successfully created",
+            "Has been successfully created.",
             "Footy game"
           );
       },
       error => {
         console.log(error);
-        this.toastr.showFail("Something went wrong", "Error");
+        this.toastr.showFail("Something went wrong, please select the reset option to try again.", "Error");
       }
     );
   }
