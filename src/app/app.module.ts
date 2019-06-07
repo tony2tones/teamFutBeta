@@ -15,6 +15,8 @@ import {
   MatListModule,
   MatIconModule, MatToolbarModule, MatSidenavModule
 } from "@angular/material";
+import { ToastrModule } from 'ngx-toastr';
+ 
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -45,7 +47,12 @@ import { LayoutModule } from '@angular/cdk/layout';
     ReactiveFormsModule,
     LayoutModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-top-right',
+      easing: 'ease-in'
+    })
   ],
   providers: [EventsService],
   bootstrap: [AppComponent]

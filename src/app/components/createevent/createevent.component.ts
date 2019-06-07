@@ -1,12 +1,9 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
-import {
-  Validators,
-  FormBuilder,
-  FormGroup,
-  FormControl
-} from "@angular/forms";
+import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ToastMessageService } from "../../services/toast-message.service";
+=======
 
 import { MatStepper } from "@angular/material";
 
@@ -36,19 +33,12 @@ export class CreateeventComponent implements OnInit {
   players: any[];
   player: string;
 
-  myControl = new FormControl();
-  options: User[] = [
-    {name: 'Tony'},
-    {name: 'Doggy'},
-    {name: 'Farrel'}
-  ];
-  filteredOptions: Observable<User[]>;
-
   constructor(
     private fb: FormBuilder,
     private eventsService: EventsService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private toastr: ToastMessageService
+) {}
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
@@ -70,12 +60,7 @@ export class CreateeventComponent implements OnInit {
 
   addDetails() {
     let details = this.detailsForm.value;
-    console.log("checking if we are capturing deets ", details);
     this.details = [details];
-    console.log(
-      "checking if we are capturing deets into details",
-      this.details
-    );
   }
 
   addConfirmed() {
@@ -93,7 +78,6 @@ export class CreateeventComponent implements OnInit {
   addEventDetails() {
     let group = [];
     this.eventDetails = group.concat(this.details, this.players);
-    console.log("this is the event payload value ", this.eventDetails);
   }
 
   displayFn(user?: User): string | undefined {
@@ -116,6 +100,22 @@ export class CreateeventComponent implements OnInit {
   submitDetails() {}
 
   addEvent() {
+    this.eventsService.updateEvents(this.eventDetails).subscribe(
+      repsonse => {
+        this.router.navigate(["/"]),
+          this.toastr.showSuccess(
+            "Has been successfully created.",
+            "Footy game"
+          );
+      },
+      error => {
+        console.log(error);
+        this.toastr.showFail(
+          "Something went wrong, please select the reset option to try again.",
+          "Error"
+        );
+      }
+    );
     this.eventsService
       .updateEvents(this.eventDetails)
       .subscribe(
