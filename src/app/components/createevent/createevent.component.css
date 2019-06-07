@@ -1,6 +1,9 @@
 mat-form-field {
     width: 100%;
   }
+  form {
+    height: 250px;
+  }
   mat-list-item {
     transition: background-color 2s;
     transition-property: all 2s;

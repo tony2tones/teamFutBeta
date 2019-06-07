@@ -23,7 +23,7 @@ import { AppComponent } from "./app.component";
 import { CreateeventComponent } from "./components/createevent/createevent.component";
 
 import { EventsService } from "./services/events.service";
-import { EventlistComponent } from "./eventlist/eventlist.component";
+import { EventlistComponent } from "./components/eventlist/eventlist.component";
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 
