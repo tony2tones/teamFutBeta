@@ -34,7 +34,7 @@ export class CreateeventComponent implements OnInit {
     private eventsService: EventsService,
     private router: Router,
     private toastr: ToastMessageService
-) {}
+  ) {}
 
   ngOnInit() {
     this.detailsForm = this.fb.group({
@@ -71,12 +71,15 @@ export class CreateeventComponent implements OnInit {
     this.eventDetails = group.concat(this.details, this.players);
   }
 
-  // deleteConfirmed(i) {
-  //   this.confimredForm.removeAt(i);
-  // }
-  //   this.confirmedList = this.form.get('confirmed') as FormArray;
-  //   this.maybeList = this.form.get('maybe') as FormArray;
-  // } https://www.youtube.com/watch?v=r-n5lpG1hxY
+  deleteConfirmed(name: string) {
+    let i = 0;
+    let length = this.players.length;
+    for (i; i < length; i++) {
+      if (this.players[i]["name"] == name) {
+        this.players.splice(i, 1);
+      }
+    }
+  }
 
   submitDetails() {}
 
