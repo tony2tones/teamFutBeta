@@ -78,17 +78,22 @@ export class CreateeventComponent implements OnInit {
   //   this.confirmedList = this.form.get('confirmed') as FormArray;
   //   this.maybeList = this.form.get('maybe') as FormArray;
   // } https://www.youtube.com/watch?v=r-n5lpG1hxY
-  
 
   submitDetails() {}
 
   addEvent() {
     this.eventsService.updateEvents(this.eventDetails).subscribe(
-      (repsonse) => {
+      repsonse => {
         this.router.navigate(["/"]),
-        this.toastr.showSuccess();
+          this.toastr.showSuccess(
+            "Has been successfully created",
+            "Footy game"
+          );
       },
-      error => console.log(error)
+      error => {
+        console.log(error);
+        this.toastr.showFail("Something went wrong", "Error");
+      }
     );
   }
 }

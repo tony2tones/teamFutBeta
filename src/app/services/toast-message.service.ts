@@ -7,8 +7,12 @@ import { ToastrService } from "ngx-toastr";
 export class ToastMessageService {
 
   constructor(private toastr: ToastrService) { }
-    showSuccess() {
-        this.toastr.success('Has been successfully created', 'Footy game');
+    showSuccess(text: string, title: string) {
+        this.toastr.success(text, title);
     }
+
+    showFail(text: string, title: string) {
+      this.toastr.error(text, title);
+  }
 
 }
