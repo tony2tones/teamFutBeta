@@ -24,11 +24,12 @@ import { CreateeventComponent } from "./components/createevent/createevent.compo
 
 import { EventsService } from "./services/events.service";
 import { EventlistComponent } from "./components/eventlist/eventlist.component";
-import { MainNavComponent } from './main-nav/main-nav.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { AboutPageComponent } from './components/about-page/about-page.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateeventComponent, EventlistComponent, MainNavComponent],
+  declarations: [AppComponent, CreateeventComponent, EventlistComponent, MainNavComponent, AboutPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

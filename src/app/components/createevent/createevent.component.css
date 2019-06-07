@@ -2,7 +2,7 @@ mat-form-field {
     width: 100%;
   }
   form {
-    height: 250px;
+    height: 280px;
   }
   mat-list-item {
     transition: background-color 2s;
@@ -18,4 +18,8 @@ mat-form-field {
   }
   .clear-button {
     display: none;
+  }
+
+  mat-horizontal-stepper{
+    box-shadow: 2px 8px 11px 1px #ccc;
   }
