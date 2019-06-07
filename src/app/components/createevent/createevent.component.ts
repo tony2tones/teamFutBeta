@@ -1,6 +1,10 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
-import { Validators, FormBuilder, FormGroup } from "@angular/forms";
+import { 
+  Validators,
+  FormBuilder,
+  FormGroup
+ } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastMessageService } from "../../services/toast-message.service";
 
