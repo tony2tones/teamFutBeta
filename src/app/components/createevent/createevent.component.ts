@@ -3,10 +3,17 @@ import { EventsService } from "../../services/events.service";
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastMessageService } from "../../services/toast-message.service";
+=======
 
 import { MatStepper } from "@angular/material";
 
 import { Event } from "../../model/event.model";
+import { Observable } from "rxjs";
+import { startWith, map } from "rxjs/operators";
+
+export interface User {
+  name: string;
+}
 @Component({
   selector: "createevent",
   templateUrl: "./createevent.component.html",
@@ -15,6 +22,7 @@ import { Event } from "../../model/event.model";
 export class CreateeventComponent implements OnInit {
   eventForm: FormGroup;
   detailsForm: FormGroup;
+
   event: Event;
   isLinear = true;
   @ViewChild("step1") stepper: MatStepper;
@@ -30,9 +38,15 @@ export class CreateeventComponent implements OnInit {
     private eventsService: EventsService,
     private router: Router,
     private toastr: ToastMessageService
-  ) {}
+) {}
 
   ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => typeof value === 'string' ? value : value.name),
+      map(name => name ? this._filter(name) : this.options.slice())
+    );
     this.detailsForm = this.fb.group({
       title: ["Sunday Game", Validators.compose([Validators.required])],
       location: ["Mowbray", Validators.compose([Validators.required])],
@@ -40,7 +54,6 @@ export class CreateeventComponent implements OnInit {
       time: ["09:00", Validators.compose([Validators.required])]
     });
     this.eventForm = this.fb.group({
-      name: [""],
       state: ["", Validators.compose([Validators.required])]
     });
   }
@@ -65,6 +78,16 @@ export class CreateeventComponent implements OnInit {
   addEventDetails() {
     let group = [];
     this.eventDetails = group.concat(this.details, this.players);
+  }
+
+  displayFn(user?: User): string | undefined {
+    return user ? user.name : undefined;
+  }
+
+  private _filter(name: string): User[] {
+    const filterValue = name.toLowerCase();
+    return this.options.filter(option =>
+      option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 
   // deleteConfirmed(i) {
@@ -93,5 +116,11 @@ export class CreateeventComponent implements OnInit {
         );
       }
     );
+    this.eventsService
+      .updateEvents(this.eventDetails)
+      .subscribe(
+        repsonse => this.router.navigate(["/"]),
+        error => console.log(error)
+      );
   }
 }
