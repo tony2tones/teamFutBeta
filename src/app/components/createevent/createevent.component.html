@@ -41,12 +41,12 @@
     <form [formGroup]="eventForm">
       <ng-template matStepLabel>Add players</ng-template>
       <mat-form-field>
-          <input type="text" placeholder="Enter a player name" aria-label="Player" matInput [formControl]="myControl" [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete" [displayWith] ="displayFn">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option.name}}
-            </mat-option>
-          </mat-autocomplete>
+          <input
+            matInput
+            placeholder="Player name"
+            formControlName="name"
+            required
+          />
         </mat-form-field>
       <div>
         <mat-form-field>
