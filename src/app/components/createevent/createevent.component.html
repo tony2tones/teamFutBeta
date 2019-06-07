@@ -92,9 +92,10 @@
 <div *ngIf="players">
   <h3>Confirmed {{ players.length }}</h3>
   <mat-list>
-    <mat-list-item *ngFor="let player of players">
+    <mat-list-item *ngFor="let player of players" >
       <mat-icon matListIcon>mood</mat-icon>
-      <h3 matLine>{{ player.name }} {{ player.state }}</h3>
+      
+      <h3 matLine (click)="deleteConfirmed(player.name)" >{{ player.name }} {{ player.state }}</h3><span class="show"><mat-icon matListIcon class="clear-button">clear</mat-icon></span>
     </mat-list-item>
   </mat-list>
 </div>
