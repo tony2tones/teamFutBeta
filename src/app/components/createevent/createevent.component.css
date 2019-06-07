@@ -19,3 +19,7 @@ mat-form-field {
   .clear-button {
     display: none;
   }
+
+  mat-horizontal-stepper{
+    box-shadow: 2px 8px 11px 1px #ccc;
+  }
