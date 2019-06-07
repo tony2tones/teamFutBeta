@@ -47,12 +47,7 @@ export class CreateeventComponent implements OnInit {
 
   addDetails() {
     let details = this.detailsForm.value;
-    console.log("checking if we are capturing deets ", details);
     this.details = [details];
-    console.log(
-      "checking if we are capturing deets into details",
-      this.details
-    );
   }
 
   addConfirmed() {
