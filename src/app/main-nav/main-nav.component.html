@@ -12,7 +12,7 @@
     <mat-nav-list (click)="drawer.toggle()">
       <a mat-list-item routerLink="/createevent">Create an event</a>
       <a mat-list-item routerLink="/">Event Details</a>
-      <a mat-list-item href="#">About</a>
+      <a mat-list-item routerLink="/about">About</a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -31,7 +31,7 @@
         <span class="spacer"></span>
         <a *ngIf="!(isHandset$ | async)" routerLink="/createevent">Create an event</a>
         <a *ngIf="!(isHandset$ | async)" routerLink="/">Event Details</a>
-        <a *ngIf="!(isHandset$ | async)" href="#">About</a>
+        <a *ngIf="!(isHandset$ | async)" routerLink="/about">About</a>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
