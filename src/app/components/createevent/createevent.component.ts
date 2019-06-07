@@ -1,10 +1,6 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
-import { 
-  Validators,
-  FormBuilder,
-  FormGroup
- } from "@angular/forms";
+import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastMessageService } from "../../services/toast-message.service";
 
@@ -91,7 +87,10 @@ export class CreateeventComponent implements OnInit {
       },
       error => {
         console.log(error);
-        this.toastr.showFail("Something went wrong, please select the reset option to try again.", "Error");
+        this.toastr.showFail(
+          "Something went wrong, please select the reset option to try again.",
+          "Error"
+        );
       }
     );
   }
