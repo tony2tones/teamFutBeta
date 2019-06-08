@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 //Adding material
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 import {
   MatStepperModule,
   MatInputModule,
@@ -11,6 +12,7 @@ import {
   MatButtonModule,
   MatAutocompleteModule,
   MatCheckboxModule,
+  MatCardModule,
   MatSelectModule,
   MatListModule,
   MatIconModule, MatToolbarModule, MatSidenavModule
@@ -41,6 +43,7 @@ import { AboutPageComponent } from './components/about-page/about-page.component
     MatSelectModule,
     MatListModule,
     MatIconModule,
+    MatCardModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     HttpClientModule,
