@@ -1,7 +1,7 @@
 <div class="container">
   <h4>Game Details</h4>
   <div *ngIf="events; else noShow">
-    <p>Title: {{ events[0]?.title }}</p>
+    <p>Title: </p>
     <p>When: {{ events[0]?.date }}</p>
     Time: {{ events[0]?.time }}
   </div>
@@ -23,10 +23,10 @@
 <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      <mat-card-title>{{ events[0]?.title }}</mat-card-title>
+      <mat-card-subtitle>{{ event[0]?.location }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="../../../assets/images/trekkerz.png" alt="Trekkerz">
     <mat-card-content>
       <p>
         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
