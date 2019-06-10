@@ -4,11 +4,16 @@
     <mat-card-title>{{ events[0]?.title }}</mat-card-title>
     <mat-card-subtitle>{{ events[0]?.location }}</mat-card-subtitle>
   </mat-card-header>
-  <img
-    mat-card-image
-    src="../../../assets/images/trekkerz.png"
-    alt="Trekkerz"
-  />
+  <div class="box">
+    <img
+      mat-card-image
+      src="../../../assets/images/trekkerz.png"
+      alt="Trekkerz"
+    />
+    <div class="time-text">
+      Starting time: {{ events[0]?.time }}
+    </div>
+  </div>
   <mat-card-content>
     <h4>Players and statuses</h4>
     <span> Players Attending {{ players?.length }}</span>

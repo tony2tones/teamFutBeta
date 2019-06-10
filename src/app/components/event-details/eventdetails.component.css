@@ -2,3 +2,25 @@
     max-width: 400px;
     margin: 0 auto;
   }
+
+  .box {
+    position: relative;
+    display:inline-block;
+  }
+
+  .time-text {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .box .time-text{
+    position: absolute;
+    font-size: 19px;
+    z-index: 989;
+    left: -10px;
+    right: 0;        
+    text-align: center;
+    top: 83%; /* Adjust this value to move the positioned div up and down */
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    width: 60%; /* Set the width of the positioned div */
+}
