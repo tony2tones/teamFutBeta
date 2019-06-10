@@ -2,11 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
 
 @Component({
-  selector: "app-eventlist",
-  templateUrl: "./eventlist.component.html",
-  styleUrls: ["./eventlist.component.css"]
+  selector: "app-eventdetails",
+  templateUrl: "./eventdetails.component.html",
+  styleUrls: ["./eventdetails.component.css"]
 })
-export class EventlistComponent implements OnInit {
+export class EventDetailsComponent implements OnInit {
   constructor(private eventService: EventsService) {}
   events: any[];
   players: any[];
