@@ -29,9 +29,10 @@ import { EventDetailsComponent } from "./components/event-details/eventdetails.c
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AboutPageComponent } from './components/about-page/about-page.component';
+import { SignInComponent } from './components//sign-in/sign-in.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateeventComponent, EventDetailsComponent, MainNavComponent, AboutPageComponent],
+  declarations: [AppComponent, CreateeventComponent, EventDetailsComponent, MainNavComponent, AboutPageComponent, SignInComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
