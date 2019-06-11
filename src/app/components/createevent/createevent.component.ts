@@ -23,7 +23,7 @@ export class CreateeventComponent implements OnInit {
   isLinear = true;
   @ViewChild("step1") stepper: MatStepper;
 
-  attendingState: Array<string> = ["Confirmed", "maybe"];
+  attendingState: Array<string> = ["Confirmed", "Maybe"];
   eventDetails: Event[];
   details: any[];
   players: any[];

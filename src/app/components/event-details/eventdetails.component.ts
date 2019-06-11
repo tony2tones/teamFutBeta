@@ -23,7 +23,8 @@ export class EventDetailsComponent implements OnInit {
     console.log("Add player button selected", this.join);
     if(this.join){
       this.players.push(this.newPlayer);
-      this.addEventDetails()
+      // this.addEventDetails();
+      this.addEvent();
       console.log('should be in this list?',this.events);  
     } else {
       console.log('this should remove');
