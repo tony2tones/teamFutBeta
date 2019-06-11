@@ -11,6 +11,7 @@ export class EventDetailsComponent implements OnInit {
   events: any[];
   players: any[];
   join: boolean = false;
+  newPlayer = { name: "Farrel", status: "confirmed" };
 
   ngOnInit() {
     this.getEvents();
@@ -18,7 +19,15 @@ export class EventDetailsComponent implements OnInit {
 
   addPlayer() {
     this.join = !this.join;
-    console.log('Add player button selected', this.join);
+    console.log("Add player button selected", this.join);
+    if(this.join){
+      this.players.push(this.newPlayer);
+      
+    } else {
+      console.log('this should remove');
+    }
+        
+    console.log('should be in this list?',this.players)
   }
 
   getEvents() {
