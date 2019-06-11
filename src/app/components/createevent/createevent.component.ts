@@ -23,8 +23,8 @@ export class CreateeventComponent implements OnInit {
   isLinear = true;
   @ViewChild("step1") stepper: MatStepper;
 
-  attendingState: Array<string> = ["Confirmed", "maybe"];
-  eventDetails: any[];
+  attendingState: Array<string> = ["Confirmed", "Maybe"];
+  eventDetails: Event[];
   details: any[];
   players: any[];
   player: string;
@@ -81,8 +81,6 @@ export class CreateeventComponent implements OnInit {
     }
   }
 
-  submitDetails() {}
-
   addEvent() {
     this.eventsService.updateEvents(this.eventDetails).subscribe(
       repsonse => {
@@ -100,11 +98,5 @@ export class CreateeventComponent implements OnInit {
         );
       }
     );
-    this.eventsService
-      .updateEvents(this.eventDetails)
-      .subscribe(
-        repsonse => this.router.navigate(["/"]),
-        error => console.log(error)
-      );
   }
 }

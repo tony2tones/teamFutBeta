@@ -1,4 +1,4 @@
-<mat-card class="event-details">
+<mat-card class="event-details" *ngIf="events; else loading">
   <mat-card-header>
     <div mat-card-avatar class="event-header-image"></div>
     <mat-card-title>{{ events[0]?.title }}</mat-card-title>
@@ -10,12 +10,11 @@
       src="../../../assets/images/trekkerz.png"
       alt="Trekkerz"
     />
-    <div class="time-text">
-      Starting time: {{ events[0]?.time }}
-    </div>
+    <div class="time-text">Starting time: {{ events[0]?.time }}</div>
   </div>
   <mat-card-content>
     <h4>Players and statuses</h4>
+
     <span> Players Attending {{ players?.length }}</span>
     <mat-list>
       <mat-list-item *ngFor="let player of players">
@@ -23,9 +22,12 @@
         <h3 matLine>{{ player.name }} {{ player.state }}</h3>
       </mat-list-item>
     </mat-list>
+    <mat-card-actions>
+        <button mat-button (click)="addPlayer()" [disabled]="join"> {{ join == true ? 'Remove Me' : 'Add Me' }}</button>
+      </mat-card-actions>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
 </mat-card>
+
+<ng-template #loading>
+    Loading stuff...
+  </ng-template>
