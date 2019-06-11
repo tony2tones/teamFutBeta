@@ -1,4 +1,4 @@
-<mat-card class="event-details">
+<mat-card class="event-details" *ngIf="events; else loading">
   <mat-card-header>
     <div mat-card-avatar class="event-header-image"></div>
     <mat-card-title>{{ events[0]?.title }}</mat-card-title>
@@ -23,7 +23,11 @@
       </mat-list-item>
     </mat-list>
     <mat-card-actions>
-        <button mat-raised-button (click)="addPlayer()"> {{ join == true ? 'Remove Me' : 'Add Me' }}</button>
+        <button mat-button (click)="addPlayer()" [disabled]="join"> {{ join == true ? 'Remove Me' : 'Add Me' }}</button>
       </mat-card-actions>
   </mat-card-content>
 </mat-card>
+
+<ng-template #loading>
+    Loading stuff...
+  </ng-template>

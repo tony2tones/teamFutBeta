@@ -20,20 +20,24 @@ export class EventDetailsComponent implements OnInit {
 
   addPlayer() {
     this.join = !this.join;
-    console.log("Add player button selected", this.join);
     if(this.join){
       this.players.push(this.newPlayer);
-      // this.addEventDetails();
+      this.events.push(this.newPlayer);
+      console.log('should be in this list?',this.events); 
       this.addEvent();
-      console.log('should be in this list?',this.events);  
-    } else {
-      console.log('this should remove');
-    }
+    } 
   }
 
-  addEventDetails() {
-    let group = [];
-    this.events = group.concat(this.events, this.players);
+ 
+  deleteConfirmed(name: string) {
+    let i = 0;
+    let length = this.players.length;
+    for (i; i < length; i++) {
+      if (this.players[i]["name"] == name) {
+        this.players.splice(i, 1);
+      }
+    }
+    this.addEvent();
   }
 
   getEvents() {

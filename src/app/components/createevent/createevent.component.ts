@@ -81,8 +81,6 @@ export class CreateeventComponent implements OnInit {
     }
   }
 
-  submitDetails() {}
-
   addEvent() {
     this.eventsService.updateEvents(this.eventDetails).subscribe(
       repsonse => {
