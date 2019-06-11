@@ -100,11 +100,5 @@ export class CreateeventComponent implements OnInit {
         );
       }
     );
-    this.eventsService
-      .updateEvents(this.eventDetails)
-      .subscribe(
-        repsonse => this.router.navigate(["/"]),
-        error => console.log(error)
-      );
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
+import { ToastMessageService } from 'src/app/services/toast-message.service';
 
 @Component({
   selector: "app-eventdetails",
@@ -7,7 +8,7 @@ import { EventsService } from "../../services/events.service";
   styleUrls: ["./eventdetails.component.css"]
 })
 export class EventDetailsComponent implements OnInit {
-  constructor(private eventService: EventsService) {}
+  constructor(private eventService: EventsService, private toastr : ToastMessageService) {}
   events: any[];
   players: any[];
   join: boolean = false;
@@ -22,12 +23,16 @@ export class EventDetailsComponent implements OnInit {
     console.log("Add player button selected", this.join);
     if(this.join){
       this.players.push(this.newPlayer);
-      
+      this.addEventDetails()
+      console.log('should be in this list?',this.events);  
     } else {
       console.log('this should remove');
     }
-        
-    console.log('should be in this list?',this.players)
+  }
+
+  addEventDetails() {
+    let group = [];
+    this.events = group.concat(this.events, this.players);
   }
 
   getEvents() {
@@ -37,6 +42,24 @@ export class EventDetailsComponent implements OnInit {
         this.setPlayerState(this.events);
       },
       error => console.log(error)
+    );
+  }
+
+  addEvent() {
+    this.eventService.updateEvents(this.events).subscribe(
+      repsonse => {
+          this.toastr.showSuccess(
+            "Has been successfully joined in.",
+            "Footy game"
+          );
+      },
+      error => {
+        console.log(error);
+        this.toastr.showFail(
+          "Something went wrong, please select the reset option to try again.",
+          "Error"
+        );
+      }
     );
   }
 
