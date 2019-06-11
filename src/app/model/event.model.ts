@@ -1,9 +1,9 @@
-import { ConfirmedList } from './confirmedList.model';
+import { ConfirmedList } from "./confirmedList.model";
 
-export class Event {
-    public title: string;
-    public location: string;
-    public date: string;
-    public time: string;
-    public confirmed: ConfirmedList[];
+export interface Event {
+  title: string;
+  location: string;
+  date: string;
+  time: string;
+  confirmed: ConfirmedList[];
 }

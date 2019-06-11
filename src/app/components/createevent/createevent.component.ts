@@ -24,7 +24,7 @@ export class CreateeventComponent implements OnInit {
   @ViewChild("step1") stepper: MatStepper;
 
   attendingState: Array<string> = ["Confirmed", "maybe"];
-  eventDetails: any[];
+  eventDetails: Event[];
   details: any[];
   players: any[];
   player: string;

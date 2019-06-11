@@ -10,8 +10,15 @@ export class EventDetailsComponent implements OnInit {
   constructor(private eventService: EventsService) {}
   events: any[];
   players: any[];
+  join: boolean = false;
+
   ngOnInit() {
     this.getEvents();
+  }
+
+  addPlayer() {
+    this.join = !this.join;
+    console.log('Add player button selected', this.join);
   }
 
   getEvents() {

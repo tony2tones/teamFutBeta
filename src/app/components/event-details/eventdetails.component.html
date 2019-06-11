@@ -13,14 +13,8 @@
     <div class="time-text">Starting time: {{ events[0]?.time }}</div>
   </div>
   <mat-card-content>
-    <div class=""> <h4>Players and statuses</h4>
-     
-        <mat-card-actions>
-            <button mat-raised-button>Add Me</button>
-          </mat-card-actions>
-          
-    </div>
-    
+    <h4>Players and statuses</h4>
+
     <span> Players Attending {{ players?.length }}</span>
     <mat-list>
       <mat-list-item *ngFor="let player of players">
@@ -28,5 +22,8 @@
         <h3 matLine>{{ player.name }} {{ player.state }}</h3>
       </mat-list-item>
     </mat-list>
+    <mat-card-actions>
+        <button mat-raised-button (click)="addPlayer()">Add Me</button>
+      </mat-card-actions>
   </mat-card-content>
 </mat-card>

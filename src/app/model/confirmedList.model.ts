@@ -1,4 +1,4 @@
-export class ConfirmedList {
-    public name: string;
-    public attendingState: string;
+export interface ConfirmedList {
+  name: string;
+  attendingState: string;
 }
