@@ -22,7 +22,7 @@ export class EventDetailsComponent implements OnInit {
     this.join = !this.join;
     if(this.join){
       this.players.push(this.newPlayer);
-      this.events.push(this.newPlayer);
+      this.events.push(this.players);
       console.log('should be in this list?',this.events); 
       this.addEvent();
     } 
