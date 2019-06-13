@@ -41,13 +41,13 @@
     <form [formGroup]="eventForm">
       <ng-template matStepLabel>Add players</ng-template>
       <mat-form-field>
-          <input
-            matInput
-            placeholder="Player name"
-            formControlName="name"
-            required
-          />
-        </mat-form-field>
+        <input
+          matInput
+          placeholder="Player name"
+          formControlName="name"
+          required
+        />
+      </mat-form-field>
       <div>
         <mat-form-field>
           <mat-label for="attendingState">User attending status</mat-label>
@@ -90,12 +90,18 @@
   <h4 class="text-center">No players have confirmed yet</h4>
 </div>
 <div *ngIf="players">
-  <h3>Confirmed {{ players.length }}</h3>
-  <mat-list>
-    <mat-list-item *ngFor="let player of players" >
-      <mat-icon matListIcon>mood</mat-icon>
-      
-      <h3 matLine (click)="deleteConfirmed(player.name)" >{{ player.name }} {{ player.state }}</h3><span class="show"><mat-icon matListIcon class="clear-button">clear</mat-icon></span>
-    </mat-list-item>
-  </mat-list>
+  <div class="container">
+    <h3>Confirmed {{ players.length }}</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let player of players">
+        <mat-icon matListIcon>mood</mat-icon>
+        <h3 matLine (click)="deleteConfirmed(player.name)">
+          {{ player.name }} {{ player.state }}
+        </h3>
+        <span class="show"
+          ><mat-icon matListIcon class="clear-button">clear</mat-icon></span
+        >
+      </mat-list-item>
+    </mat-list>
+  </div>
 </div>

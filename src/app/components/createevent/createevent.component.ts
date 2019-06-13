@@ -63,6 +63,10 @@ export class CreateeventComponent implements OnInit {
       this.players = group;
     } else {
       this.players = group.concat(newArray);
+      this.eventForm.setValue({
+        name: '',
+        state:this.attendingState[0]
+      });
     }
   }
 
