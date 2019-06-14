@@ -1,4 +1,4 @@
-export interface ConfirmedList {
+export class ConfirmedList {
   name: string;
   attendingState: string;
 }

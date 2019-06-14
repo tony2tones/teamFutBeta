@@ -1,6 +1,6 @@
 import { ConfirmedList } from "./confirmedList.model";
 
-export interface Event {
+export class Event {
   title: string;
   location: string;
   date: string;
