@@ -19,7 +19,9 @@ import {
 } from "@angular/material";
 import { ToastrModule } from 'ngx-toastr';
  
-
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CreateeventComponent } from "./components/createevent/createevent.component";
@@ -35,6 +37,8 @@ import { SignInComponent } from './components//sign-in/sign-in.component';
   declarations: [AppComponent, CreateeventComponent, EventDetailsComponent, MainNavComponent, AboutPageComponent, SignInComponent],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp( environment.firebase),
+    AngularFireAuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatStepperModule,
