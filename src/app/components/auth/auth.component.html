@@ -1,5 +1,8 @@
 <div class="container">
-  <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
+  <div *ngIf="isLoading" style="text-align: center">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm" *ngIf="!isLoading">
     <div id="user-data">
       <div class="form-group">
         <label for="email">Email</label>

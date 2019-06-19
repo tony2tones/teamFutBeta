@@ -32,9 +32,10 @@ import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/spinner.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateeventComponent, EventDetailsComponent, MainNavComponent, AboutPageComponent, AuthComponent],
+  declarations: [AppComponent, CreateeventComponent, EventDetailsComponent, MainNavComponent, AboutPageComponent, AuthComponent, LoadingSpinnerComponent],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp( environment.firebase),
