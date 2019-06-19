@@ -2,6 +2,7 @@
   <div *ngIf="isLoading" style="text-align: center">
     <app-loading-spinner></app-loading-spinner>
   </div>
+  <div> {{ error }}</div>
   <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm" *ngIf="!isLoading">
     <div id="user-data">
       <div class="form-group">
