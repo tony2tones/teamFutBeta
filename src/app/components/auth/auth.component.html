@@ -20,12 +20,12 @@
           type="text"
           id="password"
           class="form-control"
-          ngMode
+          ngModel
           name="password"
         />
       </div>
     </div>
-    <button class="btn btn-primary" type="submit">
+    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
       {{ loginMode ? "Login" : "Sign up" }}
     </button>
     |

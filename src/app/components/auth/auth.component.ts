@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import  {NgForm}  from '@angular/forms'
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
-export class SignInComponent implements OnInit {
+export class AuthComponent implements OnInit {
 
   loginMode:boolean = true;
 
