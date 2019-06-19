@@ -1,5 +1,5 @@
 <div class="container">
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm">
     <div id="user-data">
       <div class="form-group">
         <label for="email">Email</label>
@@ -26,7 +26,7 @@
         />
       </div>
     </div>
-    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
+    <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">
       {{ loginMode ? "Login" : "Sign up" }}
     </button>
     |
