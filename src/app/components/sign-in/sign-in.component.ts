@@ -8,9 +8,16 @@ import  {NgForm}  from '@angular/forms'
 })
 export class SignInComponent implements OnInit {
 
+  loginMode:boolean = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  switchMode() {
+    this.loginMode = !this.loginMode;
+    
   }
 
   onSubmit(form: NgForm) {
