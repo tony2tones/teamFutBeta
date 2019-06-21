@@ -19,7 +19,9 @@ import {
 } from "@angular/material";
 import { ToastrModule } from 'ngx-toastr';
  
-
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CreateeventComponent } from "./components/createevent/createevent.component";
@@ -29,11 +31,15 @@ import { EventDetailsComponent } from "./components/event-details/eventdetails.c
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AboutPageComponent } from './components/about-page/about-page.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/spinner.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateeventComponent, EventDetailsComponent, MainNavComponent, AboutPageComponent],
+  declarations: [AppComponent, CreateeventComponent, EventDetailsComponent, MainNavComponent, AboutPageComponent, AuthComponent, LoadingSpinnerComponent],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp( environment.firebase),
+    AngularFireAuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatStepperModule,
