@@ -23,6 +23,9 @@ export class AuthComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    if(!form.valid) {
+      return;
+    }
     const email = form.value.email;
     const password = form.value.password;
     this.isLoading = true;
