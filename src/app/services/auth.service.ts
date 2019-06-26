@@ -17,7 +17,7 @@ export interface AuthResponseData {
 @Injectable({ providedIn: "root" })
 export class AuthService {
   apiKey = "AIzaSyAzG5Vv0eRvIaeimyQamz8u3qj8oKwyG7o";
-  user = new BehaviorSubject<User>();
+  user = new BehaviorSubject<User>(null);
 
   constructor(private http: HttpClient) {}
 
