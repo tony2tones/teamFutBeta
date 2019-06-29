@@ -41,6 +41,10 @@ export class AuthService {
       );
   }
 
+  logout() {
+      this.user.next(null);
+  }
+
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
