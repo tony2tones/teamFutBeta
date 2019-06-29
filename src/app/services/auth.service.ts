@@ -18,6 +18,7 @@ export interface AuthResponseData {
 export class AuthService {
   apiKey = "AIzaSyAzG5Vv0eRvIaeimyQamz8u3qj8oKwyG7o";
   user = new BehaviorSubject<User>(null);
+  private tokenExpirationTimer: any;
 
   constructor(private http: HttpClient) {}
 
@@ -36,13 +37,54 @@ export class AuthService {
       .pipe(
         catchError(this.handelError),
         tap(resData => {
-            this.handleAuth(resData.email, resData.localId,resData.idToken, +resData.expiresIn);
+          this.handleAuth(
+            resData.email,
+            resData.localId,
+            resData.idToken,
+            +resData.expiresIn
+          );
         })
       );
   }
 
+  autoLoging() {
+    const userData: {
+      email: string;
+      id: string;
+      _token: string;
+      _tokenExpirationDate: string;
+    } = JSON.parse(localStorage.getItem("userData"));
+    if (!userData) {
+      return;
+    }
+
+    const loadedUser = new User(
+      userData.email,
+      userData.id,
+      userData._token,
+      new Date(userData._tokenExpirationDate)
+    );
+
+    if (loadedUser.token) {
+      this.user.next(loadedUser);
+      const expirationDuration = new Date (userData._tokenExpirationDate).getTime() - new Date().getTime();
+      this.autoLogout(expirationDuration);
+    }
+  }
+
   logout() {
-      this.user.next(null);
+    this.user.next(null);
+    localStorage.removeItem("userData");
+    if (this.tokenExpirationTimer) {
+        clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
+  }
+
+  autoLogout(expirationDuration: number) {
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, expirationDuration);
   }
 
   login(email: string, password: string) {
@@ -57,24 +99,31 @@ export class AuthService {
           returnSecureToken: true
         }
       )
-      .pipe(catchError(this.handelError),tap(resData => {
-        this.handleAuth(resData.email, resData.localId,resData.idToken, +resData.expiresIn);
-    }));
+      .pipe(
+        catchError(this.handelError),
+        tap(resData => {
+          this.handleAuth(
+            resData.email,
+            resData.localId,
+            resData.idToken,
+            +resData.expiresIn
+          );
+        })
+      );
   }
 
-  private handleAuth(email:string,userId: string, token: string, expiresIn: number) {
-    const expirationDate = new Date(
-        new Date().getTime() + expiresIn * 1000
-      );
-      const user = new User(
-        email,
-        userId,
-        token,
-        expirationDate
-      );
-      this.user.next(user);
-    }
-  
+  private handleAuth(
+    email: string,
+    userId: string,
+    token: string,
+    expiresIn: number
+  ) {
+    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    const user = new User(email, userId, token, expirationDate);
+    this.user.next(user);
+    this.autoLogout(expiresIn * 1000);
+    localStorage.setItem("userData", JSON.stringify(user));
+  }
 
   private handelError(errorRes: HttpErrorResponse) {
     let errorMessage = "An unknown error occurred!";
