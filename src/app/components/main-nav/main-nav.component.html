@@ -13,7 +13,7 @@
       <a mat-list-item routerLink="/createevent">Create an event</a>
       <a mat-list-item routerLink="/">Event Details</a>
       <a mat-list-item routerLink="/about">About</a>
-      <a mat-list-item *ngIf="!isAuthenticated">Logout</a>
+      <a mat-list-item *ngIf="isAuthenticated" (click)="onLogout()">Logout</a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -33,7 +33,7 @@
         <a *ngIf="!(isHandset$ | async)" routerLink="/createevent">Create an event</a>
         <a *ngIf="!(isHandset$ | async)" routerLink="/">Event Details</a>
         <a *ngIf="!(isHandset$ | async)" routerLink="/about">About</a>
-        <a *ngIf="!isAuthenticated">Logout</a>
+        <a *ngIf="isAuthenticated && !(isHandset$ | async)" (click)="onLogout()">Logout</a>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

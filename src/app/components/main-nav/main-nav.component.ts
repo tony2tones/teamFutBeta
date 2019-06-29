@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-nav',
@@ -17,12 +18,17 @@ export class MainNavComponent implements OnInit, OnDestroy{
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private authService: AuthService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
    this.userSub = this.authService.user.subscribe(user => {
     this.isAuthenticated = !!user;
    });
+  }
+
+  onLogout() {
+    this.authService.logout();
+    this.router.navigate(['/auth']);
   }
   ngOnDestroy() {
     this.userSub.unsubscribe();

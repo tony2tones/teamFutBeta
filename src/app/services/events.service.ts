@@ -16,10 +16,7 @@ export class EventsService {
     return this.authService.user.pipe(
       take(1),
       exhaustMap(user => {
-        return this.http.get('https://teamfutbeta-88c44.firebaseio.com/event.json',
-        {
-          params: new HttpParams().set('auth', user.token)
-        }
+        return this.http.get('https://teamfutbeta-88c44.firebaseio.com/event.json'
         );
       }),
       map(
