@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 import { LOCATION_CLASS_MAP } from './location-maps';
+import { Event } from '../../model/event.model';
 
 @Component({
   selector: "app-eventdetails",
@@ -46,6 +47,7 @@ export class EventDetailsComponent implements OnInit {
       (event: any) => {
         this.events = event;
         this.setPlayerState(this.events);
+        if(this.events.location && this)
       },
       error => console.log(error)
     );
