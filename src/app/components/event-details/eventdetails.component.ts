@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { EventsService } from "../../services/events.service";
 import { ToastMessageService } from 'src/app/services/toast-message.service';
+import { LOCATION_CLASS_MAP } from './location-maps';
 
 @Component({
   selector: "app-eventdetails",
