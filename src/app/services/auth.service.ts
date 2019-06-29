@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, tap } from "rxjs/operators";
-import { throwError, Subject } from "rxjs";
+import { throwError, BehaviorSubject } from "rxjs";
 import { User } from "../components/auth/user.model";
 
 export interface AuthResponseData {
@@ -17,15 +17,14 @@ export interface AuthResponseData {
 @Injectable({ providedIn: "root" })
 export class AuthService {
   apiKey = "AIzaSyAzG5Vv0eRvIaeimyQamz8u3qj8oKwyG7o";
-
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
 
   constructor(private http: HttpClient) {}
 
   signUp(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyCustomToken?key=${
+        `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${
           this.apiKey
         }`,
         {
