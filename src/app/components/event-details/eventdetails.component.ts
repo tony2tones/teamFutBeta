@@ -47,7 +47,7 @@ export class EventDetailsComponent implements OnInit {
       (event: any) => {
         this.events = event;
         this.setPlayerState(this.events);
-        if(this.events.location && this)
+        // if(this.events.location && this)
       },
       error => console.log(error)
     );
