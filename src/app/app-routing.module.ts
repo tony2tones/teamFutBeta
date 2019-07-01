@@ -5,10 +5,12 @@ import { CreateeventComponent } from './components/createevent/createevent.compo
 import { EventDetailsComponent } from './components/event-details/eventdetails.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { AuthComponent } from './components/auth/auth.component';
+import { AuthGaurd } from './components/auth/auth.gaurd';
 
 const routes: Routes = [
   {path: '', component: EventDetailsComponent},
-  {path:'createevent',component: CreateeventComponent},
+  {path:'createevent',component: CreateeventComponent,
+  canActivate: [AuthGaurd]},
   {path:'about',component: AboutPageComponent},
   {path: 'auth', component: AuthComponent}
 ];
