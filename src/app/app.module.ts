@@ -36,6 +36,8 @@ import { AboutPageComponent } from "./components/about-page/about-page.component
 import { AuthComponent } from "./components/auth/auth.component";
 import { LoadingSpinnerComponent } from "./shared/spinner.component";
 import { AuthInterceptorService } from "./components/auth/auth-interceptor.service";
+import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceHolderDirective } from './shared/placeHolder/placeHolder.directive';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { AuthInterceptorService } from "./components/auth/auth-interceptor.servi
     MainNavComponent,
     AboutPageComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AlertComponent,
+    PlaceHolderDirective
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,9 @@ import { AuthInterceptorService } from "./components/auth/auth-interceptor.servi
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    AlertComponent
+  ]
 })
 export class AppModule {}

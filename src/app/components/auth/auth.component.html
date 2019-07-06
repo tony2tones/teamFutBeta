@@ -1,8 +1,13 @@
+<ng-template appPlaceholder></ng-template>
 <div class="container">
+  <!-- <app-alert
+    [message]="error"
+    *ngIf="error"
+    (close)="onHandleError()"
+  ></app-alert> -->
   <div *ngIf="isLoading" style="text-align: center">
     <app-loading-spinner></app-loading-spinner>
   </div>
-  <div> {{ error }}</div>
   <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm" *ngIf="!isLoading">
     <div id="user-data">
       <div class="form-group">
