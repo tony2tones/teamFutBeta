@@ -2,6 +2,11 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, tap } from "rxjs/operators";
 import { throwError, BehaviorSubject } from "rxjs";
+
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase';
+import 'rxjs/add/operator/switchMap';
 import { User } from "../components/auth/user.model";
 
 export interface AuthResponseData {
@@ -19,8 +24,22 @@ export class AuthService {
   apiKey = "AIzaSyAzG5Vv0eRvIaeimyQamz8u3qj8oKwyG7o";
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
+  currentUser: User;
 
   constructor(private http: HttpClient) {}
+  
+// find a suitable name based on the meta info given by each provider
+// getName(authData) {
+//   switch(authData.provider) {
+//      case 'password':
+//        return authData.password.email.replace(/@.*/, '');
+//      case 'twitter':
+//        return authData.twitter.displayName;
+//      case 'facebook':
+//        return authData.facebook.displayName;
+//   }
+// }
+
 
   signUp(email: string, password: string) {
     return this.http
