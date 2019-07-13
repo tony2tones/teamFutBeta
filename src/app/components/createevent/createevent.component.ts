@@ -6,6 +6,7 @@ import { ToastMessageService } from "../../services/toast-message.service";
 
 import { MatStepper } from "@angular/material";
 import { Event } from "../../model/event.model";
+import { Player } from '../../model/confirmedList.model' 
 
 export interface User {
   name: string;
@@ -19,7 +20,7 @@ export class CreateeventComponent implements OnInit {
   eventForm: FormGroup;
   detailsForm: FormGroup;
 
-  event: Event;
+  event = new Event;
   isLinear = true;
   @ViewChild("step1") stepper: MatStepper;
 
@@ -27,7 +28,7 @@ export class CreateeventComponent implements OnInit {
   eventDetails: Event[];
   details: any[];
   players: any[];
-  player: string;
+  player = new Player;
 
   constructor(
     private fb: FormBuilder,
@@ -51,23 +52,31 @@ export class CreateeventComponent implements OnInit {
 
   addDetails() {
     let details = this.detailsForm.value;
-    this.details = [details];
+    this.event.title = details.title;
+    this.event.location = details.location;
+    this.event.time = details.time;
+    this.event.date = details.date;
+    console.log('all the captured goodies ', this.event);
   }
 
   addConfirmed() {
-    let group = [];
-    let person = this.eventForm.value;
-    group.push(person);
-    let newArray = this.players;
-    if (newArray === undefined) {
-      this.players = group;
-    } else {
-      this.players = group.concat(newArray);
-      this.eventForm.setValue({
-        name: '',
-        state:this.attendingState[0]
-      });
-    }
+    let playerDeets = this.eventForm.value;
+    this.player = playerDeets;
+    // let store = [this.player.name, this.player.attendingState];
+    // this.players = this.player['name'],this.player['attendingState'];
+    console.log('what you are capturing ', this.player);
+    console.log('what has been stored ', playerDeets);
+    // players.push(...this.player);
+    // let newArray = this.players;
+    // if (newArray === undefined) {
+    //   this.players = group;
+    // } else {
+    //   this.players = group.concat(newArray);
+    //   this.eventForm.setValue({
+    //     name: '',
+    //     state:this.attendingState[0]
+    //   });
+    // }
   }
 
   addEventDetails() {

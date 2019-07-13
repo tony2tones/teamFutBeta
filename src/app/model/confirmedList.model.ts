@@ -1,4 +1,4 @@
-export class ConfirmedList {
+export class Player {
   name: string;
   attendingState: string;
 }
