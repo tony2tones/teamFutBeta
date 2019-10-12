@@ -27,7 +27,7 @@ export class CreateeventComponent implements OnInit {
   attendingState: Array<string> = ['Confirmed', 'Maybe'];
   eventDetails: Event[];
   details: Event;
-  players: Player[];
+  players: Player[] = [];
   player: Player;
 
   constructor(
@@ -55,21 +55,26 @@ export class CreateeventComponent implements OnInit {
   }
 
   addConfirmed() {
-
     this.player = this.eventForm.value;
-    
+
     console.log('this is the player deets', this.player.attendingState);
     // this.players = playerDeets;
     // this.player.attendingState = playerDeets.attendingState;
 
     console.log('check added player ', this.player.name);
-    this.appendObjTo(this.players, this.player);
+    // this.appendObjTo(this.players, this.player);
 
     // let store = [this.player.name, this.player.attendingState];
     // this.players = this.player['name'],this.player['attendingState'];
     // console.log('what you are capturing ', this.player);
     // console.log('what has been stored ', playerDeets);
-    // players.push(...this.player);
+    let newArray = [];
+    newArray.push(...this.players, this.player);
+    console.log('it should store all goodies', this.players);
+    var arr1 = [1, 2, 3];
+    var obj = 4;
+    // var newData = [...arr1, obj]; // [1,2,3,4]
+    console.log('new data test ',newArray);
     // let newArray = this.players;
     // if (newArray === undefined) {
     //   this.players = group;
@@ -82,11 +87,11 @@ export class CreateeventComponent implements OnInit {
     // }
   }
 
-  appendObjTo = (thatArray, newObj) => {
-    const frozenObj = Object.freeze(newObj);
-    const result = Object.freeze(thatArray.concat(frozenObj));
-    console.log('should be an array', result)
-  }
+  // appendObjTo = (thatArray, newObj) => {
+  //   const frozenObj = Object.freeze(newObj);
+  //   const result = Object.freeze(thatArray.concat(frozenObj));
+  //   console.log('should be an array', result);
+  // };
 
   addEventDetails() {
     let group = [];
