@@ -3,8 +3,6 @@ import { Injectable } from "@angular/core";
 import { catchError, tap } from "rxjs/operators";
 import { throwError, BehaviorSubject } from "rxjs";
 
-import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import 'rxjs/add/operator/switchMap';
 import { User } from "../components/auth/user.model";
