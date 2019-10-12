@@ -69,7 +69,7 @@ export class CreateeventComponent implements OnInit {
     // console.log('what you are capturing ', this.player);
     // console.log('what has been stored ', playerDeets);
     let newArray = [];
-    newArray.push(...this.players, this.player);
+    this.players.push(...newArray, this.player);
     console.log('it should store all goodies', this.players);
     var arr1 = [1, 2, 3];
     var obj = 4;
@@ -87,11 +87,11 @@ export class CreateeventComponent implements OnInit {
     // }
   }
 
-  // appendObjTo = (thatArray, newObj) => {
-  //   const frozenObj = Object.freeze(newObj);
-  //   const result = Object.freeze(thatArray.concat(frozenObj));
-  //   console.log('should be an array', result);
-  // };
+  appendObjTo = (thatArray, newObj) => {
+    const frozenObj = Object.freeze(newObj);
+    const result = Object.freeze(thatArray.concat(frozenObj));
+    console.log('should be an array', result);
+  };
 
   addEventDetails() {
     let group = [];
