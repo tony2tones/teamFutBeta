@@ -1,4 +1,4 @@
 export class Player {
   name: string;
-  attendingState: string;
+  state: string;
 }

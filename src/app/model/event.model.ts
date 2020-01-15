@@ -9,5 +9,5 @@ export interface Event {
 }
 
 export interface Players {
-  players: [];
+  players: Player;
 }

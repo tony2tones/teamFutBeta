@@ -56,42 +56,9 @@ export class CreateeventComponent implements OnInit {
 
   addConfirmed() {
     this.player = this.eventForm.value;
-
-    console.log('this is the player deets', this.player.attendingState);
-    // this.players = playerDeets;
-    // this.player.attendingState = playerDeets.attendingState;
-
-    console.log('check added player ', this.player.name);
-    // this.appendObjTo(this.players, this.player);
-
-    // let store = [this.player.name, this.player.attendingState];
-    // this.players = this.player['name'],this.player['attendingState'];
-    // console.log('what you are capturing ', this.player);
-    // console.log('what has been stored ', playerDeets);
     let newArray = [];
     this.players.push(...newArray, this.player);
-    console.log('it should store all goodies', this.players);
-    var arr1 = [1, 2, 3];
-    var obj = 4;
-    // var newData = [...arr1, obj]; // [1,2,3,4]
-    console.log('new data test ',newArray);
-    // let newArray = this.players;
-    // if (newArray === undefined) {
-    //   this.players = group;
-    // } else {
-    //   this.players = group.concat(newArray);
-    //   this.eventForm.setValue({
-    //     name: '',
-    //     state:this.attendingState[0]
-    //   });
-    // }
   }
-
-  appendObjTo = (thatArray, newObj) => {
-    const frozenObj = Object.freeze(newObj);
-    const result = Object.freeze(thatArray.concat(frozenObj));
-    console.log('should be an array', result);
-  };
 
   addEventDetails() {
     let group = [];
