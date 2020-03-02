@@ -1,9 +1,13 @@
-import { ConfirmedList } from "./confirmedList.model";
+import { Player } from "./player.model";
 
-export class Event {
+export interface Event {
   title: string;
   location: string;
   date: string;
   time: string;
-  confirmed: ConfirmedList[];
+  players: Players[];
+}
+
+export interface Players {
+  players: Player;
 }
