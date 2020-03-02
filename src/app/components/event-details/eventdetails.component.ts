@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
-import { LOCATION_CLASS_MAP } from './location-maps';
 import { Event, Players } from '../../model/event.model';
 import { Player } from 'src/app/model/player.model';
 
@@ -93,6 +92,6 @@ export class EventDetailsComponent implements OnInit {
     data = { name: 'Farrel', state: 'confirmed' };
     let player = this.player;
     let newArray = [];
-    this.players.push(...newArray, data);
+    // this.players.push(...newArray, data);
   }
 }
