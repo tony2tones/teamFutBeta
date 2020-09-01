@@ -31,7 +31,8 @@ export class EventsService {
     return this.http.put('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
   }
 
-  createEvent(event:any[]) {
+  createEvent(event:Event[]) {
+    console.log('this is the event that is passed', event);
     return this.http.post('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
   }
 }
