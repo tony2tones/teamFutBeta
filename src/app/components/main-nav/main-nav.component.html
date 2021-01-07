@@ -28,10 +28,10 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>teamFutBeta</span>
+      <a rounterLink="/"><span>teamFutBeta</span></a>
         <span class="spacer"></span>
         <a *ngIf="!(isHandset$ | async)" routerLink="/create-event">Create an event</a>
-        <a *ngIf="!(isHandset$ | async)" routerLink="/">Event Details</a>
+        <a *ngIf="!(isHandset$ | async)" routerLink="/event-details/2">Event Details</a>
         <a *ngIf="!(isHandset$ | async)" routerLink="/about">About</a>
         <a *ngIf="isAuthenticated && !(isHandset$ | async)" (click)="onLogout()">Logout</a>
     </mat-toolbar>

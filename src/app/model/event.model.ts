@@ -1,4 +1,3 @@
-import { Player } from "./player.model";
 
 export interface Event {
   eventId: string;
@@ -9,6 +8,12 @@ export interface Event {
   players: Players[];
 }
 
+export interface Player {
+  name: string;
+  state: string;
+}
+
 export interface Players {
   players: Player;
 }
+

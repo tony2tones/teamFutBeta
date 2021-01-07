@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 import { Event, Players } from '../../model/event.model';
-import { Player } from 'src/app/model/player.model';
+import { Player } from 'src/app/model/event.model';
 
 @Component({
   selector: 'app-eventdetails',
@@ -27,7 +27,7 @@ export class EventDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.name = params['name'];
+      
       console.log('ola here is that name ',params);
     });
     this.getEvents();

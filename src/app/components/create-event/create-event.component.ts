@@ -6,7 +6,7 @@ import { ToastMessageService } from '../../services/toast-message.service';
 
 import { MatStepper } from '@angular/material';
 import { Event } from '../../model/event.model';
-import { Player } from '../../model/player.model';
+import { Player } from '../../model/event.model';
 
 export interface User {
   name: string;
