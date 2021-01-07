@@ -30,7 +30,7 @@
       </button>
       <span>teamFutBeta</span>
         <span class="spacer"></span>
-        <a *ngIf="!(isHandset$ | async)" routerLink="/createevent">Create an event</a>
+        <a *ngIf="!(isHandset$ | async)" routerLink="/create-event">Create an event</a>
         <a *ngIf="!(isHandset$ | async)" routerLink="/">Event Details</a>
         <a *ngIf="!(isHandset$ | async)" routerLink="/about">About</a>
         <a *ngIf="isAuthenticated && !(isHandset$ | async)" (click)="onLogout()">Logout</a>
