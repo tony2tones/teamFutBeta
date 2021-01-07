@@ -12,11 +12,11 @@ export interface User {
   name: string;
 }
 @Component({
-  selector: 'createevent',
-  templateUrl: './createevent.component.html',
-  styleUrls: ['./createevent.component.css']
+  selector: 'create-event',
+  templateUrl: './create-event.component.html',
+  styleUrls: ['./create-event.component.css']
 })
-export class CreateeventComponent implements OnInit {
+export class CreateEventComponent implements OnInit {
   eventForm: FormGroup;
   detailsForm: FormGroup;
 

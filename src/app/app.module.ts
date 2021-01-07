@@ -26,7 +26,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CreateeventComponent } from "./components/createevent/createevent.component";
+import { CreateEventComponent } from "./components/create-event/create-event.component";
 
 import { EventsService } from "./services/events.service";
 import { EventDetailsComponent } from "./components/event-details/eventdetails.component";
@@ -42,7 +42,7 @@ import { PlaceHolderDirective } from './shared/placeHolder/placeHolder.directive
 @NgModule({
   declarations: [
     AppComponent,
-    CreateeventComponent,
+    CreateEventComponent,
     EventDetailsComponent,
     MainNavComponent,
     AboutPageComponent,
