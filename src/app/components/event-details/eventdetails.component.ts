@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 import { EventsService } from '../../services/events.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 import { Event, Players } from '../../model/event.model';
@@ -12,16 +14,22 @@ import { Player } from 'src/app/model/player.model';
 export class EventDetailsComponent implements OnInit {
   constructor(
     private eventService: EventsService,
-    private toastr: ToastMessageService
+    private toastr: ToastMessageService,
+    private route: ActivatedRoute
   ) {}
   events: Event[];
   players: Players[];
   join: boolean = false;
   player: Player;
+  name:string;
 
   playa = { name: 'Farrel', state: 'confirmed' };
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.name = params['name'];
+      console.log('ola here is that name ',params);
+    });
     this.getEvents();
   }
 

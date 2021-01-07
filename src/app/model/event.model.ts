@@ -1,6 +1,7 @@
 import { Player } from "./player.model";
 
 export interface Event {
+  eventId: string;
   title: string;
   location: string;
   date: string;
