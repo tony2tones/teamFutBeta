@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CreateeventComponent } from './components/createevent/createevent.component';
+import { CreateeventComponent } from './components/create-event/create-event.component';
 import { EventDetailsComponent } from './components/event-details/eventdetails.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { AuthComponent } from './components/auth/auth.component';
