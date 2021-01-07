@@ -66,13 +66,11 @@ export class CreateeventComponent implements OnInit {
   }
 
   deleteConfirmed(name: string) {
-    let i = 0;
-    let length = this.players.length;
-    for (i; i < length; i++) {
-      if (this.players[i]['name'] == name) {
-        this.players.splice(i, 1);
+    return this.players.filter(value => {
+      if(value.name === name) {
+        return this.players.splice(this.players.indexOf(value),1);
       }
-    }
+    }) 
   }
 
   addEvent() {
