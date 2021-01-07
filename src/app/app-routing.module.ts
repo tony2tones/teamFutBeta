@@ -8,7 +8,7 @@ import { AuthComponent } from './components/auth/auth.component';
 import { AuthGaurd } from './components/auth/auth.gaurd';
 
 const routes: Routes = [
-  {path: '', component: EventDetailsComponent},
+  {path: 'event-details', component: EventDetailsComponent},
   {path:'createevent',component: CreateeventComponent,
   canActivate: [AuthGaurd]},
   {path:'about',component: AboutPageComponent},
