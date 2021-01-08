@@ -10,7 +10,7 @@ import { Game, game, MockValues } from '../../model/mockdata';
 })
 export class DashboardComponent implements OnInit {
   response:Array<string>;
-  test:Game = game;
+  game:Game = game;
   constructor(private eventService: EventsService, private mockValues: MockValues) { }
 
   ngOnInit() {
@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   getEvents() {
     this.mockValues.getMockValues().subscribe(
       (event: any) => {
-        event = this.test;
+        event = this.game;
         // this.mockValues.getMockValues();
         console.log('consolely eventy ', event);
         // console.log(this.response);
