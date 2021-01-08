@@ -39,6 +39,7 @@ import { AuthInterceptorService } from "./components/auth/auth-interceptor.servi
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceHolderDirective } from './shared/placeHolder/placeHolder.directive';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MockValues } from "./model/mockdata";
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     })
   ],
   providers: [
+    MockValues,
     EventsService,
     {
       provide: HTTP_INTERCEPTORS,

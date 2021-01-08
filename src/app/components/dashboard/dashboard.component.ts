@@ -1,22 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from 'src/app/services/events.service';
 
+import { Game, game, MockValues } from '../../model/mockdata';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor(private eventService: EventsService) { }
+  response:Array<string>;
+  test:Game = game;
+  constructor(private eventService: EventsService, private mockValues: MockValues) { }
 
   ngOnInit() {
+    this.getEvents();
   }
 
   getEvents() {
-    this.eventService.getEvents().subscribe(
+    this.mockValues.getMockValues().subscribe(
       (event: any) => {
-        console.log(event);
+        event = this.test;
+        // this.mockValues.getMockValues();
+        console.log('consolely eventy ', event);
+        // console.log(this.response);
         // this.setPlayerState(this.events);
         // if(this.events.location && this)
       },
