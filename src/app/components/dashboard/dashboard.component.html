@@ -1,32 +1,33 @@
-<mat-card class="event-details" *ngIf="game; else loading">
-  <mat-card-header>
-    <div mat-card-avatar class="event-header-image"></div>
-    <mat-card-title>{{ game?.title }}</mat-card-title>
-    <mat-card-subtitle>{{ game?.location }}</mat-card-subtitle>
-  </mat-card-header>
-  <div class="box">
-    <img
-      mat-card-image
-      src="../../../assets/images/trekkerz.png"
-      alt="Trekkerz"
-    />
-    <div class="time-text">Starting time: {{ game?.time }}</div>
+<div class="container">
+  <div class="card-container">
+    <mat-card class="event-details" *ngIf="game; else loading">
+      <mat-card-header>
+        <div mat-card-avatar class="event-header-image"></div>
+        <div class="title">
+          <mat-card-title>{{ game?.title }}</mat-card-title>
+          <mat-card-subtitle>{{ game?.location }}</mat-card-subtitle>
+        </div>
+      </mat-card-header>
+      <div class="box">
+        <img mat-card-image src="../../../assets/images/trekkerz.png" alt="Trekkerz" />
+        <div class="time-text">Starting time: {{ game?.time }}</div>
+      </div>
+      <mat-card-content>
+        <h4>Players currently Attending {{ game.players?.length }}</h4>
+        <mat-card-actions>
+          <a [routerLink]="['/event-details', game.id]"> <button mat-button> View more details</button></a>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <mat-card-content>
-    <h4>Players Attending</h4>
-    <p>{{ game.players?.length }}</p>
-    <mat-card-actions>
-      <a [routerLink]="['/event-details', game.id]"> <button mat-button> View more details</button></a>
-      </mat-card-actions>
-  </mat-card-content>
-</mat-card>
-<!-- <div class="card"> -->
+  <!-- <div class="card"> -->
   <!-- <img src="img_avatar.png" alt="Avatar" style="width:100%"> -->
   <!-- <div class="container"> -->
-    <!-- <h4><b>{{game.title}}</b></h4> -->
-    <!-- <p>{{game.location}}</p> -->
+  <!-- <h4><b>{{game.title}}</b></h4> -->
+  <!-- <p>{{game.location}}</p> -->
   <!-- </div> -->
-<!-- </div> -->
-<ng-template #loading>
+  <!-- </div> -->
+  <ng-template #loading>
     Loading stuff...
   </ng-template>
+</div>
