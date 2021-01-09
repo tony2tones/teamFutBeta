@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventsService } from 'src/app/services/events.service';
 
 import { Game, game, MockValues } from '../../model/mockdata';
@@ -11,7 +12,7 @@ import { Game, game, MockValues } from '../../model/mockdata';
 export class DashboardComponent implements OnInit {
   response:Array<string>;
   game:Game = game;
-  constructor(private eventService: EventsService, private mockValues: MockValues) { }
+  constructor(private router: Router, private eventService: EventsService, private mockValues: MockValues) { }
 
   ngOnInit() {
     this.getEvents();
@@ -31,8 +32,10 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  gameDetails() {
-    
+  gameDetails($event) {
+    let id = $event;
+    console.log('Check if this is right', id);
+    this.router.navigate([`/event-details, ${id}`])
   }
 
 }
