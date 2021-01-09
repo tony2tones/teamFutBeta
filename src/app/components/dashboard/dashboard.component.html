@@ -1,8 +1,8 @@
-<mat-card class="event-details" *ngIf="events; else loading">
+<mat-card class="event-details" *ngIf="game; else loading">
   <mat-card-header>
     <div mat-card-avatar class="event-header-image"></div>
-    <mat-card-title>{{ events[0]?.title }}</mat-card-title>
-    <mat-card-subtitle>{{ events[0]?.location }}</mat-card-subtitle>
+    <mat-card-title>{{ game?.title }}</mat-card-title>
+    <mat-card-subtitle>{{ game?.location }}</mat-card-subtitle>
   </mat-card-header>
   <div class="box">
     <img
@@ -10,25 +10,32 @@
       src="../../../assets/images/trekkerz.png"
       alt="Trekkerz"
     />
-    <div class="time-text">Starting time: {{ events[0]?.time }}</div>
+    <div class="time-text">Starting time: {{ game?.time }}</div>
   </div>
   <mat-card-content>
     <h4>Players and statuses</h4>
 
-    <span> Players Attending {{ players?.length }}</span>
+    <span> Players Attending {{ game.players?.length }}</span>
     <mat-list>
-      <mat-list-item *ngFor="let player of players">
+      <mat-list-item *ngFor="let player of game.players">
         <mat-icon matListIcon>mood</mat-icon>
         <h3 matLine>{{ player.name }} {{ player.state }}</h3>
       </mat-list-item>
     </mat-list>
     <mat-card-actions>
-        <button mat-button (click)="addPlayer()"> {{ join == true ? 'Remove Me' : 'Add Me' }}</button>
+      <a [routerLink]="['/event-details', game.id]">Go to details</a>
+        <button mat-button (click)="gameDetails()"> View more details</button>
         <button mat-button (click)="addEvent()"> {{ join == true ? 'Confirm' : 'Cancel'}}</button>
       </mat-card-actions>
   </mat-card-content>
 </mat-card>
-
+<!-- <div class="card"> -->
+  <!-- <img src="img_avatar.png" alt="Avatar" style="width:100%"> -->
+  <!-- <div class="container"> -->
+    <!-- <h4><b>{{game.title}}</b></h4> -->
+    <!-- <p>{{game.location}}</p> -->
+  <!-- </div> -->
+<!-- </div> -->
 <ng-template #loading>
     Loading stuff...
   </ng-template>

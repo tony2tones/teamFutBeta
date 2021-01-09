@@ -31,4 +31,8 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  gameDetails() {
+    
+  }
+
 }

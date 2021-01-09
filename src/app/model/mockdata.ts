@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 
  export interface Game {
-  eventId: string;
+  id: string;
   title: string;
   location: string;
   date: string;
@@ -17,7 +17,7 @@ import { of } from 'rxjs';
 }
 
 export const game: Game = {
-  eventId: '1',
+  id: '1',
   title: 'Fives Sunday',
   location: 'Rhodes',
   date: '18 Jan 2021',
