@@ -14,16 +14,8 @@
   </div>
   <mat-card-content>
     <h4>Players Attending</h4>
-
     <p>{{ game.players?.length }}</p>
-    <!-- <mat-list> -->
-      <!-- <mat-list-item *ngFor="let player of game.players">
-        <mat-icon matListIcon>mood</mat-icon>
-        <h3 matLine>{{ player.name }} {{ player.state }}</h3>
-      </mat-list-item> -->
-    <!-- </mat-list> -->
     <mat-card-actions>
-      <!-- <button>Go to details</button> -->
       <a [routerLink]="['/event-details', game.id]"> <button mat-button> View more details</button></a>
       </mat-card-actions>
   </mat-card-content>
