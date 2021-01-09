@@ -16,23 +16,38 @@ import { of } from 'rxjs';
   state: string;
 }
 
-export const game: Game = {
-  id: '1',
-  title: 'Fives Sunday',
-  location: 'Rhodes',
-  date: '18 Jan 2021',
-  time: '09:00',
-  players: [
-    { name: 'Tony', state: 'confirmed' },
-    { name: 'Donny', state: 'confirmed' },
-    { name: 'Kenny', state: 'maybe' },
-    { name: 'Serg', state: 'confirmed' }
-  ]
-}
+export const games = [
+    {
+    id: '1',
+    title: 'Fives Sunday',
+    location: 'Rhodes',
+    date: '18 Jan 2021',
+    time: '09:00',
+    players: [
+      { name: 'Tony', state: 'confirmed' },
+      { name: 'Donny', state: 'confirmed' },
+      { name: 'Kenny', state: 'maybe' },
+      { name: 'Serg', state: 'confirmed' }
+    ]
+  },
+  {
+    id: '2',
+    title: 'Mid week madness Wednesday',
+    location: 'Century City',
+    date: '24 Jan 2021',
+    time: '09:00',
+    players: [
+      { name: 'Tony', state: 'confirmed' },
+      { name: 'Donny', state: 'confirmed' },
+      { name: 'Kenny', state: 'maybe' },
+      { name: 'Serg', state: 'confirmed' }
+    ]
+  }
+]
 
 @Injectable()
 export class MockValues {
   getMockValues() {
-    return of(game);
+    return of(games);
   }
 }

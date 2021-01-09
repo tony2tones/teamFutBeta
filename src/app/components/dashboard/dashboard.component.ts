@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventsService } from 'src/app/services/events.service';
 
-import { Game, game, MockValues } from '../../model/mockdata';
+import { Game, games, MockValues } from '../../model/mockdata';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +11,7 @@ import { Game, game, MockValues } from '../../model/mockdata';
 })
 export class DashboardComponent implements OnInit {
   response:Array<string>;
-  game:Game = game;
+  games = games;
   constructor(private router: Router, private eventService: EventsService, private mockValues: MockValues) { }
 
   ngOnInit() {
@@ -21,9 +21,14 @@ export class DashboardComponent implements OnInit {
   getEvents() {
     this.mockValues.getMockValues().subscribe(
       (event: any) => {
-        event = this.game;
+        event = this.games;
         // this.mockValues.getMockValues();
+        let toast = event;
         console.log('consolely eventy ', event);
+        console.log('consolely eventy ', JSON.stringify(event));
+        // console.log('consolely eventy ', event.id['1']);
+        console.log('consolely eventy ', event);
+        event.id
         // console.log(this.response);
         // this.setPlayerState(this.events);
         // if(this.events.location && this)

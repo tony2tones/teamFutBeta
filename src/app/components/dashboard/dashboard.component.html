@@ -1,21 +1,21 @@
 <div class="container">
   <div class="card-container">
-    <mat-card class="event-details" *ngIf="game; else loading">
+    <mat-card class="event-details" *ngIf="games; else loading">
       <mat-card-header>
         <div mat-card-avatar class="event-header-image"></div>
         <div class="title">
-          <mat-card-title>{{ game?.title }}</mat-card-title>
-          <mat-card-subtitle>{{ game?.location }}</mat-card-subtitle>
+          <mat-card-title>{{ games?.title }}</mat-card-title>
+          <mat-card-subtitle>{{ games?.location }}</mat-card-subtitle>
         </div>
       </mat-card-header>
       <div class="box">
         <img mat-card-image src="../../../assets/images/trekkerz.png" alt="Trekkerz" />
-        <div class="time-text">Starting time: {{ game?.time }}</div>
+        <div class="time-text">Starting time: {{ games?.time }}</div>
       </div>
       <mat-card-content>
-        <h4>Players currently Attending {{ game.players?.length }}</h4>
+        <h4>Players currently Attending {{ games.players?.length }}</h4>
         <mat-card-actions>
-          <a [routerLink]="['/event-details', game.id]"> <button mat-button> View more details</button></a>
+          <a [routerLink]="['/event-details', games.id]"> <button mat-button> View more details</button></a>
         </mat-card-actions>
       </mat-card-content>
     </mat-card>
