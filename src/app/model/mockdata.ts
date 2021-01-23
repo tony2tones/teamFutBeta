@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 
- export interface Game {
+export interface Game {
   id: string;
   title: string;
   location: string;
@@ -11,13 +11,32 @@ import { of } from 'rxjs';
 }
 
 
- interface Players {
+interface Players {
   name: string;
   state: string;
 }
 
+export const eventdetails = [
+  {
+    id: '1',
+    title: 'Fives Sunday',
+    location: 'Rhodes',
+    date: '18 Jan 2021',
+    time: '09:00',
+    players: [
+      { name: 'Tony', state: 'confirmed' },
+      { name: 'Donny', state: 'confirmed' },
+      { name: 'Kenny', state: 'maybe' },
+      { name: 'Serg', state: 'confirmed' },
+      { name: 'Farrel', state: 'confirmed' },
+      { name: 'Kyle', state: 'confirmed' },
+      { name: 'Braulio', state: 'confirmed' }
+    ]
+  }
+];
+
 export const games = [
-    {
+  {
     id: '1',
     title: 'Fives Sunday',
     location: 'Rhodes',
@@ -81,5 +100,8 @@ export const games = [
 export class MockValues {
   getMockValues() {
     return of(games);
+  }
+  getMockEvent() {
+    return of(eventdetails);
   }
 }

@@ -5,6 +5,7 @@ import { EventsService } from '../../services/events.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 import { Event, Players } from '../../model/event.model';
 import { Player } from 'src/app/model/event.model';
+import { MockValues } from 'src/app/model/mockdata';
 
 @Component({
   selector: 'app-eventdetails',
@@ -15,7 +16,8 @@ export class EventDetailsComponent implements OnInit {
   constructor(
     private eventService: EventsService,
     private toastr: ToastMessageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private mockService: MockValues
   ) {}
   events: Event[];
   players: Players[];
@@ -59,9 +61,10 @@ export class EventDetailsComponent implements OnInit {
   }
 
   getEvents() {
-    this.eventService.getEvents().subscribe(
+    this.mockService.getMockEvent().subscribe(
       (event: any) => {
         this.events = event;
+        console.log('THE NEW EVENTS',this.events);
         this.setPlayerState(this.events);
         // if(this.events.location && this)
       },
