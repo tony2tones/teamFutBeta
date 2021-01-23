@@ -27,7 +27,10 @@ export const games = [
       { name: 'Tony', state: 'confirmed' },
       { name: 'Donny', state: 'confirmed' },
       { name: 'Kenny', state: 'maybe' },
-      { name: 'Serg', state: 'confirmed' }
+      { name: 'Serg', state: 'confirmed' },
+      { name: 'Farrel', state: 'confirmed' },
+      { name: 'Kyle', state: 'confirmed' },
+      { name: 'Braulio', state: 'confirmed' }
     ]
   },
   {
@@ -35,7 +38,7 @@ export const games = [
     title: 'Mid week madness Wednesday',
     location: 'Century City',
     date: '24 Jan 2021',
-    time: '09:00',
+    time: '11:00',
     players: [
       { name: 'Tony', state: 'confirmed' },
       { name: 'Donny', state: 'confirmed' },

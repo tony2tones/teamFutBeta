@@ -13,7 +13,10 @@ export class DashboardComponent implements OnInit {
   response:Array<string>;
   games = games;
   constructor(private router: Router, private eventService: EventsService, private mockValues: MockValues) { }
-
+ event: Event;
+  title:string;
+  location:string;
+  sample:any;
   ngOnInit() {
     this.getEvents();
   }
@@ -23,13 +26,24 @@ export class DashboardComponent implements OnInit {
       (event: any) => {
         event = this.games;
         // this.mockValues.getMockValues();
-        let toast = event;
-        console.log('consolely eventy ', event);
+        let toast = event.filter(value => value.id === '1');
+        console.log('consolely eventy filter', toast);
         console.log('consolely eventy ', JSON.stringify(event));
         // console.log('consolely eventy ', event.id['1']);
         console.log('consolely eventy ', event);
-        event.id
-        // console.log(this.response);
+        this.sample = this.games.map((e) => {
+          return {
+              id : e.id,
+              location: e.location,
+              title : e.title,
+              time : e.time,
+              players: e.players,
+              date: e.date
+
+            }
+        })
+
+        console.log('the samoke ', this.sample);
         // this.setPlayerState(this.events);
         // if(this.events.location && this)
       },
