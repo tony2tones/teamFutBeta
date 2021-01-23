@@ -47,7 +47,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     authObs.subscribe(
       respData => {
         console.log(respData);
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
         this.isLoading = false;
         this.router.navigate(["/"]);
       },
