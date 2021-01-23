@@ -13,7 +13,7 @@
                 <div class="time-text">Starting time: {{ game?.time }}</div>
             </div>
             <mat-card-content>
-                <h4>Players currently Attending {{ game.players?.length }}</h4>
+                <p>Players currently Attending {{ game.players?.length }}</p>
                 <mat-card-actions>
                     <a [routerLink]="['/game-details', game.id]"> <button mat-button> View more details</button></a>
                 </mat-card-actions>
