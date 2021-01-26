@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="games">
     <div class="card-container" *ngIf="games; else loading">
         <mat-card class="event-details" *ngFor="let game of sample">
             <mat-card-header>
@@ -14,8 +14,8 @@
             </div>
             <mat-card-content>
                 <p>Players currently Attending {{ game.players?.length }}</p>
-                <mat-card-actions>
-                    <a [routerLink]="['/game-details', game.id]"> <button mat-button> View more details</button></a>
+                <mat-card-actions (click)='gameDetails( game.id )'>
+                    <a [routerLink]="['/game-details/',game.id]"> <button mat-button> View more details</button></a>
                 </mat-card-actions>
             </mat-card-content>
         </mat-card>

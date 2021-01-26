@@ -5,7 +5,7 @@ import { EventsService } from '../../services/events.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 import { Event, Players } from '../../model/event.model';
 import { Player } from 'src/app/model/event.model';
-import { MockValues } from 'src/app/model/mockdata';
+import { Game, games, MockValues } from 'src/app/model/mockdata';
 
 @Component({
   selector: 'app-eventdetails',
@@ -24,6 +24,8 @@ export class EventDetailsComponent implements OnInit {
   join: boolean = false;
   player: Player;
   name:string;
+  game = games;
+  sample:any;
 
   playa = { name: 'Farrel', state: 'confirmed' };
 
@@ -61,16 +63,34 @@ export class EventDetailsComponent implements OnInit {
   }
 
   getEvents() {
-    this.mockService.getMockEvent().subscribe(
-      (event: any) => {
-        this.events = event;
-        console.log('THE NEW EVENTS',this.events);
-        this.setPlayerState(this.events);
-        // if(this.events.location && this)
-      },
-      error => console.log(error)
-    );
-  }
+    console.log('IS THIS EVENT CALLED!!');
+
+    const id = +this.route.snapshot.paramMap.get('id');
+  this.mockService.getMockEvent(id)
+    .subscribe(hero => this.game = hero);
+
+    // this.mockService.getMockEvent().subscribe(
+    //   (event: any) => {
+    //     event = this.game;
+    //     // this.mockValues.getMockValues();
+    //     let toast = event.filter(value => value.id === '1');
+    //     console.log('consolely eventy filter', toast);
+    //     console.log('consolely json', JSON.stringify(toast));
+    //     // console.log('consolely eventy ', event.id['1']);
+    //     console.log('consolely eventy ', event);
+    //     this.game = () => {
+    //       return {
+    //           id : toast.id,
+    //           location: toast.location,
+    //           title : toast.title,
+    //           time : toast.time,
+    //           players: toast.players,
+    //           date: toast.date
+    //         }
+    //     }
+    //   }),
+      console.log(this.game)
+    }
 
   addEvent() {
     this.eventService.updateEvents(this.events).subscribe(

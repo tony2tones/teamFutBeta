@@ -101,7 +101,8 @@ export class MockValues {
   getMockValues() {
     return of(games);
   }
-  getMockEvent() {
+  getMockEvent(id) {
+    console.log('this is the id dawg ',id);
     return of(eventdetails);
   }
 }
