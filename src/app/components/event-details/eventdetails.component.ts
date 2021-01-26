@@ -66,30 +66,28 @@ export class EventDetailsComponent implements OnInit {
     console.log('IS THIS EVENT CALLED!!');
 
     const id = +this.route.snapshot.paramMap.get('id');
-  this.mockService.getMockEvent(id)
-    .subscribe(hero => this.game = hero);
+  // this.mockService.getMockEvent(id)
+  //   .subscribe(hero => this.game = hero);
+  //   this.sample = id;
 
-    // this.mockService.getMockEvent().subscribe(
-    //   (event: any) => {
-    //     event = this.game;
-    //     // this.mockValues.getMockValues();
-    //     let toast = event.filter(value => value.id === '1');
-    //     console.log('consolely eventy filter', toast);
-    //     console.log('consolely json', JSON.stringify(toast));
-    //     // console.log('consolely eventy ', event.id['1']);
-    //     console.log('consolely eventy ', event);
-    //     this.game = () => {
-    //       return {
-    //           id : toast.id,
-    //           location: toast.location,
-    //           title : toast.title,
-    //           time : toast.time,
-    //           players: toast.players,
-    //           date: toast.date
-    //         }
-    //     }
-    //   }),
-      console.log(this.game)
+    this.mockService.getMockEvent(id).subscribe(
+      (event: any) => {
+        event = this.game;
+        // this.mockValues.getMockValues();
+        let toast = event.filter(value => value.id === '1');
+        console.log('consolely eventy filter', toast);
+        this.sample = () => {
+          return {
+              id : toast.id,
+              location: toast.location,
+              title : toast.title,
+              time : toast.time,
+              players: toast.players,
+              date: toast.date
+            }
+        }
+      }),
+      console.log('important ',this.sample)
     }
 
   addEvent() {
