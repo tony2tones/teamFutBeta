@@ -74,7 +74,7 @@ export class EventDetailsComponent implements OnInit {
       (event: any) => {
         event = this.game;
         // this.mockValues.getMockValues();
-        this.event = event.filter((value:Event) => value.id === '1');
+        this.event = event.filter((value:Event) => value.id === id.toString());
         // console.log('consolely eventy filter', toast);
             
         })
