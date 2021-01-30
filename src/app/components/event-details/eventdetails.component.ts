@@ -46,7 +46,7 @@ export class EventDetailsComponent implements OnInit {
       // this.events.push(this.players);
       // console.log('should be in this list?',this.events); 
     // this.players.push(...newArray, toasty);
-      console.log('should be in this list?', this.events);
+      console.log('should be in this list?', this.event);
       this.addEvent();
     }
   }
@@ -74,7 +74,7 @@ export class EventDetailsComponent implements OnInit {
       (event: any) => {
         event = this.game;
         // this.mockValues.getMockValues();
-        this.event = event.filter((value:Event) => value.id === id.toString());
+        this.event = event.filter((value:Event) => value.id === String(id));
         // console.log('consolely eventy filter', toast);
             
         })
