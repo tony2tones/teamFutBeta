@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private mockService: MockValues
   ) {}
-  events: Event[];
+  event: Event[];
   players: Players[];
   join: boolean = false;
   player: Player;
@@ -74,24 +74,14 @@ export class EventDetailsComponent implements OnInit {
       (event: any) => {
         event = this.game;
         // this.mockValues.getMockValues();
-        let toast = event.filter(value => value.id === '1');
-        console.log('consolely eventy filter', toast, id);
-        this.sample = () => {
-          return {
-              id : toast.id,
-              location: toast.location,
-              title : toast.title,
-              time : toast.time,
-              players: toast.players,
-              date: toast.date
-            }
-        }
-      }),
-      console.log('important ',this.sample)
+        this.event = event.filter((value:Event) => value.id === '1');
+        // console.log('consolely eventy filter', toast);
+            
+        })
     }
 
   addEvent() {
-    this.eventService.updateEvents(this.events).subscribe(
+    this.eventService.updateEvents(this.event).subscribe(
       repsonse => {
         this.toastr.showSuccess(
           'Has been successfully joined in.',
