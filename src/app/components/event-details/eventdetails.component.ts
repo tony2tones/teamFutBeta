@@ -5,6 +5,7 @@ import { EventsService } from '../../services/events.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 import { Event, Players } from '../../model/event.model';
 import { Player } from 'src/app/model/event.model';
+import { Game, games, MockValues } from 'src/app/model/mockdata';
 
 @Component({
   selector: 'app-eventdetails',
@@ -15,13 +16,16 @@ export class EventDetailsComponent implements OnInit {
   constructor(
     private eventService: EventsService,
     private toastr: ToastMessageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private mockService: MockValues
   ) {}
-  events: Event[];
+  event: Event[];
   players: Players[];
   join: boolean = false;
   player: Player;
   name:string;
+  game = games;
+  sample:any;
 
   playa = { name: 'Farrel', state: 'confirmed' };
 
@@ -59,18 +63,25 @@ export class EventDetailsComponent implements OnInit {
   }
 
   getEvents() {
-    this.eventService.getEvents().subscribe(
+    console.log('IS THIS EVENT CALLED!!');
+
+    const id = +this.route.snapshot.paramMap.get('id');
+  // this.mockService.getMockEvent(id)
+  //   .subscribe(hero => this.game = hero);
+  //   this.sample = id;
+
+    this.mockService.getMockEvent(id).subscribe(
       (event: any) => {
-        this.events = event;
-        this.setPlayerState(this.events);
-        // if(this.events.location && this)
-      },
-      error => console.log(error)
-    );
-  }
+        event = this.game;
+        // this.mockValues.getMockValues();
+        this.event = event.filter((value:Event) => value.id === id.toString());
+        // console.log('consolely eventy filter', toast);
+            
+        })
+    }
 
   addEvent() {
-    this.eventService.updateEvents(this.events).subscribe(
+    this.eventService.updateEvents(this.event).subscribe(
       repsonse => {
         this.toastr.showSuccess(
           'Has been successfully joined in.',

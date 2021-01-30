@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EventsService } from 'src/app/services/events.service';
 
 import { Game, games, MockValues } from '../../model/mockdata';
@@ -12,11 +12,12 @@ import { Game, games, MockValues } from '../../model/mockdata';
 export class DashboardComponent implements OnInit {
   response:Array<string>;
   games = games;
-  constructor(private router: Router, private eventService: EventsService, private mockValues: MockValues) { }
+  constructor(private router: Router, private eventService: EventsService, private mockValues: MockValues, private route: ActivatedRoute) { }
  event: Event;
   title:string;
   location:string;
   sample:any;
+
   ngOnInit() {
     this.getEvents();
   }
@@ -28,7 +29,6 @@ export class DashboardComponent implements OnInit {
         // this.mockValues.getMockValues();
         let toast = event.filter(value => value.id === '1');
         console.log('consolely eventy filter', toast);
-        console.log('consolely eventy ', JSON.stringify(event));
         // console.log('consolely eventy ', event.id['1']);
         console.log('consolely eventy ', event);
         this.sample = this.games.map((e) => {
@@ -51,10 +51,10 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  gameDetails($event) {
-    let id = $event;
-    console.log('Check if this is right', id);
-    this.router.navigate([`/event-details, ${id}`])
+  gameDetails(event$) {
+    let id = event$;
+    console.log('Check if this is right', event$);
+    this.router.navigate([`/event-details/, ${id}`])
   }
 
 }
