@@ -6,3 +6,4 @@ to show when the team has at least 10 players it'll go green
 - User profile upload photos and get stats from other players
 or set man of the match trophies for that player and get a head count
 
+- view and join game function on event details 
