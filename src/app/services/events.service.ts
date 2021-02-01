@@ -14,7 +14,7 @@ export class EventsService {
 
   getEvents() {
     return this.authService.user.pipe(
-      take(1),
+      // take(1),
       exhaustMap(user => {
         return this.http.get('https://teamfutbeta-88c44.firebaseio.com/event.json'
         );
