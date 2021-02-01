@@ -5,7 +5,7 @@ export interface Event {
   location: string;
   date: string;
   time: string;
-  players: Players[];
+  players: [{name:string,state:string}];
 }
 
 export interface Player {
@@ -14,6 +14,6 @@ export interface Player {
 }
 
 export interface Players {
-  players: Player;
+  player: Player;
 }
 

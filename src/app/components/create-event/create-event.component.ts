@@ -25,7 +25,7 @@ export class CreateEventComponent implements OnInit {
   @ViewChild('step1') stepper: MatStepper;
 
   attendingState: Array<string> = ['Confirmed', 'Maybe'];
-  eventDetails: Event[];
+  eventDetails: any;
   details: Event;
   players: Player[] = [];
   player: Player;
@@ -42,7 +42,8 @@ export class CreateEventComponent implements OnInit {
       title: ['Sunday Game', Validators.compose([Validators.required])],
       location: ['Mowbray', Validators.compose([Validators.required])],
       date: ['this sunday', Validators.compose([Validators.required])],
-      time: ['09:00', Validators.compose([Validators.required])]
+      time: ['09:00', Validators.compose([Validators.required])],
+      players : []
     });
     this.eventForm = this.fb.group({
       name: [''],
@@ -61,8 +62,13 @@ export class CreateEventComponent implements OnInit {
   }
 
   addEventDetails() {
-    let group = [];
-    this.eventDetails = group.concat(this.details, this.players);
+    let group;
+    console.log('details ', this.details, 'players ', this.players);
+    this.eventDetails = this.details;
+    this.eventDetails.players = this.players;
+    console.log('THE DEETs', this.eventDetails)
+    // this.eventDetails = group.concat(this.details, this.players);
+    // this.eventDetails = group = this.details.push(this.players)
   }
 
   deleteConfirmed(name: string) {
@@ -76,6 +82,8 @@ export class CreateEventComponent implements OnInit {
   addEvent() {
     this.eventsService.updateEvents(this.eventDetails).subscribe(
       repsonse => {
+      console.log('the full details ', this.eventDetails);
+
         this.router.navigate(['/']),
           this.toastr.showSuccess(
             'Has been successfully created.',
