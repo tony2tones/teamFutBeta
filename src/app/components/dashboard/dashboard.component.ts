@@ -23,37 +23,32 @@ export class DashboardComponent implements OnInit {
   }
 
   getEvents() {
-    // this.mockValues.getMockValues().subscribe(
-    this.eventService.getEvents().subscribe((data) => {
-      console.log('consolely eventy filter', data);
-    });
-  }
-      // (event: any) => {
-      //   event = this.games;
-      //   // this.mockValues.getMockValues();
-      //   let toast = event.filter(value => value.id === '1');
-      //   console.log('consolely eventy filter', toast);
-      //   // console.log('consolely eventy ', event.id['1']);
-      //   console.log('consolely eventy ', event);
-      //   this.sample = this.games.map((e) => {
-      //     return {
-      //         id : e.id,
-      //         location: e.location,
-      //         title : e.title,
-      //         time : e.time,
-      //         players: e.players,
-      //         date: e.date
+    this.mockValues.getMockValues().subscribe((event: any) => {
+        event = this.games;
+        // this.mockValues.getMockValues();
+        // let toast = event.filter(value => value.id === '1');
+        // console.log('consolely eventy filter', toast);
+        // console.log('consolely eventy ', event.id['1']);
+        console.log('consolely eventy ', event);
+        this.sample = this.games.map((e) => {
+          return {
+              id : e.id,
+              location: e.location,
+              title : e.title,
+              time : e.time,
+              players: e.players,
+              date: e.date
 
-      //       }
-      //   })
+            }
+        })
 
-        // console.log('the samoke ', this.sample);
+        console.log('the samoke ', this.sample);
         // this.setPlayerState(this.events);
         // if(this.events.location && this)
-      // },
-      // error => console.log(error)
-  //   );
-  // }
+      },
+      error => console.log(error)
+    );
+  }
 
   gameDetails(event$) {
     let id = event$;

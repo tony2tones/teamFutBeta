@@ -9,7 +9,7 @@ import { AuthGaurd } from './components/auth/auth.gaurd';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'event-details/:id', component: EventDetailsComponent },
   {
     path: 'create-event', component: CreateEventComponent,

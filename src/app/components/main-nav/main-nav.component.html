@@ -2,7 +2,7 @@
     <mat-sidenav #drawer class="sidenav" [ngClass]="{ hidden: !(isHandset$ | async) }" fixedInViewport="false" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list (click)="drawer.toggle()">
-            <a mat-list-item routerLink="/">Dashboard</a>
+            <a mat-list-item routerLink="/dashboard">Dashboard</a>
             <a mat-list-item routerLink="/create-event">Create an event</a>
             <a mat-list-item routerLink="/about">About</a>
             <a mat-list-item *ngIf="isAuthenticated" (click)="onLogout()">Logout</a>
