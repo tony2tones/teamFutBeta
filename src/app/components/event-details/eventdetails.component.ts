@@ -81,21 +81,21 @@ export class EventDetailsComponent implements OnInit {
     }
 
   addEvent() {
-    this.eventService.updateEvents(this.event).subscribe(
-      repsonse => {
-        this.toastr.showSuccess(
-          'Has been successfully joined in.',
-          'Footy game'
-        );
-      },
-      error => {
-        console.log(error);
-        this.toastr.showFail(
-          'Something went wrong, please select the reset option to try again.',
-          'Error'
-        );
-      }
-    );
+    // this.eventService.updateEvents(this.event).subscribe(
+    //   repsonse => {
+    //     this.toastr.showSuccess(
+    //       'Has been successfully joined in.',
+    //       'Footy game'
+    //     );
+    //   },
+    //   error => {
+    //     console.log(error);
+    //     this.toastr.showFail(
+    //       'Something went wrong, please select the reset option to try again.',
+    //       'Error'
+    //     );
+    //   }
+    // );
   }
 
   setPlayerState(data: any[]) {

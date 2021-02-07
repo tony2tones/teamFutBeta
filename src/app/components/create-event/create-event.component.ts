@@ -25,7 +25,7 @@ export class CreateEventComponent implements OnInit {
   @ViewChild('step1') stepper: MatStepper;
 
   attendingState: Array<string> = ['Confirmed', 'Maybe'];
-  eventDetails: any;
+  eventDetails: Event[];
   details: Event;
   players: Player[] = [];
   player: Player;
@@ -62,11 +62,11 @@ export class CreateEventComponent implements OnInit {
   }
 
   addEventDetails() {
-    let group;
-    console.log('details ', this.details, 'players ', this.players);
-    this.eventDetails = this.details;
-    this.eventDetails.players = this.players;
-    console.log('THE DEETs', this.eventDetails)
+    // let group;
+    // console.log('details ', this.details, 'players ', this.players);
+    // this.eventDetails.push(this.details);
+    // this.eventDetails.players = this.players;
+    // console.log('THE DEETs', this.eventDetails)
     // this.eventDetails = group.concat(this.details, this.players);
     // this.eventDetails = group = this.details.push(this.players)
   }
@@ -80,23 +80,23 @@ export class CreateEventComponent implements OnInit {
   }
 
   addEvent() {
-    this.eventsService.updateEvents(this.eventDetails).subscribe(
-      repsonse => {
-      console.log('the full details ', this.eventDetails);
+    // this.eventsService.updateEvents(this.eventDetails).subscribe(
+    //   repsonse => {
+    //   console.log('the full details ', this.eventDetails);
 
-        this.router.navigate(['/']),
-          this.toastr.showSuccess(
-            'Has been successfully created.',
-            'Footy game'
-          );
-      },
-      error => {
-        console.log(error);
-        this.toastr.showFail(
-          'Something went wrong, please select the reset option to try again.',
-          'Error'
-        );
-      }
-    );
+    //     this.router.navigate(['/']),
+    //       this.toastr.showSuccess(
+    //         'Has been successfully created.',
+    //         'Footy game'
+    //       );
+    //   },
+    //   error => {
+    //     console.log(error);
+    //     this.toastr.showFail(
+    //       'Something went wrong, please select the reset option to try again.',
+    //       'Error'
+    //     );
+    //   }
+    // );
   }
 }

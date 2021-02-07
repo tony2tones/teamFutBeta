@@ -1,38 +1,51 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Response } from '@angular/http';
 import 'rxjs/Rx';
 import { AuthService } from './auth.service';
 import { exhaustMap, take, map } from 'rxjs/operators';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+import { Observable } from 'rxjs/Rx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
 
-  constructor(private http: HttpClient, private authService:AuthService) { }
+  constructor( private firestore: AngularFirestore ) {}
 
-  getEvents() {
-    return this.authService.user.pipe(
-      // take(1),
-      exhaustMap(user => {
-        return this.http.get('https://teamfutbeta-88c44.firebaseio.com/event.json'
-        );
-      }),
-      map(
-        (response: Response) => {
-          const event = response;
-          return event;
-        }
-      ));
-    }
+  // constructor(private http: HttpClient, private realtimeDb: AngularFireDatabase) {}
+  // constructor(private http: HttpClient, private authService:AuthService, private fireDB: AngularFireDatabase,
+  //   private fireService: AppFirebaseService ) { }
+getEvents(): Observable<any> {
+  return this.firestore.collection('events').valueChanges();
+  // return this.realtimeDb.list('event').valueChanges();
+}
+  // getEvents() {
+  //   return this.authService.user.pipe(
+  //     // take(1),
+  //     exhaustMap(user => {
+  //       return this.http.get('https://teamfutbeta-88c44.firebaseio.com/events.json'
+  //       );
+  //     }),
+  //     map(
+  //       (response: Response) => {
+  //         const event = response;
+  //         return event;
+  //       }
+  //     ));
+  //   }
 
   updateEvents(event:any[]) {
-    return this.http.put('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
+    console.log('EVENT updated ', event);
+    // return this.http.put('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
   }
 
   createEvent(event:Event[]) {
     console.log('this is the event that is passed', event);
-    return this.http.post('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
+    // return this.http.post('https://teamfutbeta-88c44.firebaseio.com/events.json', event);
+    // return this.realtimeDb.
   }
 }

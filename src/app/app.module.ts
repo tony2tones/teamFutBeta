@@ -40,6 +40,8 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceHolderDirective } from './shared/placeHolder/placeHolder.directive';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MockValues } from "./model/mockdata";
+// import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { MockValues } from "./model/mockdata";
     LayoutModule,
     MatToolbarModule,
     MatSidenavModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: "toast-top-right",
