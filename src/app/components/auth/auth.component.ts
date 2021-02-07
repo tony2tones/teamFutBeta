@@ -15,7 +15,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   loginMode: boolean = true;
   isLoading: boolean = false;
   error: string = null;
-  @ViewChild(PlaceHolderDirective) alertHost: PlaceHolderDirective;
+  @ViewChild(PlaceHolderDirective, {static: false}) alertHost: PlaceHolderDirective;
 
   private closeSub: Subscription;
 

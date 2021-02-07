@@ -22,10 +22,10 @@ export class CreateEventComponent implements OnInit {
 
   event: Event;
   isLinear = true;
-  @ViewChild('step1') stepper: MatStepper;
+  @ViewChild('step1', {static: false}) stepper: MatStepper;
 
   attendingState: Array<string> = ['Confirmed', 'Maybe'];
-  eventDetails: Event[];
+  eventDetails: Event[] = [];
   details: Event;
   players: Player[] = [];
   player: Player;
@@ -63,10 +63,10 @@ export class CreateEventComponent implements OnInit {
 
   addEventDetails() {
     // let group;
-    // console.log('details ', this.details, 'players ', this.players);
-    // this.eventDetails.push(this.details);
-    // this.eventDetails.players = this.players;
-    // console.log('THE DEETs', this.eventDetails)
+    console.log('details ', this.details, 'players ', ...this.players);
+    this.eventDetails.push(this.details);
+    this.details.players = this.players || [];
+    console.log('THE DEETs', this.eventDetails);
     // this.eventDetails = group.concat(this.details, this.players);
     // this.eventDetails = group = this.details.push(this.players)
   }
