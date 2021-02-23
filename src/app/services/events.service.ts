@@ -43,8 +43,15 @@ getEvents(): Observable<any> {
     // return this.http.put('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
   }
 
-  createEvent(event:Event[]) {
+  createEvent(event:any) {
     console.log('this is the event that is passed', event);
+    event = {
+      title: event.title,
+      location: event.location,
+      // date: event.date,
+      time: event.time
+    }
+    return this.firestore.collection('events').doc('game-1').set(event);
     // return this.http.post('https://teamfutbeta-88c44.firebaseio.com/events.json', event);
     // return this.realtimeDb.
   }

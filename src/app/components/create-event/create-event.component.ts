@@ -26,7 +26,7 @@ export class CreateEventComponent implements OnInit {
 
   attendingState: Array<string> = ['Confirmed', 'Maybe'];
   eventDetails: Event[] = [];
-  details: Event;
+  details: any;
   players: Player[] = [];
   player: Player;
 
@@ -65,7 +65,7 @@ export class CreateEventComponent implements OnInit {
     // let group;
     console.log('details ', this.details, 'players ', ...this.players);
     this.eventDetails.push(this.details);
-    this.details.players = this.players || [];
+    this.details.players = this.players;
     console.log('THE DEETs', this.eventDetails);
     // this.eventDetails = group.concat(this.details, this.players);
     // this.eventDetails = group = this.details.push(this.players)
@@ -80,6 +80,10 @@ export class CreateEventComponent implements OnInit {
   }
 
   addEvent() {
+    console.log('submitted details ', this.eventDetails)
+    this.eventsService.createEvent(this.eventDetails).then(() => {
+      console.log('errotr');
+    })
     // this.eventsService.updateEvents(this.eventDetails).subscribe(
     //   repsonse => {
     //   console.log('the full details ', this.eventDetails);
