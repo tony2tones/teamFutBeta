@@ -45,13 +45,18 @@ getEvents(): Observable<any> {
 
   createEvent(event:any) {
     console.log('this is the event that is passed', event);
-    event = {
+  const  eventer = {
       title: event.title,
       location: event.location,
-      // date: event.date,
+      date: event.date,
       time: event.time
     }
-    return this.firestore.collection('events').doc('game-1').set(event);
+    return this.firestore.collection('events').doc('game-2').set({
+      title: event.title,
+      location: event.location,
+      date: event.date,
+      time: event.time
+    });
     // return this.http.post('https://teamfutbeta-88c44.firebaseio.com/events.json', event);
     // return this.realtimeDb.
   }

@@ -79,7 +79,12 @@ export class CreateEventComponent implements OnInit {
     }) 
   }
 
+  // https://www.reddit.com/r/learnprogramming/comments/bs4vjf/tsfirebaseerror_function_documentreferenceset/
+
   addEvent() {
+    let record = {};
+
+    // record['date'] = this.eventDetails.date;
     console.log('submitted details ', this.eventDetails)
     this.eventsService.createEvent(this.eventDetails).then(() => {
       console.log('errotr');
