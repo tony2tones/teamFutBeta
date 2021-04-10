@@ -22,11 +22,11 @@ export class CreateEventComponent implements OnInit {
 
   event: Event;
   isLinear = true;
-  @ViewChild('step1') stepper: MatStepper;
+  @ViewChild('step1', {static: false}) stepper: MatStepper;
 
   attendingState: Array<string> = ['Confirmed', 'Maybe'];
-  eventDetails: any;
-  details: Event;
+  eventDetails: Event[] = [];
+  details: any;
   players: Player[] = [];
   player: Player;
 
@@ -62,11 +62,11 @@ export class CreateEventComponent implements OnInit {
   }
 
   addEventDetails() {
-    let group;
-    console.log('details ', this.details, 'players ', this.players);
-    this.eventDetails = this.details;
-    this.eventDetails.players = this.players;
-    console.log('THE DEETs', this.eventDetails)
+    // let group;
+    console.log('details ', this.details, 'players ', ...this.players);
+    this.eventDetails.push(this.details);
+    this.details.players = this.players;
+    console.log('THE DEETs', this.eventDetails);
     // this.eventDetails = group.concat(this.details, this.players);
     // this.eventDetails = group = this.details.push(this.players)
   }
@@ -79,24 +79,33 @@ export class CreateEventComponent implements OnInit {
     }) 
   }
 
-  addEvent() {
-    this.eventsService.updateEvents(this.eventDetails).subscribe(
-      repsonse => {
-      console.log('the full details ', this.eventDetails);
+  // https://www.reddit.com/r/learnprogramming/comments/bs4vjf/tsfirebaseerror_function_documentreferenceset/
 
-        this.router.navigate(['/']),
-          this.toastr.showSuccess(
-            'Has been successfully created.',
-            'Footy game'
-          );
-      },
-      error => {
-        console.log(error);
-        this.toastr.showFail(
-          'Something went wrong, please select the reset option to try again.',
-          'Error'
-        );
-      }
-    );
+  addEvent() {
+    let record = {};
+
+    // record['date'] = this.eventDetails.date;
+    console.log('submitted details ', this.eventDetails)
+    this.eventsService.createEvent(this.eventDetails).then(() => {
+      console.log('errotr');
+    })
+    // this.eventsService.updateEvents(this.eventDetails).subscribe(
+    //   repsonse => {
+    //   console.log('the full details ', this.eventDetails);
+
+    //     this.router.navigate(['/']),
+    //       this.toastr.showSuccess(
+    //         'Has been successfully created.',
+    //         'Footy game'
+    //       );
+    //   },
+    //   error => {
+    //     console.log(error);
+    //     this.toastr.showFail(
+    //       'Something went wrong, please select the reset option to try again.',
+    //       'Error'
+    //     );
+    //   }
+    // );
   }
 }
