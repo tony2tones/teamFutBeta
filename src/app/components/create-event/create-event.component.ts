@@ -1,12 +1,12 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { EventsService } from '../../services/events.service';
+import { EventsService } from '../../services/games.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastMessageService } from '../../services/toast-message.service';
 
 import { MatStepper } from '@angular/material';
-import { Event } from '../../model/event.model';
-import { Player } from '../../model/event.model';
+import { Game } from '../../model/game.model';
+import { Player } from '../../model/game.model';
 
 export interface User {
   name: string;
@@ -20,12 +20,12 @@ export class CreateEventComponent implements OnInit {
   eventForm: FormGroup;
   detailsForm: FormGroup;
 
-  event: Event;
+  event: Game;
   isLinear = true;
   @ViewChild('step1', {static: false}) stepper: MatStepper;
 
   attendingState: Array<string> = ['Confirmed', 'Maybe'];
-  eventDetails: Event[] = [];
+  gameDetails: Game[] = [];
   details: any;
   players: Player[] = [];
   player: Player;
@@ -61,14 +61,14 @@ export class CreateEventComponent implements OnInit {
     this.players.push(...newArray, this.player);
   }
 
-  addEventDetails() {
+  addGameDetails() {
     // let group;
     console.log('details ', this.details, 'players ', ...this.players);
-    this.eventDetails.push(this.details);
+    this.gameDetails.push(this.details);
     this.details.players = this.players;
-    console.log('THE DEETs', this.eventDetails);
-    // this.eventDetails = group.concat(this.details, this.players);
-    // this.eventDetails = group = this.details.push(this.players)
+    console.log('THE DEETs', this.gameDetails);
+    // this.gameDetails = group.concat(this.details, this.players);
+    // this.gameDetails = group = this.details.push(this.players)
   }
 
   deleteConfirmed(name: string) {
@@ -84,14 +84,14 @@ export class CreateEventComponent implements OnInit {
   addEvent() {
     let record = {};
 
-    // record['date'] = this.eventDetails.date;
-    console.log('submitted details ', this.eventDetails)
-    this.eventsService.createEvent(this.eventDetails).then(() => {
+    // record['date'] = this.gameDetails.date;
+    console.log('submitted details ', this.gameDetails)
+    this.eventsService.createGame(this.gameDetails).then(() => {
       console.log('errotr');
     })
-    // this.eventsService.updateEvents(this.eventDetails).subscribe(
+    // this.eventsService.updateEvents(this.gameDetails).subscribe(
     //   repsonse => {
-    //   console.log('the full details ', this.eventDetails);
+    //   console.log('the full details ', this.gameDetails);
 
     //     this.router.navigate(['/']),
     //       this.toastr.showSuccess(

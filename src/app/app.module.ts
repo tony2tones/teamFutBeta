@@ -28,7 +28,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CreateEventComponent } from "./components/create-event/create-event.component";
 
-import { EventsService } from "./services/events.service";
+import { EventsService } from "./services/games.service";
 import { EventDetailsComponent } from "./components/event-details/eventdetails.component";
 import { MainNavComponent } from "./components/main-nav/main-nav.component";
 import { LayoutModule } from "@angular/cdk/layout";

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
-import { EventsService } from '../../services/events.service';
+import { EventsService } from '../../services/games.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
-import { Event, Players } from '../../model/event.model';
-import { Player } from 'src/app/model/event.model';
+import {  Players } from '../../model/game.model';
+import { Player } from 'src/app/model/game.model';
 import { Game, games, MockValues } from 'src/app/model/mockdata';
 
 @Component({
@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private mockService: MockValues
   ) {}
-  event: Event[];
+  event: Game[];
   players: Players[];
   join: boolean = false;
   player: Player;
@@ -74,7 +74,7 @@ export class EventDetailsComponent implements OnInit {
       (event: any) => {
         event = this.game;
         // this.mockValues.getMockValues();
-        this.event = event.filter((value:Event) => value.id === String(id));
+        // this.event = event.filter((value:Event) => value.id === String(id));
         // console.log('consolely eventy filter', toast);
             
         })

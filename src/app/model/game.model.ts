@@ -1,5 +1,5 @@
 
-export interface Event {
+export interface Game {
   id: string;
   title: string;
   location: string;

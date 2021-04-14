@@ -1,4 +1,4 @@
-## TO DOS
+## TO DOS IDEAS ##
 
 - green red amber for attendence status on card
 to show when the team has at least 10 players it'll go green
@@ -7,3 +7,6 @@ to show when the team has at least 10 players it'll go green
 or set man of the match trophies for that player and get a head count
 
 - view and join game function on event details 
+
+## FIXES ## 
+- REMOVE PLAYER FUNCTION
