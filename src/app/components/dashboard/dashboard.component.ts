@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventsService } from 'src/app/services/events.service';
+import { EventsService } from 'src/app/services/games.service';
 
 import { Game, games, MockValues } from '../../model/mockdata';
 
