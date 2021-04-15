@@ -54,7 +54,7 @@ export class EventsService {
     // return this.http.put('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
   }
 
-  createGame(game: Event) {
+  createGame(game: any) {
     let gameDetails;
     const id = this.firestore.createId();
     console.log("this is the game that is passed", game, " and id: ", id);
