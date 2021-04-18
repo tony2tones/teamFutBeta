@@ -81,12 +81,17 @@ export class CreateEventComponent implements OnInit {
 
   // https://www.reddit.com/r/learnprogramming/comments/bs4vjf/tsfirebaseerror_function_documentreferenceset/
 
-  addEvent() {
+  CraeteGameEvent() {
     let record = {};
+    record['date']=this.details.date;
+    record['location'] = this.details.location;
+    record['players'] = this.details.players;
+    record['time'] = this.details.time;
+    record['title'] = this.details.title;
 
     // record['date'] = this.gameDetails.date;
     console.log('submitted details ', this.gameDetails)
-    this.eventsService.createGame(this.gameDetails).then(() => {
+    this.eventsService.createGame(record).then(() => {
       console.log('errotr');
     })
     // this.eventsService.updateEvents(this.gameDetails).subscribe(

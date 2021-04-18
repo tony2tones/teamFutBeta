@@ -14,10 +14,12 @@ import { DomElementSchemaRegistry } from "@angular/compiler";
 import { Game } from "../model/game.model";
 
 let root;
+
 @Injectable({
   providedIn: "root",
 })
 export class EventsService {
+  
   constructor(private firestore: AngularFirestore) {}
 
   // constructor(private http: HttpClient, private realtimeDb: AngularFireDatabase) {}
@@ -54,18 +56,21 @@ export class EventsService {
     // return this.http.put('https://teamfutbeta-88c44.firebaseio.com/event.json', event);
   }
 
-  createGame(game: Event) {
-    let gameDetails;
+  createGame(game: any) {
+    let gameDetails = game;
     const id = this.firestore.createId();
     console.log("this is the game that is passed", game, " and id: ", id);
-    game.id = id;
-    const gameDeets = game;
-    gameDeets.id = id;
-    console.log("With ID ", gameDeets, " and id: ", id);
-    gameDetails = this.convertArrayToObject(gameDeets, 2);
+    var gameDeets = new Object();
+      gameDeets['id']= id;
+      gameDeets['date']= gameDetails.date;
+      gameDeets['location'] = gameDetails.location;
+      gameDeets['players'] = gameDetails.players;
+      gameDeets['time'] = gameDetails.time;
+      gameDeets['title'] = gameDetails.title;
+    
+    // gameDetails = this.convertArrayToObject(gameDeets, 'GameDetails');
     //   return Object.assign({},obj);
     // })
-    console.log("With ID ", gameDetails, " and id: ", id);
 
 
     // const gameer = {
@@ -74,13 +79,12 @@ export class EventsService {
     //   date: game.date,
     //   time: game.time,
     // };
-    return this.firestore.collection("games").add(gameDetails);
-    // return this.http.post('https://teamfutbeta-88c44.firebaseio.com/events.json', event);
-    // return this.realtimeDb.
+    return this.firestore.collection("games").add(gameDeets);
   }
 
   private convertArrayToObject = (array, key): Object => {
-    return array.reduce(
+    let gameDetails = {};
+    return gameDetails = array.reduce(
       (obj, item) => ({
         ...obj,
         [item[key]]: item,
