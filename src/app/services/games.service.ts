@@ -27,8 +27,7 @@ export class EventsService {
   //   private fireService: AppFirebaseService ) { }
   getEvents(): Observable<any> {
     // this.doThis();
-    return this.firestore.collection("events").valueChanges();
-    // return this.realtimeDb.list('event').valueChanges();
+    return this.firestore.collection("games").valueChanges();
   }
 
   doThis(data) {
@@ -59,7 +58,6 @@ export class EventsService {
   createGame(game: any) {
     let gameDetails = game;
     const id = this.firestore.createId();
-    console.log("this is the game that is passed", game, " and id: ", id);
     var gameDeets = new Object();
       gameDeets['id']= id;
       gameDeets['date']= gameDetails.date;
@@ -68,28 +66,6 @@ export class EventsService {
       gameDeets['time'] = gameDetails.time;
       gameDeets['title'] = gameDetails.title;
     
-    // gameDetails = this.convertArrayToObject(gameDeets, 'GameDetails');
-    //   return Object.assign({},obj);
-    // })
-
-
-    // const gameer = {
-    //   title: game.title,
-    //   location: game.location,
-    //   date: game.date,
-    //   time: game.time,
-    // };
     return this.firestore.collection("games").add(gameDeets);
-  }
-
-  private convertArrayToObject = (array, key): Object => {
-    let gameDetails = {};
-    return gameDetails = array.reduce(
-      (obj, item) => ({
-        ...obj,
-        [item[key]]: item,
-      }),
-      {}
-    );
   };
 }
