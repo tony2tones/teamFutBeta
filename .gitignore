@@ -44,3 +44,4 @@ Thumbs.db
 
 # My Bloody notes
 DEVNOTES.txt
+src/environments/environment.ts
