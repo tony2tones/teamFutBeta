@@ -11,9 +11,10 @@ import { Game, games, MockValues } from '../../model/mockdata';
 })
 export class DashboardComponent implements OnInit {
   response:Array<string>;
-  games = games;
+  // games = games;
+  games = [];
   constructor(private router: Router, private eventService: EventsService, private mockValues: MockValues, private route: ActivatedRoute) { }
- event: Event;
+ game: Game;
   title:string;
   location:string;
   sample:any;
@@ -24,7 +25,10 @@ export class DashboardComponent implements OnInit {
 
   getEvents() {
       this.eventService.getEvents().subscribe((data: any) => {
-      console.log('Data check ',data);
+        this.games = data;
+        console.log('Data check should have both games',this.games);
+      
+
     });
 
     // this.mockValues.getMockValues().subscribe((event: any) => {
