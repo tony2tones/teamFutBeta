@@ -1,6 +1,6 @@
 <div class="container" *ngIf="games">
     <div class="card-container" *ngIf="games; else loading">
-        <mat-card class="event-details" *ngFor="let game of sample">
+        <mat-card class="event-details" *ngFor="let game of games">
             <mat-card-header>
                 <div mat-card-avatar class="event-header-image"></div>
                 <div class="title">

@@ -41,3 +41,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# My Bloody notes
+DEVNOTES.txt
+src/environments/environment.ts

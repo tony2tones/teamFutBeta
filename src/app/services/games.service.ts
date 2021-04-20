@@ -14,10 +14,12 @@ import { DomElementSchemaRegistry } from "@angular/compiler";
 import { Game } from "../model/game.model";
 
 let root;
+
 @Injectable({
   providedIn: "root",
 })
 export class EventsService {
+  
   constructor(private firestore: AngularFirestore) {}
 
   // constructor(private http: HttpClient, private realtimeDb: AngularFireDatabase) {}
@@ -25,8 +27,7 @@ export class EventsService {
   //   private fireService: AppFirebaseService ) { }
   getEvents(): Observable<any> {
     // this.doThis();
-    return this.firestore.collection("events").valueChanges();
-    // return this.realtimeDb.list('event').valueChanges();
+    return this.firestore.collection("games").valueChanges();
   }
 
   doThis(data) {
@@ -55,37 +56,16 @@ export class EventsService {
   }
 
   createGame(game: any) {
-    let gameDetails;
+    let gameDetails = game;
     const id = this.firestore.createId();
-    console.log("this is the game that is passed", game, " and id: ", id);
-    game.id = id;
-    const gameDeets = game;
-    gameDeets.id = id;
-    console.log("With ID ", gameDeets, " and id: ", id);
-    gameDetails = this.convertArrayToObject(gameDeets, 2);
-    //   return Object.assign({},obj);
-    // })
-    console.log("With ID ", gameDetails, " and id: ", id);
-
-
-    // const gameer = {
-    //   title: game.title,
-    //   location: game.location,
-    //   date: game.date,
-    //   time: game.time,
-    // };
-    return this.firestore.collection("games").add(gameDetails);
-    // return this.http.post('https://teamfutbeta-88c44.firebaseio.com/events.json', event);
-    // return this.realtimeDb.
-  }
-
-  private convertArrayToObject = (array, key): Object => {
-    return array.reduce(
-      (obj, item) => ({
-        ...obj,
-        [item[key]]: item,
-      }),
-      {}
-    );
+    var gameDeets = new Object();
+      gameDeets['id']= id;
+      gameDeets['date']= gameDetails.date;
+      gameDeets['location'] = gameDetails.location;
+      gameDeets['players'] = gameDetails.players;
+      gameDeets['time'] = gameDetails.time;
+      gameDeets['title'] = gameDetails.title;
+    
+    return this.firestore.collection("games").add(gameDeets);
   };
 }
