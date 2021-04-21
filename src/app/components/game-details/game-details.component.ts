@@ -8,16 +8,17 @@ import { Player } from 'src/app/model/game.model';
 import { Game, games, MockValues } from 'src/app/model/mockdata';
 
 @Component({
-  selector: 'app-eventdetails',
-  templateUrl: './eventdetails.component.html',
-  styleUrls: ['./eventdetails.component.css']
+  selector: 'app-game-details',
+  templateUrl: './game-details.component.html',
+  styleUrls: ['./game-details.component.css']
 })
-export class EventDetailsComponent implements OnInit {
+export class GameDetailsComponent implements OnInit {
   constructor(
     private eventService: EventsService,
     private toastr: ToastMessageService,
     private route: ActivatedRoute,
-    private mockService: MockValues
+    private mockService: MockValues,
+    private activeRoute: ActivatedRoute
   ) {}
   event: Game[];
   players: Players[];
@@ -30,11 +31,12 @@ export class EventDetailsComponent implements OnInit {
   playa = { name: 'Farrel', state: 'confirmed' };
 
   ngOnInit() {
+    this.activeRoute.params.subscribe(params => console.log("side menu id parameter",params['id']));
     this.route.queryParams.subscribe(params => {
       
       console.log('ola here is that name ',params);
     });
-    this.getEvents();
+    this.loadGame();
   }
 
   addPlayer() {
@@ -62,22 +64,22 @@ export class EventDetailsComponent implements OnInit {
     this.addEvent();
   }
 
-  getEvents() {
+  loadGame(){
     console.log('IS THIS EVENT CALLED!!');
 
-    const id = +this.route.snapshot.paramMap.get('id');
+    // const id = +this.route.snapshot.paramMap.get('id');
   // this.mockService.getMockEvent(id)
   //   .subscribe(hero => this.game = hero);
   //   this.sample = id;
 
-    this.mockService.getMockEvent(id).subscribe(
-      (event: any) => {
-        event = this.game;
+    // this.mockService.getMockEvent(id).subscribe(
+      // (event: any) => {
+        // event = this.game;
         // this.mockValues.getMockValues();
         // this.event = event.filter((value:Event) => value.id === String(id));
         // console.log('consolely eventy filter', toast);
             
-        })
+        // })
     }
 
   addEvent() {

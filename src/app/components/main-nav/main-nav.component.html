@@ -3,7 +3,7 @@
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list (click)="drawer.toggle()">
             <a mat-list-item routerLink="/dashboard">Dashboard</a>
-            <a mat-list-item routerLink="/create-event">Create an event</a>
+            <a mat-list-item routerLink="/create-game">Create a game</a>
             <a mat-list-item routerLink="/about">About</a>
             <a mat-list-item *ngIf="isAuthenticated" (click)="onLogout()">Logout</a>
         </mat-nav-list>
@@ -16,8 +16,9 @@
       </button>
             <a rounterLink="/dashboard"><span>teamFutBeta</span></a>
             <span class="spacer"></span>
-            <a *ngIf="!(isHandset$ | async)" routerLink="/create-event">Create an event</a>
-            <a *ngIf="!(isHandset$ | async)" routerLink="/event-details/2">Event Details</a>
+            <a *ngIf="!(isHandset$ | async)" routerLink="/dashboard">Dashboard</a>
+            <a *ngIf="!(isHandset$ | async)" routerLink="/create-game">Create an game</a>
+            <a *ngIf="!(isHandset$ | async)" routerLink="/game-details/">game Details</a>
             <a *ngIf="!(isHandset$ | async)" routerLink="/about">About</a>
             <a *ngIf="isAuthenticated && !(isHandset$ | async)" (click)="onLogout()">Logout</a>
         </mat-toolbar>

@@ -12,10 +12,11 @@
                 <img mat-card-image src="../../../assets/images/trekkerz.png" alt="Trekkerz" />
                 <div class="time-text">Starting time: {{ game?.time }}</div>
             </div>
+            {{ game.id | json }}
             <mat-card-content>
                 <p>Players currently Attending {{ game.players?.length }}</p>
                 <mat-card-actions (click)='gameDetails( game.id )'>
-                    <a [routerLink]="['/event-details',game.id]"> <button mat-button> View more details</button></a>
+                    <a [routerLink]="['/event-details', game.id]"> <button mat-button> View more details</button></a>
                 </mat-card-actions>
             </mat-card-content>
         </mat-card>

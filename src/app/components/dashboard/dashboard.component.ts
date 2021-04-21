@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
   gameDetails(event$) {
     let id = event$;
     console.log('Check if this is right', event$);
-    this.router.navigate([`/event-details/, ${id}`])
+    this.router.navigate(['/event-details/',id])
   }
 
 }

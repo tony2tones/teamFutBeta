@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CreateEventComponent } from './components/create-event/create-event.component';
-import { EventDetailsComponent } from './components/event-details/eventdetails.component';
+import { CreateGameComponent } from './components/create-event/create-game.component';
+import { GameDetailsComponent } from './components/game-details/game-details.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { AuthGaurd } from './components/auth/auth.gaurd';
@@ -10,9 +10,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'event-details/:id', component: EventDetailsComponent },
+  { path: 'game-details/:id', component: GameDetailsComponent },
   {
-    path: 'create-event', component: CreateEventComponent,
+    path: 'create-game', component: CreateGameComponent,
     canActivate: [AuthGaurd]
   },
   { path: 'about', component: AboutPageComponent },

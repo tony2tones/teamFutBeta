@@ -35,6 +35,10 @@ export class EventsService {
     // .add())
     // });
   }
+
+  getGameById(id) {
+    return this.firestore.doc('games/' + id).get();
+  }
   // getEvents() {
   //   return this.authService.user.pipe(
   //     // take(1),

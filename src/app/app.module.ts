@@ -26,10 +26,10 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CreateEventComponent } from "./components/create-event/create-event.component";
+import { CreateGameComponent } from "./components/create-event/create-game.component";
 
 import { EventsService } from "./services/games.service";
-import { EventDetailsComponent } from "./components/event-details/eventdetails.component";
+import { GameDetailsComponent } from "./components/game-details/game-details.component";
 import { MainNavComponent } from "./components/main-nav/main-nav.component";
 import { LayoutModule } from "@angular/cdk/layout";
 import { AboutPageComponent } from "./components/about-page/about-page.component";
@@ -46,8 +46,8 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 @NgModule({
   declarations: [
     AppComponent,
-    CreateEventComponent,
-    EventDetailsComponent,
+    CreateGameComponent,
+    GameDetailsComponent,
     MainNavComponent,
     AboutPageComponent,
     AuthComponent,

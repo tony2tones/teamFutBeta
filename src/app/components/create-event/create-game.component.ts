@@ -12,11 +12,11 @@ export interface User {
   name: string;
 }
 @Component({
-  selector: 'create-event',
-  templateUrl: './create-event.component.html',
-  styleUrls: ['./create-event.component.css']
+  selector: 'create-game',
+  templateUrl: './create-game.component.html',
+  styleUrls: ['./create-game.component.css']
 })
-export class CreateEventComponent implements OnInit {
+export class CreateGameComponent implements OnInit {
   eventForm: FormGroup;
   detailsForm: FormGroup;
 
