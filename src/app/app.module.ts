@@ -42,6 +42,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MockValues } from "./model/mockdata";
 // import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { GameComponent } from './components/game-details/game/game.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     LoadingSpinnerComponent,
     AlertComponent,
     PlaceHolderDirective,
-    DashboardComponent
+    DashboardComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
