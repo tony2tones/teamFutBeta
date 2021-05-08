@@ -1,12 +1,12 @@
-<mat-card class="event-details" *ngIf="game; else loading">
+<!-- <mat-card class="event-details">
     <mat-card-header>
         <div mat-card-avatar class="event-header-image"></div>
-        <mat-card-title>{{ game?.title }}</mat-card-title>
-        <mat-card-subtitle>{{ game?.location }}</mat-card-subtitle>
+        <mat-card-title>{{ game.title }}</mat-card-title>
+        <mat-card-subtitle>{{ game.location }}</mat-card-subtitle>
     </mat-card-header>
     <div class="box">
         <img mat-card-image src="../../../assets/images/trekkerz.png" alt="Trekkerz" />
-        <div class="time-text">Starting time: {{ game?.time }}</div>
+        <div class="time-text">Starting time: {{ game.time }}</div>
     </div>
     <mat-card-content>
         <h4>Players and statuses</h4>
@@ -23,7 +23,22 @@
             <button mat-button (click)="addEvent()"> {{ join == true ? 'Confirm' : 'Cancel'}}</button>
         </mat-card-actions>
     </mat-card-content>
-</mat-card>
-<ng-template #loading>
+</mat-card> -->
+
+<!-- <h4>Players and statuses</h4>
+
+<span> Players Attending {{ game.players.length }}</span>
+<ul>
+    <li *ngFor="let player of game.players"> -->
+<!-- <mat-icon matListIcon>mood</mat-icon> -->
+<!-- <h3>{{ game.player.name }} {{ game.player.state }}</h3>
+    </li>
+</ul> -->
+<!-- <ng-template #loading>
     Loading stuff...
-</ng-template>
+</ng-template> -->
+<h2>{{ game.title }}</h2>
+<h3>{{ game.location }}</h3>
+
+
+{{ game.title }} {{ game.title }} {{ game.players | json}}
