@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
-import { EventsService } from '../../services/games.service';
+import { GameService } from '../../services/games.service';
 import { ToastMessageService } from 'src/app/services/toast-message.service';
 import {  Players } from '../../model/game.model';
 import { Player } from 'src/app/model/game.model';
@@ -14,28 +14,32 @@ import { Game, games, MockValues } from 'src/app/model/mockdata';
 })
 export class GameDetailsComponent implements OnInit {
   constructor(
-    private eventService: EventsService,
+    private gameService: GameService,
     private toastr: ToastMessageService,
     private route: ActivatedRoute,
-    private mockService: MockValues,
     private activeRoute: ActivatedRoute
   ) {}
+  @Input() gameId:any;
   event: Game[];
   players: Players[];
   join: boolean = false;
   player: Player;
   name:string;
-  game = games;
+  game:any;
   sample:any;
 
   playa = { name: 'Farrel', state: 'confirmed' };
 
   ngOnInit() {
-    this.activeRoute.params.subscribe(params => console.log("side menu id parameter",params['id']));
-    this.route.queryParams.subscribe(params => {
+    this.activeRoute.paramMap.subscribe((params: ParamMap)  => {
+      this.gameId = params.get('id');
+      console.log("side menu id parameter ",this.gameId);
+    }
+    );
+    // this.route.queryParams.subscribe(params => {
       
-      console.log('ola here is that name ',params);
-    });
+    //   console.log('ola here is that name ',params);
+    // });
     this.loadGame();
   }
 
@@ -66,8 +70,27 @@ export class GameDetailsComponent implements OnInit {
 
   loadGame(){
     console.log('IS THIS EVENT CALLED!!');
+    let results = {};
+    const id = +this.route.snapshot.paramMap.get('id');
+    console.log('id baby ', this.gameId);
+    this.gameService.getGameById(this.gameId).subscribe(data => {
+      this.game = data.payload.data();
+      console.log('test', this.game);
+      });
+      console.log('test  ', results);
+    // });
 
-    // const id = +this.route.snapshot.paramMap.get('id');
+    // this.students = data.map(e => {
+    //   return {
+    //     id: e.payload.doc.id,
+    //     isEdit: false,
+    //     Name: e.payload.doc.data()['Name'],
+    //     Age: e.payload.doc.data()['Age'],
+    //     Address: e.payload.doc.data()['Address'],
+    //   };
+    // })
+    // console.log(this.students);
+
   // this.mockService.getMockEvent(id)
   //   .subscribe(hero => this.game = hero);
   //   this.sample = id;
@@ -83,7 +106,7 @@ export class GameDetailsComponent implements OnInit {
     }
 
   addEvent() {
-    // this.eventService.updateEvents(this.event).subscribe(
+    // this.gameService.updateEvents(this.event).subscribe(
     //   repsonse => {
     //     this.toastr.showSuccess(
     //       'Has been successfully joined in.',

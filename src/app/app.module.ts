@@ -28,7 +28,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CreateGameComponent } from "./components/create-event/create-game.component";
 
-import { EventsService } from "./services/games.service";
+import { GameService } from "./services/games.service";
 import { GameDetailsComponent } from "./components/game-details/game-details.component";
 import { MainNavComponent } from "./components/main-nav/main-nav.component";
 import { LayoutModule } from "@angular/cdk/layout";
@@ -89,8 +89,8 @@ import { GameComponent } from './components/game-details/game/game.component';
     })
   ],
   providers: [
+    GameService,
     MockValues,
-    EventsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

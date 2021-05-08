@@ -18,7 +18,7 @@ let root;
 @Injectable({
   providedIn: "root",
 })
-export class EventsService {
+export class GameService {
   
   constructor(private firestore: AngularFirestore) {}
 
@@ -37,7 +37,7 @@ export class EventsService {
   }
 
   getGameById(id) {
-    return this.firestore.doc('games/' + id).get();
+    return this.firestore.doc('games/' + id).snapshotChanges();
   }
   // getEvents() {
   //   return this.authService.user.pipe(
@@ -70,6 +70,6 @@ export class EventsService {
       gameDeets['time'] = gameDetails.time;
       gameDeets['title'] = gameDetails.title;
     
-    return this.firestore.collection("games").add(gameDeets);
+    return this.firestore.collection("games").doc(gameDeets['id']).set(gameDeets);
   };
 }

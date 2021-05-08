@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { EventsService } from '../../services/games.service';
+import { GameService } from '../../services/games.service';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastMessageService } from '../../services/toast-message.service';
@@ -32,7 +32,7 @@ export class CreateGameComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private eventsService: EventsService,
+    private gameService: GameService,
     private router: Router,
     private toastr: ToastMessageService
   ) {}
@@ -91,10 +91,10 @@ export class CreateGameComponent implements OnInit {
 
     // record['date'] = this.gameDetails.date;
     console.log('submitted details ', this.gameDetails)
-    this.eventsService.createGame(record).then(() => {
+    this.gameService.createGame(record).then(() => {
       console.log('errotr');
     })
-    // this.eventsService.updateEvents(this.gameDetails).subscribe(
+    // this.GameService.updateEvents(this.gameDetails).subscribe(
     //   repsonse => {
     //   console.log('the full details ', this.gameDetails);
 

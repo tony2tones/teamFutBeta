@@ -1,31 +1,29 @@
-<!-- <mat-card class="event-details" *ngIf="event; else loading">
+<mat-card class="event-details" *ngIf="game; else loading">
     <mat-card-header>
         <div mat-card-avatar class="event-header-image"></div>
-        <mat-card-title>{{ event[0].title }}</mat-card-title>
-        <mat-card-subtitle>{{ event[0]?.location }}</mat-card-subtitle>
+        <mat-card-title>{{ game?.title }}</mat-card-title>
+        <mat-card-subtitle>{{ game?.location }}</mat-card-subtitle>
     </mat-card-header>
     <div class="box">
         <img mat-card-image src="../../../assets/images/trekkerz.png" alt="Trekkerz" />
-        <div class="time-text">Starting time: {{ event[0]?.time }}</div>
+        <div class="time-text">Starting time: {{ game?.time }}</div>
     </div>
     <mat-card-content>
         <h4>Players and statuses</h4>
 
-        <span> Players Attending {{ event[0].players?.length }}</span>
+        <span> Players Attending {{ game.players?.length }}</span>
         <mat-list>
-            <mat-list-item *ngFor="let player of players">
+            <mat-list-item *ngFor="let player of game.players">
                 <mat-icon matListIcon>mood</mat-icon>
-                <h3 matLine>{{ event[0].player.name }} {{ event[0].player.state }}</h3>
+                <h3 matLine>{{ game.player.name }} {{ game.player.state }}</h3>
             </mat-list-item>
-        </mat-list> -->
-<!-- <mat-card-actions>
-        <button mat-button (click)="addPlayer()"> {{ join == true ? 'Remove Me' : 'Add Me' }}</button>
-        <button mat-button (click)="addEvent()"> {{ join == true ? 'Confirm' : 'Cancel'}}</button>
-      </mat-card-actions> -->
-<!-- </mat-card-content> -->
-<!-- </mat-card> -->
-<!-- <p>this is the event</p> {{ event[0].title | json}} -->
-<!-- <ng-template #loading>
+        </mat-list>
+        <mat-card-actions>
+            <button mat-button (click)="addPlayer()"> {{ join == true ? 'Remove Me' : 'Add Me' }}</button>
+            <button mat-button (click)="addEvent()"> {{ join == true ? 'Confirm' : 'Cancel'}}</button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>
+<ng-template #loading>
     Loading stuff...
-  </ng-template> -->
-TEST TEST
+</ng-template>
