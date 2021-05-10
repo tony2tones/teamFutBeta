@@ -11,7 +11,7 @@
     <mat-card-content>
         <h4>Players and statuses</h4>
 
-        <span> Players Attending {{ game.players?.length }}</span>
+        <span> Players Attending {{ game.players.length }}</span>
         <mat-list>
             <mat-list-item *ngFor="let player of game.players">
                 <mat-icon matListIcon>mood</mat-icon>
@@ -23,22 +23,15 @@
             <button mat-button (click)="addEvent()"> {{ join == true ? 'Confirm' : 'Cancel'}}</button>
         </mat-card-actions>
     </mat-card-content>
-</mat-card> -->
+</mat-card>
 
-<!-- <h4>Players and statuses</h4>
-
-<span> Players Attending {{ game.players.length }}</span>
-<ul>
-    <li *ngFor="let player of game.players"> -->
-<!-- <mat-icon matListIcon>mood</mat-icon> -->
-<!-- <h3>{{ game.player.name }} {{ game.player.state }}</h3>
-    </li>
-</ul> -->
-<!-- <ng-template #loading>
+<ng-template #loading>
     Loading stuff...
 </ng-template> -->
-<h2>{{ game.title }}</h2>
-<h3>{{ game.location }}</h3>
+
+<h2>Name: {{ game.title }}</h2>
+<h3>location: {{ game.location }}</h3>
 
 
 {{ game.title }} {{ game.title }} {{ game.players | json}}
+<!-- {{ game | json}} -->
