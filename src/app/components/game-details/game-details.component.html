@@ -23,15 +23,26 @@
             <button mat-button (click)="addEvent()"> {{ join == true ? 'Confirm' : 'Cancel'}}</button>
         </mat-card-actions>
     </mat-card-content>
-</mat-card>
+</mat-card> -->
 
 <ng-template #loading>
     Loading stuff...
-</ng-template> -->
+</ng-template>
+<div class="container">
+    <div class="game-card">
+        <img src="../../../assets/images/trekkerz.png" alt="Trekkerz" />
+    </div>
+    <h2>Name: {{ game.title }}</h2>
+    <h3>location: {{ game.location }}</h3>
 
-<h2>Name: {{ game.title }}</h2>
-<h3>location: {{ game.location }}</h3>
 
-
-{{ game.title }} {{ game.title }} {{ game.players | json}}
+    <!-- {{ game.title }} {{ game.title }} {{ game.players | json}} -->
+    <div class="count">
+        <h4>Total count {{ game.players.length}}:</h4>
+        <h4 *ngIf="spotsRemaining.length <= 0"> spots available {{ spotsRemaining}}</h4>
+    </div>
+    <ul *ngFor="let player of game.players">
+        <li> {{ player.name }}</li>
+    </ul>
+</div>
 <!-- {{ game | json}} -->

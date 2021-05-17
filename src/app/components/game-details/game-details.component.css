@@ -1,26 +1,41 @@
 .event-details {
     max-width: 400px;
     margin: 0 auto;
-  }
+}
 
-  .box {
+.box {
     position: relative;
-    display:inline-block;
-  }
+    display: inline-block;
+}
 
-  .time-text {
+.time-text {
     font-family: 'Roboto', sans-serif;
-  }
+}
 
-  .box .time-text{
+.box .time-text {
     position: absolute;
     font-size: 19px;
     z-index: 989;
     left: -10px;
-    right: 0;        
+    right: 0;
     text-align: center;
-    top: 83%; /* Adjust this value to move the positioned div up and down */
+    top: 83%;
+    /* Adjust this value to move the positioned div up and down */
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
-    width: 60%; /* Set the width of the positioned div */
+    width: 60%;
+    /* Set the width of the positioned div */
+}
+
+.container {
+    text-align: center;
+    /* margin: 50%; */
+    /* width: 0 auto; */
+}
+
+.game-card img {
+    /* max-width: 400px;
+    margin: 0 auto; */
+    width: 0 50%;
+    max-width: 400px;
 }

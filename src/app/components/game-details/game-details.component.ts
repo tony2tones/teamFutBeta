@@ -20,13 +20,15 @@ export class GameDetailsComponent implements OnInit {
     private activeRoute: ActivatedRoute
   ) {}
   @Input() gameId:any;
-  event: Game[];
-  players: Players[];
-  join: boolean = false;
-  player: Player;
-  name:string;
-  game:any;
-  sample:any;
+  public event: Game[];
+  public players: Players[];
+  public join: boolean = false;
+  public player: Player;
+  public name:string;
+  public game:any;
+  public sample:any;
+
+  public spotsRemaining:number;
 
   playa = { name: 'Farrel', state: 'confirmed' };
 
@@ -76,6 +78,7 @@ export class GameDetailsComponent implements OnInit {
     this.gameService.getGameById(this.gameId).subscribe(data => {
       this.game = data.payload.data();
       console.log('test', this.game);
+      this.spotsRemaining = this.game.players.length - 10
       });
       console.log('test  ', results);
     // });
