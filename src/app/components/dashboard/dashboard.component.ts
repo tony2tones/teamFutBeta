@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventsService } from 'src/app/services/games.service';
+import { GameService } from 'src/app/services/games.service';
 
 import { Game, games, MockValues } from '../../model/mockdata';
 
@@ -11,9 +11,11 @@ import { Game, games, MockValues } from '../../model/mockdata';
 })
 export class DashboardComponent implements OnInit {
   response:Array<string>;
+  @Output() open: EventEmitter<any> = new EventEmitter();
+  public id;
   // games = games;
   games = [];
-  constructor(private router: Router, private eventService: EventsService, private mockValues: MockValues, private route: ActivatedRoute) { }
+  constructor(private router: Router, private gameService: GameService, private route: ActivatedRoute) { }
  game: Game;
   title:string;
   location:string;
@@ -24,11 +26,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getEvents() {
-      this.eventService.getEvents().subscribe((data: any) => {
+      this.gameService.getEvents().subscribe((data: any) => {
         this.games = data;
         console.log('Data check should have both games',this.games);
       
-
     });
 
     // this.mockValues.getMockValues().subscribe((event: any) => {
@@ -59,9 +60,10 @@ export class DashboardComponent implements OnInit {
   }
 
   gameDetails(event$) {
-    let id = event$;
+    this.id = event$;
     console.log('Check if this is right', event$);
-    this.router.navigate([`/event-details/, ${id}`])
+    // this.open.emit(id);
+    // this.router.navigate(['/event-details/',id])
   }
 
 }

@@ -1,27 +1,38 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { CreateEventComponent } from './components/create-event/create-event.component';
-import { EventDetailsComponent } from './components/event-details/eventdetails.component';
-import { AboutPageComponent } from './components/about-page/about-page.component';
-import { AuthComponent } from './components/auth/auth.component';
-import { AuthGaurd } from './components/auth/auth.gaurd';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CreateGameComponent } from "./components/create-event/create-game.component";
+import { GameDetailsComponent } from "./components/game-details/game-details.component";
+import { AboutPageComponent } from "./components/about-page/about-page.component";
+import { AuthComponent } from "./components/auth/auth.component";
+import { AuthGaurd } from "./components/auth/auth.gaurd";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { GameComponent } from "./components/game-details/game/game.component";
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'event-details/:id', component: EventDetailsComponent },
   {
-    path: 'create-event', component: CreateEventComponent,
-    canActivate: [AuthGaurd]
+    path: "dashboard",
+    component: DashboardComponent,
   },
-  { path: 'about', component: AboutPageComponent },
-  { path: 'auth', component: AuthComponent },
-  { path: '**', component: DashboardComponent }
+  { path: "game-details/:id", component: GameDetailsComponent },
+  // canActivate: [AuthGaurd],
+  // {
+  //   path: "game-details",
+  //   component: GameDetailsComponent,
+  //   children: [{ path: ":id", component: GameComponent }],
+  // },
+  {
+    path: "create-game",
+    component: CreateGameComponent,
+    canActivate: [AuthGaurd],
+  },
+  { path: "about", component: AboutPageComponent },
+  { path: "auth", component: AuthComponent },
+  { path: "**", component: DashboardComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

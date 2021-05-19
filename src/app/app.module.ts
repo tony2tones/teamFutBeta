@@ -26,10 +26,10 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CreateEventComponent } from "./components/create-event/create-event.component";
+import { CreateGameComponent } from "./components/create-event/create-game.component";
 
-import { EventsService } from "./services/games.service";
-import { EventDetailsComponent } from "./components/event-details/eventdetails.component";
+import { GameService } from "./services/games.service";
+import { GameDetailsComponent } from "./components/game-details/game-details.component";
 import { MainNavComponent } from "./components/main-nav/main-nav.component";
 import { LayoutModule } from "@angular/cdk/layout";
 import { AboutPageComponent } from "./components/about-page/about-page.component";
@@ -42,19 +42,21 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MockValues } from "./model/mockdata";
 // import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { GameComponent } from './components/game-details/game/game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateEventComponent,
-    EventDetailsComponent,
+    CreateGameComponent,
+    GameDetailsComponent,
     MainNavComponent,
     AboutPageComponent,
     AuthComponent,
     LoadingSpinnerComponent,
     AlertComponent,
     PlaceHolderDirective,
-    DashboardComponent
+    DashboardComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
@@ -87,8 +89,8 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     })
   ],
   providers: [
+    GameService,
     MockValues,
-    EventsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
