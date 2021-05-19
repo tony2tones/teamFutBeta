@@ -78,9 +78,9 @@ export class GameDetailsComponent implements OnInit {
     this.gameService.getGameById(this.gameId).subscribe(data => {
       this.game = data.payload.data();
       console.log('test', this.game);
-      this.spotsRemaining = this.game.players.length - 10
+      this.spotsRemaining = this.game.players.length - 10;
       });
-      console.log('test  ', results);
+      console.log('test  ', this.spotsRemaining);
     // });
 
     // this.students = data.map(e => {
