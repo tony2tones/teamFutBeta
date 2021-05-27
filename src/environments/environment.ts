@@ -5,7 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-   
+    apiKey: "AIzaSyAzG5Vv0eRvIaeimyQamz8u3qj8oKwyG7o",
+    authDomain: "teamfutbeta-88c44.firebaseapp.com",
+    databaseURL: "https://teamfutbeta-88c44.firebaseio.com",
+    projectId: "teamfutbeta-88c44",
+    storageBucket: "teamfutbeta-88c44.appspot.com",
+    messagingSenderId: "184435224951",
+    appId: "1:184435224951:web:517ee6eac277392a"
   }
 };
 

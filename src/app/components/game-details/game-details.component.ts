@@ -71,13 +71,11 @@ export class GameDetailsComponent implements OnInit {
   }
 
   loadGame(){
-    console.log('IS THIS EVENT CALLED!!');
-    let results = {};
     const id = +this.route.snapshot.paramMap.get('id');
-    console.log('id baby ', this.gameId);
     this.gameService.getGameById(this.gameId).subscribe(data => {
       this.game = data.payload.data();
       console.log('test', this.game);
+      console.log('test', JSON.stringify(this.game));
       this.spotsRemaining = 10 - this.game.players.length;
       if(this.spotsRemaining <= 0) {
         return this.spotsRemaining = '10 spots taken';
