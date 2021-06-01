@@ -42,7 +42,7 @@
     <!-- {{ game.title }} {{ game.title }} {{ game.players | json}} -->
     <div class="count">
         <h4>Total count {{ game.players.length}} players</h4>
-        <h4 *ngIf="!spotsRemaining"> spots available {{ spotsRemaining}}</h4>
+        <h4 *ngIf="spotsRemaining"> spots available {{ spotsRemaining}}</h4>
     </div>
     <ul *ngFor="let player of game.players">
         <li> {{ player.name }}</li>

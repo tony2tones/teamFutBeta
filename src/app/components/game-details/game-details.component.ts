@@ -28,7 +28,7 @@ export class GameDetailsComponent implements OnInit {
   public game:any;
   public sample:any;
 
-  public spotsRemaining:number;
+  public spotsRemaining:number|string;
 
   playa = { name: 'Farrel', state: 'confirmed' };
 
@@ -71,14 +71,16 @@ export class GameDetailsComponent implements OnInit {
   }
 
   loadGame(){
-    console.log('IS THIS EVENT CALLED!!');
-    let results = {};
     const id = +this.route.snapshot.paramMap.get('id');
-    console.log('id baby ', this.gameId);
     this.gameService.getGameById(this.gameId).subscribe(data => {
       this.game = data.payload.data();
       console.log('test', this.game);
-      this.spotsRemaining = this.game.players.length - 10;
+      console.log('test', JSON.stringify(this.game));
+      this.spotsRemaining = 10 - this.game.players.length;
+      if(this.spotsRemaining <= 0) {
+        return this.spotsRemaining = '10 spots taken';
+      }
+      this.spotsRemaining >= 10 ? '10 slots taken' : this.spotsRemaining;
       });
       console.log('test  ', this.spotsRemaining);
     // });
