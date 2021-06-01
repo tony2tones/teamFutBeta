@@ -39,6 +39,16 @@ export class GameService {
   getGameById(id) {
     return this.firestore.doc('games/' + id).snapshotChanges();
   }
+
+  // UpdateRecord(recordRow) {
+  //   let record = {};
+  //   record['Name'] = recordRow.EditName;
+  //   record['Age'] = recordRow.EditAge;
+  //   record['Address'] = recordRow.EditAddress;
+  //   this.crudService.update_Student(recordRow.id, record);
+  //   recordRow.isEdit = false;
+  // }
+
   // getEvents() {
   //   return this.authService.user.pipe(
   //     // take(1),
