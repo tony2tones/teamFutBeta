@@ -1,8 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import '~ngx-toastr/toastr';
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import "~ngx-toastr/toastr";
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-html, body { height: 100%; margin : 0; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-card {
+  z-index: 0;
+}
