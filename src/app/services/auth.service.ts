@@ -11,6 +11,8 @@ export interface AuthResponseData {
   kind: string;
   idToken: string;
   email: string;
+  firstName:string;
+  lastName:string;
   refreshToken: string;
   expiresIn: string;
   localId: string;
@@ -39,13 +41,16 @@ export class AuthService {
 // }
 
 
-  signUp(email: string, password: string) {
+  signUp(email: string, password: string, firstName:string, lastName:string) {
     return this.http
       .post<AuthResponseData>(
         `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${this.apiKey}`,
         {
           email: email,
           password: password,
+          firstName:firstName,
+          lastName:lastName,
+          skills:[],
           returnSecureToken: true
         }
       )
@@ -54,6 +59,8 @@ export class AuthService {
         tap(resData => {
           this.handleAuth(
             resData.email,
+            resData.firstName,
+            resData.lastName,
             resData.localId,
             resData.idToken,
             +resData.expiresIn
@@ -65,6 +72,8 @@ export class AuthService {
   autoLoging() {
     const userData: {
       email: string;
+      firstName:string;
+      lastName:string;
       id: string;
       _token: string;
       _tokenExpirationDate: string;
@@ -75,6 +84,8 @@ export class AuthService {
 
     const loadedUser = new User(
       userData.email,
+      userData.firstName,
+      userData.lastName,
       userData.id,
       userData._token,
       new Date(userData._tokenExpirationDate)
@@ -119,6 +130,8 @@ export class AuthService {
         tap(resData => {
           this.handleAuth(
             resData.email,
+            resData.firstName,
+            resData.lastName,
             resData.localId,
             resData.idToken,
             +resData.expiresIn
@@ -129,12 +142,15 @@ export class AuthService {
 
   private handleAuth(
     email: string,
+    firstName: string,
+    lastName: string,
     userId: string,
     token: string,
     expiresIn: number
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(email, userId, token, expirationDate);
+    const user = new User(email, firstName, lastName, userId, token, expirationDate);
+    console.log('User this side', user);
     this.user.next(user);
     this.autoLogout(expiresIn * 1000);
     localStorage.setItem("userData", JSON.stringify(user));

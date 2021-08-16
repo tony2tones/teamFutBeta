@@ -31,6 +31,8 @@ export class AuthComponent implements OnInit, OnDestroy {
     if(!form.valid) {
       return;
     }
+    const firstName = form.value.firstname;
+    const lastName = form.value.lastName;
     const email = form.value.email;
     const password = form.value.password;
     this.error = null;
@@ -41,7 +43,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     if (this.loginMode) {
       authObs = this.authService.login(email, password);
     } else {
-      authObs = this.authService.signUp(email, password);
+      authObs = this.authService.signUp(email, password, firstName, lastName);
     }
 
     authObs.subscribe(

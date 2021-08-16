@@ -10,7 +10,7 @@
   </div>
   <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm" *ngIf="!isLoading">
     <div id="user-data">
-      <div class="form-group">
+      <div class="form-group" *ngIf="!loginMode">
         <label for="firstName">FirstName</label>
         <input
           required
@@ -22,7 +22,7 @@
           name="firstName"
         />
       </div>
-      <div class="form-group">
+      <div class="form-group" *ngIf="!loginMode">
         <label for="lastName">lastName</label>
         <input
           required

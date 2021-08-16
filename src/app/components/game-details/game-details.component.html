@@ -31,7 +31,7 @@
 <div class="container">
     <div class="box">
         <div class="game-card ">
-            <img src="../../../assets/images/trekkerz.png" alt="Trekkerz" />
+            <img src="/src/assets/images/trekkerz.png" alt="Trekkerz" />
         </div>
         <div class="time-text">
             <h2>Name: {{ game.title }}</h2>
@@ -39,7 +39,6 @@
         </div>
     </div>
 
-    <!-- {{ game.title }} {{ game.title }} {{ game.players | json}} -->
     <div class="count">
         <h4>Total count {{ game.players.length}} players</h4>
         <h4 *ngIf="spotsRemaining"> spots available {{ spotsRemaining}}</h4>
