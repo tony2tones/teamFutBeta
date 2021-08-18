@@ -34,7 +34,7 @@ import { MainNavComponent } from "./components/main-nav/main-nav.component";
 import { LayoutModule } from "@angular/cdk/layout";
 import { AboutPageComponent } from "./components/about-page/about-page.component";
 import { AuthComponent } from "./components/auth/auth.component";
-import { LoadingSpinnerComponent } from "./shared/spinner.component";
+import { LoaderComponent } from "./shared/loader/loader.component";
 import { AuthInterceptorService } from "./components/auth/auth-interceptor.service";
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceHolderDirective } from './shared/placeHolder/placeHolder.directive';
@@ -52,7 +52,7 @@ import { GameComponent } from './components/game-details/game/game.component';
     MainNavComponent,
     AboutPageComponent,
     AuthComponent,
-    LoadingSpinnerComponent,
+    LoaderComponent,
     AlertComponent,
     PlaceHolderDirective,
     DashboardComponent,

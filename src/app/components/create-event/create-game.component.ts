@@ -92,7 +92,7 @@ export class CreateGameComponent implements OnInit {
     // record['date'] = this.gameDetails.date;
     console.log('submitted details ', this.gameDetails)
     this.gameService.createGame(record).then(() => {
-      console.log('errotr');
+      console.log('error');
     })
     // this.GameService.updateEvents(this.gameDetails).subscribe(
     //   repsonse => {

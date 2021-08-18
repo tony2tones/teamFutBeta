@@ -5,10 +5,10 @@
     *ngIf="error"
     (close)="onHandleError()"
   ></app-alert> -->
-  <div *ngIf="isLoading" style="text-align: center">
-    <app-loading-spinner></app-loading-spinner>
+  <div *ngIf="!isLoading" style="text-align: center">
+    <app-loader></app-loader>
   </div>
-  <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm" *ngIf="!isLoading">
+  <form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm" *ngIf="isLoading">
     <div id="user-data">
       <div class="form-group" *ngIf="!loginMode">
         <label for="firstName">FirstName</label>
