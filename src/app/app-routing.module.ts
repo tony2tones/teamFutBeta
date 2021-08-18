@@ -13,14 +13,9 @@ const routes: Routes = [
   {
     path: "dashboard",
     component: DashboardComponent,
+    canActivate: [AuthGaurd],
   },
   { path: "game-details/:id", component: GameDetailsComponent },
-  // canActivate: [AuthGaurd],
-  // {
-  //   path: "game-details",
-  //   component: GameDetailsComponent,
-  //   children: [{ path: ":id", component: GameComponent }],
-  // },
   {
     path: "create-game",
     component: CreateGameComponent,

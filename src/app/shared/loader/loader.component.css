@@ -1,24 +1,16 @@
-body {
-  background: blue;
-}
-
-.loading {
-  /* color: #fff; */
-  h2 {
-    margin-top: -50px;
-    font-kerning: normal;
-    display: inline-block;
-    text-transform: uppercase;
-    text-align: center;
-    font-family: "Orbitron", sans-serif;
-    text-shadow: 2px 2px 10px rgba(57, 49, 47, 1);
-    //border:1px solid red;
-  }
+.loading h2 {
+  color: rgb(0, 0, 0);
+  margin-top: 210px;
+  font-kerning: normal;
+  display: inline-block;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 2px 2px 10px rgba(57, 49, 47, 1);
 }
 
 .icon {
   display: inline-block;
-  //border:1px solid red;
   margin-left: -24px;
   svg {
     fill: #fff;
