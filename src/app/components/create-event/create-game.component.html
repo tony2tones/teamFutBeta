@@ -1,85 +1,123 @@
-<mat-horizontal-stepper linear #stepper>
+<div *ngIf="!isLoading">
+  <mat-horizontal-stepper linear #stepper>
     <mat-step #step1 editable="isEditable">
-        <form [formGroup]="detailsForm">
-            <ng-template matStepLabel>Details</ng-template>
-            <div>
-                <mat-form-field>
-                    <input matInput placeholder="title of event" formControlName="title" required />
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field>
-                    <input matInput placeholder="location: Mowbray or Century" formControlName="location" required />
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field>
-                    <input matInput placeholder="date" formControlName="date" required />
-                </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field>
-                    <input matInput placeholder="time" formControlName="time" required />
-                </mat-form-field>
-            </div>
-            <div>
-                <button mat-button matStepperNext (click)="addDetails()">Next</button>
-            </div>
-        </form>
+      <form [formGroup]="detailsForm">
+        <ng-template matStepLabel>Details</ng-template>
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="title of event"
+              formControlName="title"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="location: Mowbray or Century"
+              formControlName="location"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="date"
+              formControlName="date"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="time"
+              formControlName="time"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperNext (click)="addDetails()">Next</button>
+        </div>
+      </form>
     </mat-step>
     <mat-step #step2 editable="isEditable">
-        <form [formGroup]="eventForm">
-            <ng-template matStepLabel>Add players</ng-template>
-            <mat-form-field>
-                <input matInput placeholder="Player name" formControlName="name" required />
-            </mat-form-field>
-            <div>
-                <mat-form-field>
-                    <mat-label for="attendingState">User attending status</mat-label>
-                    <mat-select placeholder="choose one" class="form-control" name="state" id="state" formControlName="state">
-                        <mat-option *ngFor="let state of attendingState" [value]="state">
-                            {{ state }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <button mat-raised-button (click)="addConfirmed()">Add Player</button>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext (click)="addGameDetails()">
-          Next
-        </button>
-            </div>
-        </form>
+      <form [formGroup]="eventForm">
+        <ng-template matStepLabel>Add players</ng-template>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Player name"
+            formControlName="name"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <mat-form-field>
+            <mat-label for="attendingState">User attending status</mat-label>
+            <mat-select
+              placeholder="choose one"
+              class="form-control"
+              name="state"
+              id="state"
+              formControlName="state"
+            >
+              <mat-option *ngFor="let state of attendingState" [value]="state">
+                {{ state }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button (click)="addConfirmed()">Add Player</button>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext (click)="addGameDetails()">
+            Next
+          </button>
+        </div>
+      </form>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done.
-        <div>
-            <button mat-button matStepperPrevious (click)="stepper.reset()">
-        Reset
-      </button>
-            <button mat-button (click)="CraeteGameEvent()">Submit</button>
-        </div>
-        <div>Step 1 is completed? {{ !!step1.completed }}</div>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious (click)="stepper.reset()">
+          Reset
+        </button>
+        <button mat-button (click)="CraeteGameEvent()">Submit</button>
+      </div>
+      <div>Step 1 is completed? {{ !!step1.completed }}</div>
     </mat-step>
-</mat-horizontal-stepper>
-<hr />
-<div *ngIf="!players">
+  </mat-horizontal-stepper>
+  <hr />
+  <div *ngIf="!players">
     <h4 class="text-center">No players have confirmed yet</h4>
-</div>
-<div *ngIf="players">
-    <div class="container">
-        <h3>Confirmed {{ players.length }}</h3>
-        <mat-list>
-            <mat-list-item *ngFor="let player of players">
-                <mat-icon matListIcon>mood</mat-icon>
-                <h3 matLine (click)="deleteConfirmed(player.name)">
-                    {{ player.name }} {{ player.state }}
-                </h3>
-                <span class="show"><mat-icon matListIcon class="clear-button">clear</mat-icon></span
-        >
-      </mat-list-item>
-    </mat-list>
   </div>
+  <div *ngIf="players">
+    <div class="container">
+      <h3>Confirmed {{ players.length }}</h3>
+      <mat-list>
+        <mat-list-item *ngFor="let player of players">
+          <mat-icon matListIcon>mood</mat-icon>
+          <h3 matLine (click)="deleteConfirmed(player.name)">
+            {{ player.name }} {{ player.state }}
+          </h3>
+          <span class="show"
+            ><mat-icon matListIcon class="clear-button">clear</mat-icon></span
+          >
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading" style="text-align: center">
+  <app-loader></app-loader>
 </div>
