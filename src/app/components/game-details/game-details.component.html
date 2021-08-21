@@ -25,26 +25,26 @@
     </mat-card-content>
 </mat-card> -->
 
-<ng-template #loading>
-    Loading stuff...
-</ng-template>
+<ng-template #loading> Loading stuff... </ng-template>
 <div class="container">
-    <div class="box">
-        <div class="game-card ">
-            <img src="assets/images/trekkerz.png" alt="Trekkerz" />
-        </div>
-        <div class="time-text">
-            <h2>Name: {{ game.title }}</h2>
-            <h3>location: {{ game.location }}</h3>
-        </div>
+  <div class="box">
+    <div class="game-card">
+      <img src="assets/images/trekkerz.png" alt="Trekkerz" />
     </div>
+    <div class="time-text">
+      <h2>Name: {{ game.title }}</h2>
+      <h3>location: {{ game.location }}</h3>
+    </div>
+  </div>
 
-    <div class="count">
-        <h4>Total count {{ game.players.length}} players</h4>
-        <h4 *ngIf="spotsRemaining"> spots available {{ spotsRemaining}}</h4>
-    </div>
+  <div class="count">
+    <h4>Total count {{ game.players.length }} players</h4>
+    <h4>{{ remaining }}</h4>
+  </div>
+  <div class="people-list">
     <ul *ngFor="let player of game.players">
-        <li> {{ player.name }}</li>
+      <li>{{ player.name }}</li>
     </ul>
+  </div>
 </div>
 <!-- {{ game | json}} -->

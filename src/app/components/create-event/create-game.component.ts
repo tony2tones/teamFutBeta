@@ -90,8 +90,6 @@ export class CreateGameComponent implements OnInit {
     record["time"] = this.details.time;
     record["title"] = this.details.title;
     this.isLoading = true;
-    // record['date'] = this.gameDetails.date;
-    console.log("submitted details ", this.gameDetails);
     this.gameService.createGame(record).then(
       (response) => {
         console.log("the full details ", this.gameDetails);
