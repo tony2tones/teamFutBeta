@@ -45,8 +45,10 @@
   <div class="people-list">
     <ul *ngFor="let player of game.players">
       <li>
-        <img mat-card-avatar appGravatar [player]="player.name" />
-        {{ player.name }}
+        <div class="playerDetails">
+          <img mat-card-avatar appGravatar [player]="player.name" />
+          <div class="playerName">{{ player.name }}</div>
+        </div>
       </li>
     </ul>
   </div>
