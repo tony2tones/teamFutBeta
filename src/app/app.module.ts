@@ -17,7 +17,7 @@ import {
   MatListModule,
   MatIconModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
 } from "@angular/material";
 import { ToastrModule } from "ngx-toastr";
 
@@ -36,13 +36,13 @@ import { AboutPageComponent } from "./components/about-page/about-page.component
 import { AuthComponent } from "./components/auth/auth.component";
 import { LoaderComponent } from "./shared/loader/loader.component";
 import { AuthInterceptorService } from "./components/auth/auth-interceptor.service";
-import { AlertComponent } from './shared/alert/alert.component';
-import { PlaceHolderDirective } from './shared/placeHolder/placeHolder.directive';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AlertComponent } from "./shared/alert/alert.component";
+import { PlaceHolderDirective } from "./shared/placeHolder/placeHolder.directive";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { MockValues } from "./model/mockdata";
-// import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { GameComponent } from './components/game-details/game/game.component';
+import { GameComponent } from "./components/game-details/game/game.component";
+import { GravatarDirective } from "./gravatar.directive";
 
 @NgModule({
   declarations: [
@@ -56,7 +56,8 @@ import { GameComponent } from './components/game-details/game/game.component';
     AlertComponent,
     PlaceHolderDirective,
     DashboardComponent,
-    GameComponent
+    GameComponent,
+    GravatarDirective,
   ],
   imports: [
     BrowserModule,
@@ -85,8 +86,8 @@ import { GameComponent } from './components/game-details/game/game.component';
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: "toast-top-right",
-      easing: "ease-in"
-    })
+      easing: "ease-in",
+    }),
   ],
   providers: [
     GameService,
@@ -94,12 +95,10 @@ import { GameComponent } from './components/game-details/game/game.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
-  entryComponents:[
-    AlertComponent
-  ]
+  entryComponents: [AlertComponent],
 })
 export class AppModule {}
