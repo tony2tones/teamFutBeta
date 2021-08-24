@@ -36,7 +36,6 @@
     <img src="assets/images/trekkerz.png" alt="Trekkerz" />
   </div>
 
-  <!-- </div> -->
 
   <div class="count">
     <h4>Total count {{ game.players.length }} players</h4>
@@ -44,13 +43,10 @@
   </div>
   <div class="people-list">
     <ul *ngFor="let player of game.players">
-      <li>
-        <div class="playerDetails">
+      <li class="playerDetails">
           <img mat-card-avatar appGravatar [player]="player.name" />
           <div class="playerName">{{ player.name }}</div>
-        </div>
       </li>
     </ul>
   </div>
 </div>
-<!-- {{ game | json}} -->
