@@ -41,30 +41,6 @@ export class GameDetailsComponent implements OnInit {
     this.loadGame();
   }
 
-  addPlayer() {
-    this.join = !this.join;
-    if (this.join) {
-      this.player = this.playa;
-      // let toasty = this.player;
-      // this.players.push(this.newPlayer);
-      // this.events.push(this.players);
-      // console.log('should be in this list?',this.events);
-      // this.players.push(...newArray, toasty);
-      console.log("should be in this list?", this.event);
-
-    }
-  }
-
-  deleteConfirmed(name: string) {
-    let i = 0;
-    let length = this.players.length;
-    for (i; i < length; i++) {
-      if (this.players[i]["name"] == name) {
-        this.players.splice(i, 1);
-      }
-    }
-  }
-
   loadGame() {
     const id = +this.route.snapshot.paramMap.get("id");
     this.gameService.getGameById(this.gameId).subscribe((data) => {
@@ -82,7 +58,7 @@ export class GameDetailsComponent implements OnInit {
   addConfirmed(data: Player) {
     data = { name: "Shadien", state: "Confirmed" };
     let newArray = [];
-    newArray.push(...this.game.players, data);
+    newArray.push(data, ...this.game.players );
     this.game.players = newArray;
     this.playerCountCheck();
   }
