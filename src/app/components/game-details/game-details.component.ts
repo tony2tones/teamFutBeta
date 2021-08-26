@@ -27,24 +27,17 @@ export class GameDetailsComponent implements OnInit {
   public player: Player;
   public name: string;
   public game: any;
-  public sample: any;
 
   public spotsRemaining: number;
   public remaining: string;
 
   public addPlayerToggle: boolean = false;
 
-  playa = { name: "Farrel", state: "confirmed" };
-
   ngOnInit() {
     this.activeRoute.paramMap.subscribe((params: ParamMap) => {
       this.gameId = params.get("id");
       console.log("side menu id parameter ", this.gameId);
     });
-    // this.route.queryParams.subscribe(params => {
-
-    //   console.log('ola here is that name ',params);
-    // });
     this.loadGame();
   }
 
@@ -58,7 +51,7 @@ export class GameDetailsComponent implements OnInit {
       // console.log('should be in this list?',this.events);
       // this.players.push(...newArray, toasty);
       console.log("should be in this list?", this.event);
-      // this.addEvent();
+
     }
   }
 
@@ -70,80 +63,19 @@ export class GameDetailsComponent implements OnInit {
         this.players.splice(i, 1);
       }
     }
-    // this.addEvent();
   }
 
   loadGame() {
     const id = +this.route.snapshot.paramMap.get("id");
     this.gameService.getGameById(this.gameId).subscribe((data) => {
       this.game = data.payload.data();
-      console.log("test", this.game);
-      console.log("test", JSON.stringify(this.game));
-      this.spotsRemaining = 10 - this.game.players.length;
-      // if(this.spotsRemaining <= 0) {
-      //   return this.spotsRemaining = '10 spots taken';
-      // }
-      this.remaining =
-        this.spotsRemaining === 0
-          ? "No slots available"
-          : `${this.spotsRemaining} slots available`;
-      this.joinGameToggle();
-    });
-    // });
-
-    // this.students = data.map(e => {
-    //   return {
-    //     id: e.payload.doc.id,
-    //     isEdit: false,
-    //     Name: e.payload.doc.data()['Name'],
-    //     Age: e.payload.doc.data()['Age'],
-    //     Address: e.payload.doc.data()['Address'],
-    //   };
-    // })
-    // console.log(this.students);
-
-    // this.mockService.getMockEvent(id)
-    //   .subscribe(hero => this.game = hero);
-    //   this.sample = id;
-
-    // this.mockService.getMockEvent(id).subscribe(
-    // (event: any) => {
-    // event = this.game;
-    // this.mockValues.getMockValues();
-    // this.event = event.filter((value:Event) => value.id === String(id));
-    // console.log('consolely eventy filter', toast);
-
-    // })
+      this.playerCountCheck();
+    });  
   }
-
-  joinGame() {
-    // this.gameService.updateEvents(this.event).subscribe(
-    //   repsonse => {
-    //     this.toastr.showSuccess(
-    //       'Has been successfully joined in.',
-    //       'Footy game'
-    //     );
-    //   },
-    //   error => {
-    //     console.log(error);
-    //     this.toastr.showFail(
-    //       'Something went wrong, please select the reset option to try again.',
-    //       'Error'
-    //     );
-    //   }
-    // );
-  }
-
-  setPlayerState(data: any[]) {
-    let playerState = [];
-    var arrayLength = data.length;
-    for (var i = 1; i < arrayLength; i++) {
-      playerState.push(data[i]);
-      this.players = playerState;
-    }
-  }
-
-  joinGameToggle() {
+ 
+  playerCountCheck() {
+    this.spotsRemaining = 10 - this.game.players.length;
+    this.remaining = this.spotsRemaining === 0 ? "No slots available" : `${this.spotsRemaining} slots available`;
     this.addPlayerToggle = this.spotsRemaining === 0 ? false : true;
   }
 
@@ -151,10 +83,7 @@ export class GameDetailsComponent implements OnInit {
     data = { name: "Shadien", state: "Confirmed" };
     let newArray = [];
     newArray.push(...this.game.players, data);
-    // this.game.player.unshift(data);
-    console.log('this has been clicked ', newArray);
     this.game.players = newArray;
-    this.joinGameToggle();
-    // this.players.push(...newArray, data);
+    this.playerCountCheck();
   }
 }
