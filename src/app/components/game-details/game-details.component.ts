@@ -19,6 +19,7 @@ export class GameDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private activeRoute: ActivatedRoute
   ) {}
+  public playerName: string;
   @Input() gameId: any;
   public event: Game[];
   public players: Players[];
@@ -30,6 +31,8 @@ export class GameDetailsComponent implements OnInit {
 
   public spotsRemaining: number;
   public remaining: string;
+
+  public addPlayerToggle: boolean = false;
 
   playa = { name: "Farrel", state: "confirmed" };
 
@@ -80,8 +83,11 @@ export class GameDetailsComponent implements OnInit {
       // if(this.spotsRemaining <= 0) {
       //   return this.spotsRemaining = '10 spots taken';
       // }
-      this.remaining = this.spotsRemaining === 0 ? "No slots available" : `${this.spotsRemaining} slots available`;
-      console.log("Aftwer ", this.remaining);
+      this.remaining =
+        this.spotsRemaining === 0
+          ? "No slots available"
+          : `${this.spotsRemaining} slots available`;
+      this.joinGameToggle();
     });
     // });
 
@@ -137,10 +143,18 @@ export class GameDetailsComponent implements OnInit {
     }
   }
 
+  joinGameToggle() {
+    this.addPlayerToggle = this.spotsRemaining === 0 ? false : true;
+  }
+
   addConfirmed(data: Player) {
-    data = { name: "Farrel", state: "confirmed" };
-    let player = this.player;
+    data = { name: "Shadien", state: "Confirmed" };
     let newArray = [];
+    newArray.push(...this.game.players, data);
+    // this.game.player.unshift(data);
+    console.log('this has been clicked ', newArray);
+    this.game.players = newArray;
+    this.joinGameToggle();
     // this.players.push(...newArray, data);
   }
 }

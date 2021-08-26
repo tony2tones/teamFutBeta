@@ -36,7 +36,6 @@
     <img src="assets/images/trekkerz.png" alt="Trekkerz" />
   </div>
 
-
   <div class="count">
     <h4>Total count {{ game.players.length }} players</h4>
     <h4>{{ remaining }}</h4>
@@ -44,9 +43,14 @@
   <div class="people-list">
     <ul *ngFor="let player of game.players">
       <li class="playerDetails">
-          <img mat-card-avatar appGravatar [player]="player.name" />
-          <div class="playerName">{{ player.name }}</div>
+        <img mat-card-avatar appGravatar [player]="player.name" />
+        <div class="playerName">{{ player.name }}</div>
       </li>
     </ul>
+  </div>
+  <div *ngIf="addPlayerToggle">
+    <a class="float" (click)="addConfirmed()">
+      <i class="fa fa-plus my-float">Join game </i>
+    </a>
   </div>
 </div>
