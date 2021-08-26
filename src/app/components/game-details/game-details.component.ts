@@ -19,6 +19,7 @@ export class GameDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private activeRoute: ActivatedRoute
   ) {}
+  public playerName: string;
   @Input() gameId: any;
   public event: Game[];
   public players: Players[];
@@ -26,121 +27,39 @@ export class GameDetailsComponent implements OnInit {
   public player: Player;
   public name: string;
   public game: any;
-  public sample: any;
 
   public spotsRemaining: number;
   public remaining: string;
 
-  playa = { name: "Farrel", state: "confirmed" };
+  public addPlayerToggle: boolean = false;
 
   ngOnInit() {
     this.activeRoute.paramMap.subscribe((params: ParamMap) => {
       this.gameId = params.get("id");
       console.log("side menu id parameter ", this.gameId);
     });
-    // this.route.queryParams.subscribe(params => {
-
-    //   console.log('ola here is that name ',params);
-    // });
     this.loadGame();
-  }
-
-  addPlayer() {
-    this.join = !this.join;
-    if (this.join) {
-      this.player = this.playa;
-      // let toasty = this.player;
-      // this.players.push(this.newPlayer);
-      // this.events.push(this.players);
-      // console.log('should be in this list?',this.events);
-      // this.players.push(...newArray, toasty);
-      console.log("should be in this list?", this.event);
-      // this.addEvent();
-    }
-  }
-
-  deleteConfirmed(name: string) {
-    let i = 0;
-    let length = this.players.length;
-    for (i; i < length; i++) {
-      if (this.players[i]["name"] == name) {
-        this.players.splice(i, 1);
-      }
-    }
-    // this.addEvent();
   }
 
   loadGame() {
     const id = +this.route.snapshot.paramMap.get("id");
     this.gameService.getGameById(this.gameId).subscribe((data) => {
       this.game = data.payload.data();
-      console.log("test", this.game);
-      console.log("test", JSON.stringify(this.game));
-      this.spotsRemaining = 10 - this.game.players.length;
-      // if(this.spotsRemaining <= 0) {
-      //   return this.spotsRemaining = '10 spots taken';
-      // }
-      this.remaining = this.spotsRemaining === 0 ? "No slots available" : `${this.spotsRemaining} slots available`;
-      console.log("Aftwer ", this.remaining);
-    });
-    // });
-
-    // this.students = data.map(e => {
-    //   return {
-    //     id: e.payload.doc.id,
-    //     isEdit: false,
-    //     Name: e.payload.doc.data()['Name'],
-    //     Age: e.payload.doc.data()['Age'],
-    //     Address: e.payload.doc.data()['Address'],
-    //   };
-    // })
-    // console.log(this.students);
-
-    // this.mockService.getMockEvent(id)
-    //   .subscribe(hero => this.game = hero);
-    //   this.sample = id;
-
-    // this.mockService.getMockEvent(id).subscribe(
-    // (event: any) => {
-    // event = this.game;
-    // this.mockValues.getMockValues();
-    // this.event = event.filter((value:Event) => value.id === String(id));
-    // console.log('consolely eventy filter', toast);
-
-    // })
+      this.playerCountCheck();
+    });  
   }
-
-  joinGame() {
-    // this.gameService.updateEvents(this.event).subscribe(
-    //   repsonse => {
-    //     this.toastr.showSuccess(
-    //       'Has been successfully joined in.',
-    //       'Footy game'
-    //     );
-    //   },
-    //   error => {
-    //     console.log(error);
-    //     this.toastr.showFail(
-    //       'Something went wrong, please select the reset option to try again.',
-    //       'Error'
-    //     );
-    //   }
-    // );
-  }
-
-  setPlayerState(data: any[]) {
-    let playerState = [];
-    var arrayLength = data.length;
-    for (var i = 1; i < arrayLength; i++) {
-      playerState.push(data[i]);
-      this.players = playerState;
-    }
+ 
+  playerCountCheck() {
+    this.spotsRemaining = 10 - this.game.players.length;
+    this.remaining = this.spotsRemaining === 0 ? "No slots available" : `${this.spotsRemaining} slots available`;
+    this.addPlayerToggle = this.spotsRemaining === 0 ? false : true;
   }
 
   addConfirmed(data: Player) {
-    data = { name: "Farrel", state: "confirmed" };
-    let player = this.player;
+    data = { name: "Shadien", state: "Confirmed" };
     let newArray = [];
-    // this.players.push(...newArray, data);
+    newArray.push(data, ...this.game.players );
+    this.game.players = newArray;
+    this.playerCountCheck();
   }
 }
