@@ -95,6 +95,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style-type: none;
   }
   .event-details {
     max-width: 400px;
@@ -110,6 +111,9 @@
   .time-text {
     font-family: "Roboto", sans-serif;
   }
+  .table {
+    align-items: center;
+  }
   .playerDetails {
     width: 500px;
     height: 50px;
@@ -119,6 +123,7 @@
     justify-content: space-between;
     border: 1px solid;
     border-radius: 5px;
+    
   }
 
   .playerDetails>img {
@@ -126,6 +131,12 @@
   }
   .playerName {
     padding-right: 220px;
+  }
+  .team1 {
+    margin:5px;
+  }
+  .team2{
+    margin:5px;
   }
   .box .time-text {
     position: absolute;

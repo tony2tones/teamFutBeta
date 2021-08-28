@@ -62,4 +62,8 @@ export class GameDetailsComponent implements OnInit {
     this.game.players = newArray;
     this.playerCountCheck();
   }
+
+  shuffleTeams() {
+    
+  }
 }

@@ -3,8 +3,8 @@
 <ng-template #loading> Loading stuff... </ng-template>
 <div class="container">
   <div class="time-text">
-    <h2>Name: {{ game.title }}</h2>
-    <h3>location: {{ game.location }}</h3>
+    <h2>Name: {{ game?.title }}</h2>
+    <h3>location: {{ game?.location }}</h3>
   </div>
   <div class="game-card">
     <img src="assets/images/trekkerz.png" alt="Trekkerz" />
@@ -14,12 +14,20 @@
     <h4>Total count {{ game.players.length }} players</h4>
     <h4>{{ remaining }}</h4>
   </div>
-  <div class="people-list">
-    <ul *ngFor="let player of game.players">
-      <li class="playerDetails">
-        <img mat-card-avatar appGravatar [player]="player.name" />
-        <div class="playerName">{{ player.name }}</div>
+  <div class="people-list" >
+    <ul *ngFor="let player of game.players; let i = index">
+      <li class="team1" *ngIf='i > 4'>
+        <div  class="playerDetails">
+          <img  mat-card-avatar appGravatar [player]="player.name" />
+          <div class="playerName ">{{ player.name }}</div>
+        </div>
       </li>
+      <li *ngIf='i <= 4'>
+        <div  class="playerDetails">
+        <img  mat-card-avatar appGravatar [player]="player.name" />
+        <div class="playerName team2">{{ player.name }}</div>
+      </div>
+    </li>
     </ul>
   </div>
   <div *ngIf="addPlayerToggle">
