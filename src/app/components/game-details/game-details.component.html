@@ -1,7 +1,8 @@
+<div *ngIf="isLoading" style="text-align: center">
+  <app-loader></app-loader>
+</div>
 
-
-<ng-template #loading> Loading stuff... </ng-template>
-<div class="container">
+<div class="container" *ngIf="!isLoading">
   <div class="time-text">
     <h2>Name: {{ game.title }}</h2>
     <h3>location: {{ game.location }}</h3>

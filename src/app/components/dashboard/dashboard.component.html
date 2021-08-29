@@ -1,4 +1,7 @@
-<div class="container" *ngIf="games">
+<div *ngIf="isLoading" style="text-align: center">
+    <app-loader></app-loader>
+  </div>
+<div class="container" *ngIf="games && !isLoading">
     <div class="card-container" *ngIf="games; else loading">
         <mat-card class="event-details" *ngFor="let game of games">
             <mat-card-header>
@@ -20,8 +23,5 @@
             </mat-card-content>
         </mat-card>
     </div>
-    <ng-template #loading>
-        Loading stuff...
-    </ng-template>
     <!-- <app-game-details [gameId]="id"></app-game-details> -->
 </div>
