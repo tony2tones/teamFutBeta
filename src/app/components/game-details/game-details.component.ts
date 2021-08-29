@@ -20,6 +20,7 @@ export class GameDetailsComponent implements OnInit {
     private activeRoute: ActivatedRoute
   ) {}
   public playerName: string;
+  public isLoading: boolean;
   @Input() gameId: any;
   public event: Game[];
   public players: Players[];
@@ -34,6 +35,7 @@ export class GameDetailsComponent implements OnInit {
   public addPlayerToggle: boolean = false;
 
   ngOnInit() {
+    this.isLoading = true;
     this.activeRoute.paramMap.subscribe((params: ParamMap) => {
       this.gameId = params.get("id");
       console.log("side menu id parameter ", this.gameId);
@@ -45,6 +47,7 @@ export class GameDetailsComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get("id");
     this.gameService.getGameById(this.gameId).subscribe((data) => {
       this.game = data.payload.data();
+      this.isLoading = false;
       this.playerCountCheck();
     });  
   }
